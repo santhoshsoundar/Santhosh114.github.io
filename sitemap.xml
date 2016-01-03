@@ -1,180 +1,56 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://username.github.io//</loc>
-    <lastmod>2016-01-03T15:32:12-05:00</lastmod>
+    <loc>{{ site.url }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  
+  {% for post in site.posts %}
     <url>
-      <loc>http://username.github.io//post1.html</loc>
-      
-        <lastmod>2013-06-05T00:00:00-04:00</lastmod>
-      
-      
+      <loc>{{ site.url }}{{ post.url }}</loc>
+      {% if post.sitemap.lastmod %}
+        <lastmod>{{ post.sitemap.lastmod | date: "%Y-%m-%d" }}</lastmod>
+      {% elsif post.date %}
+        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+      {% else %}
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      {% endif %}
+      {% if post.sitemap.changefreq %}
+        <changefreq>{{ post.sitemap.changefreq }}</changefreq>
+      {% else %}
         <changefreq>monthly</changefreq>
-      
-      
+      {% endif %}
+      {% if post.sitemap.priority %}
+        <priority>{{ post.sitemap.priority }}</priority>
+      {% else %}
         <priority>0.5</priority>
-      
+      {% endif %}
     </url>
-  
-    <url>
-      <loc>http://username.github.io//post2.html</loc>
-      
-        <lastmod>2013-05-27T00:00:00-04:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-  
-    <url>
-      <loc>http://username.github.io//post3.html</loc>
-      
-        <lastmod>2013-04-02T00:00:00-04:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-  
-    <url>
-      <loc>http://username.github.io//post4.html</loc>
-      
-        <lastmod>2013-03-15T00:00:00-04:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-  
-    <url>
-      <loc>http://username.github.io//post5.html</loc>
-      
-        <lastmod>2013-02-10T00:00:00-05:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-  
-    <url>
-      <loc>http://username.github.io//post6.html</loc>
-      
-        <lastmod>2013-01-24T00:00:00-05:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-  
-    <url>
-      <loc>http://username.github.io//post7.html</loc>
-      
-        <lastmod>2012-11-04T00:00:00-04:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-  
-  
+  {% endfor %}
+  {% for page in site.pages %}
   <url>
-    <loc>http://username.github.io//404</loc>
-    
-      <lastmod>2016-01-03T15:32:12-05:00</lastmod>
-    
-    
+    <loc>{{ site.url }}{{ page.url }}</loc>
+    {% if page.sitemap.lastmod %}
+      <lastmod>{{ page.sitemap.lastmod | date: "%Y-%m-%d" }}</lastmod>
+    {% elsif page.date %}
+      <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    {% else %}
+      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    {% endif %}
+    {% if page.sitemap.changefreq %}
+      <changefreq>{{ page.sitemap.changefreq }}</changefreq>
+    {% else %}
       <changefreq>monthly</changefreq>
-    
-    
+    {% endif %}
+    {% if page.sitemap.priority %}
+      <priority>{{ page.sitemap.priority }}</priority>
+    {% else %}
       <priority>0.3</priority>
-    
+    {% endif %}
   </url>
-  
-  <url>
-    <loc>http://username.github.io//atom.xml</loc>
-    
-      <lastmod>2016-01-03T15:32:12-05:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://username.github.io//blog</loc>
-    
-      <lastmod>2016-01-03T15:32:12-05:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://username.github.io//</loc>
-    
-      <lastmod>2016-01-03T15:32:12-05:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://username.github.io//projects</loc>
-    
-      <lastmod>2016-01-03T15:32:12-05:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
-    <loc>http://username.github.io//sitemap.xml</loc>
-    
-      <lastmod>2016-01-03T15:32:12-05:00</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
+  {% endfor %}
 </urlset>
