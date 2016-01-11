@@ -11,12 +11,11 @@ safe: true
 
 
 # edit here to achieve your personal greatness
-url: http://username.github.io/
+url: http://santhosh114.github.io/
 baseurl:
-title: Chris Turner
-author: Chris Turner
-description: Personal blog and resume
-avatar: profile.png
+title: DataScience Blog
+author: Santhosh
+description: my personal blog and resume
 email: yourname@email.com
 github: biomadeira/sustain # username
 twitter: username
