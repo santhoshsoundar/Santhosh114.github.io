@@ -11,15 +11,16 @@ safe: true
 
 
 # edit here to achieve your personal greatness
-url: http://santhosh114.github.io/
+url: http://username.github.io/
 baseurl:
-title: DataScience Blog
-author: Santhosh
-description: my personal blog and resume
-email: soundars@umail.iu.edu
-github: santhosh114 # username
-twitter: @Santhosh7114
-linkedin: Santhosh Soundararajan
+title: Chris Turner
+author: Chris Turner
+description: Personal blog and resume
+avatar: profile.png
+email: yourname@email.com
+github: biomadeira/sustain # username
+twitter: username
+linkedin: username
 stackoverflow: username   #e.g: users/2735833/proton1h1
 #Comment out if you don't want disqus 
 disqus: username

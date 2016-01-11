@@ -51,6 +51,8 @@ for (var i = 0; i< nodes.length; i++) {
 
 var myChart = d3.select('div#chart')
 		.append('svg')
+		// .attr("viewBox", "0 0 " + w + " " + h )
+  //       .attr("preserveAspectRatio", "xMidYMid meet")
 		.attr('width', w)
 		.attr('height', h)
 
@@ -187,4 +189,12 @@ force.on('tick', function(e) {
 
 
 force.start();
+
+ window.addEventListener('resize', resize); 
+
+function resize() {
+    width = window.innerWidth, height = window.innerHeight;
+    myChart.attr("width", width).attr("height", height);
+    force.size([width, height]).resume();
+}
 
