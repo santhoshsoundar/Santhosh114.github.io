@@ -51,8 +51,8 @@ for (var i = 0; i< nodes.length; i++) {
 
 var myChart = d3.select('div#chart')
 		.append('svg')
-		// .attr("viewBox", "0 0 " + w + " " + h )
-  //       .attr("preserveAspectRatio", "xMidYMid meet")
+		 .attr("viewBox", "0 0 " + w + " " + h )
+         .attr("preserveAspectRatio", "xMidYMid meet")
 		.attr('width', w)
 		.attr('height', h)
 
