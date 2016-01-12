@@ -51,8 +51,8 @@ for (var i = 0; i< nodes.length; i++) {
 
 var myChart = d3.select('div#chart')
 		.append('svg')
-		 .attr("viewBox", "0 0 " + w + " " + h )
-         .attr("preserveAspectRatio", "xMidYMid meet")
+		.attr("viewBox", "0 0 " + w + " " + h )
+        //.attr("preserveAspectRatio", "xMidYMid meet")
 		.attr('width', w)
 		.attr('height', h)
 
@@ -193,8 +193,19 @@ force.start();
  window.addEventListener('resize', resize); 
 
 function resize() {
-    width = window.innerWidth, height = window.innerHeight;
-    myChart.attr("width", width).attr("height", height);
-    force.size([width, height]).resume();
+	var w = window.innerWidth;
+        myChart.attr("width", w);
+        myChart.attr("height", w * height / width);
+        force.size([width, height]).resume();
+        
+    // width = window.innerWidth, height = window.innerHeight;
+    // myChart.attr("width", width+20).attr("height", height+20);
+    // force.size([width, height]).resume();
 }
 
+  // $(window).resize(function() {
+  //       var w = window.innerWidth;
+  //       myChart.attr("width", w);
+  //       myChart.attr("height", w * height / width);
+  //       force.size([width, height]).resume();
+  //     });

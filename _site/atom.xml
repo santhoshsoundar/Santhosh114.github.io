@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   
-    <title type="text" xml:lang="en">Chris Turner</title>
-    <link type="application/atom+xml" rel="self" href="http://username.github.io//atom.xml"/>
+    <title type="text" xml:lang="en">DataScience Blog</title>
+    <link type="application/atom+xml" rel="self" href="http://santhosh114.github.io//atom.xml"/>
   
-  <link href="http://username.github.io//"/>
-  <id>http://username.github.io//</id>
-  <updated>2016-01-11T15:19:45Z</updated>
+  <link href="http://santhosh114.github.io//"/>
+  <id>http://santhosh114.github.io//</id>
+  <updated>2016-01-12T00:08:10Z</updated>
   <author>
-    <name>Chris Turner</name>
-    <email>yourname@email.com</email>
+    <name>Santhosh</name>
+    <email>soundars@umail.iu.edu</email>
   </author>
-  <rights type="text">Copyright © 2016 Chris Turner. All rights reserved.</rights>
+  <rights type="text">Copyright © 2016 Santhosh. All rights reserved.</rights>
   
   <entry>
   <title type="text">A Full and Comprehensive Style Test (HTML)</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post1.html" />
-  <id>http://username.github.io//post1</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post1.html" />
+  <id>http://santhosh114.github.io//post1</id>
   <published>2013-06-05T00:00:00Z</published>
   <updated>2013-06-05T00:00:00Z</updated>
   <content type="html"><![CDATA[ <blockquote><p>This is Markdown Cheatsheet Demo for <strong>Sustain</strong>, this Jekyll theme. Please check the raw content of this file for the markdown usage.</p></blockquote>
@@ -679,8 +679,8 @@ c.draw = function() {
 
   <entry>
   <title type="text">Another markdown full cheatsheet demo (Markdown)</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post2.html" />
-  <id>http://username.github.io//post2</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post2.html" />
+  <id>http://santhosh114.github.io//post2</id>
   <published>2013-05-27T00:00:00Z</published>
   <updated>2013-05-27T00:00:00Z</updated>
   <content type="html"><![CDATA[ <blockquote><p>This is Markdown Cheatsheet Demo for <strong>Sustain</strong>, this Jekyll theme. Please check the raw content of this file for the markdown usage.</p></blockquote>
@@ -863,8 +863,8 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
   <entry>
   <title type="text">Now some lorem ipsum</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post3.html" />
-  <id>http://username.github.io//post3</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post3.html" />
+  <id>http://santhosh114.github.io//post3</id>
   <published>2013-04-02T00:00:00Z</published>
   <updated>2013-04-02T00:00:00Z</updated>
   <content type="html"><![CDATA[ <p>Expetenda deseruisse eam no, purto adhuc ut pri, ex vocent iracundia theophrastus usu. Dicta causae meliore ex vel, in vix erant integre petentium. Vix ei nisl scripta recusabo, eam doming blandit facilisis ex. No odio persequeris usu, in sea euismod explicari referrentur. Dicit libris iuvaret vim at. Eu noster luptatum pri, magna soleat graeco eu pro.</p>
@@ -884,8 +884,8 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
   <entry>
   <title type="text">Continued...</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post4.html" />
-  <id>http://username.github.io//post4</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post4.html" />
+  <id>http://santhosh114.github.io//post4</id>
   <published>2013-03-15T00:00:00Z</published>
   <updated>2013-03-15T00:00:00Z</updated>
   <content type="html"><![CDATA[ <p>Errem feugait inimicus ad usu, sit porro verterem ut, ne duo primis eloquentiam ullamcorper. Omnes discere ut est, prima inani cu cum. Eum ea saepe audiam animal. Duis meliore vel no. Sed mentitum ocurreret in. Iusto salutatus ea eum.</p>
@@ -897,8 +897,8 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
   <entry>
   <title type="text">Now seriously something real</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post5.html" />
-  <id>http://username.github.io//post5</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post5.html" />
+  <id>http://santhosh114.github.io//post5</id>
   <published>2013-02-10T00:00:00Z</published>
   <updated>2013-02-10T00:00:00Z</updated>
   <content type="html"><![CDATA[ <p>As I engage in the so-called &ldquo;bull sessions&rdquo; around and about the school, I too often find that most college men have a misconception of the purpose of education. Most of the &ldquo;brethren&rdquo; think that education should equip them with the proper instruments of exploitation so that they can forever trample over the masses. Still others think that education should furnish them with noble ends rather than means to an end.</p>
@@ -924,8 +924,8 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
   <entry>
   <title type="text">I have a dream &lt;3</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post6.html" />
-  <id>http://username.github.io//post6</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post6.html" />
+  <id>http://santhosh114.github.io//post6</id>
   <published>2013-01-24T00:00:00Z</published>
   <updated>2013-01-24T00:00:00Z</updated>
   <content type="html"><![CDATA[ <p>I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.</p>
@@ -1025,8 +1025,8 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
   <entry>
   <title type="text">Nice sticky footer down there &amp;darr; &amp;darr;</title>
-  <link rel="alternate" type="text/html" href="http://username.github.io//post7.html" />
-  <id>http://username.github.io//post7</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post7.html" />
+  <id>http://santhosh114.github.io//post7</id>
   <published>2012-11-04T00:00:00Z</published>
   <updated>2012-11-04T00:00:00Z</updated>
   <content type="html"><![CDATA[ <p>Lorem ipsum dolor sit amet, te semper nostrud eos, ei feugiat dignissim nam, graeco aliquid vix ad. Ut nec erant pericula, ei mollis nominati qui. Vim an case vidit sententiae, est at euismod laboramus efficiantur. Ei sit brute lorem, ea eam timeam viderer aliquid, cu integre omittam moderatius quo.</p>
