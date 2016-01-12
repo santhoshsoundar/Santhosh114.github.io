@@ -48,13 +48,44 @@ for (var i = 0; i< nodes.length; i++) {
             }
       }
 }
-
+if (screen.width >= 600) {
+	wdf = 800;
 var myChart = d3.select('div#chart')
 		.append('svg')
-		.attr("viewBox", "0 0 " + w + " " + h )
+		.attr("viewBox", "10 0 " + w + " " + h )
         .attr("preserveAspectRatio", "xMidYMid meet")
-		.attr('width', w)
-		.attr('height', h)
+
+        .attr("width", wdf)
+        .attr("height", wdf * h / w)
+       
+        // myChart.append("title")
+        //  .text("hi da palette");
+
+        seemycode= myChart.append("text")
+        .attr("id","description")
+        .text("hi da palette")
+        .attr("x", 600)
+        .attr("y", 400)
+        .attr("opacity", 0)
+
+        myChart.on("mouseover", function() {
+seemycode.style('opacity', 0.9)
+})
+        myChart.on("mouseout", function() {
+        seemycode.style('opacity', 0)
+})
+        
+}else{
+	wdf = window.innerWidth;
+var myChart = d3.select('div#chart')
+		.append('svg')
+		.attr("viewBox", "40 0 " + w + " " + h )
+        .attr("preserveAspectRatio", "xMidYMid meet")
+
+        .attr("width", wdf)
+        .attr("height", wdf * h / w)
+}
+
 
 var force = d3.layout.force()
 	.nodes(nodes)
@@ -172,7 +203,19 @@ node.append('text')
 		else { return '1.8em'}
 	})
 
-	
+// 	 seemycode= myChart.append("text")
+//         .attr("id","description")
+//         .text("hi da palette")
+//         .attr("x", 600)
+//         .attr("y", 400)
+//         .attr("opacity", 0)
+
+//         myChart.on("mouseover", function() {
+// seemycode.style('opacity', 0.9)
+// })
+//         myChart.on("mouseout", function() {
+//         seemycode.style('opacity', 0)
+// })
 	
 
 force.on('tick', function(e) {
@@ -190,14 +233,19 @@ force.on('tick', function(e) {
 
 force.start();
 
- window.addEventListener('resize', resize); 
+window.addEventListener('resize', resize); 
 
 function resize() {
-	var w = window.innerWidth;
-        myChart.attr("width", w);
-        myChart.attr("height", w * height / width);
-        force.size([width, height]).resume();
-        
+	var wd = window.innerWidth;
+	if(wd<800){
+        myChart.attr("width", wd);
+        myChart.attr("height", wd * h / w);
+    }else{
+    	var wdef = 800;
+    	myChart.attr("width", wdef);
+        myChart.attr("height", wdef * h / w);
+    }
+        force.size([w, h]).resume();
     // width = window.innerWidth, height = window.innerHeight;
     // myChart.attr("width", width+20).attr("height", height+20);
     // force.size([width, height]).resume();
