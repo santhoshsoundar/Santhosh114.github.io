@@ -28,12 +28,12 @@ var palette = {
   }
 
 var nodes = [
-      { name: "me",target: [0], img: "bubble/bbl/sandy_bubble.png",click:"Resume"},
-      { name: "Data Analysis",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog"},
-      { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog"},
-      { name: "NoSQL", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog"},
-      { name: "Git Projects", target: [1],target: [0], img: "bubble/bbl/pjt_bbl.png",click:"View Projects"},
-      { name: "Visualizations-D3.js", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"Read Blog"}
+      { name: "me",target: [0], img: "bubble/bbl/sandy_bubble.png",click:"Resume",link: "/geoSample/index.html"},
+      { name: "Data Analysis",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "/geoSample/index.html"},
+      { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog",link: "/geoSample/index.html"},
+      { name: "GeoFeedia", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"view sample",link: "/geoSample/index.html"},
+      { name: "Git Projects", target: [1],target: [0], img: "bubble/bbl/pjt_bbl.png",click:"View Projects",link: "/geoSample/index.html"},
+      { name: "Visualizations-D3.js", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"Read Blog",link: "/geoSample/index.html"}
 ];
 
 var links = [];
@@ -61,19 +61,20 @@ var myChart = d3.select('div#chart')
         // myChart.append("title")
         //  .text("hi da palette");
 
-        seemycode= myChart.append("text")
-        .attr("id","description")
-        .text("hi da palette")
-        .attr("x", 600)
-        .attr("y", 400)
-        .attr("opacity", 0)
+//         seemycode= myChart.append("text")
+//         .attr("id","description")
+//         .attr("xlink:href","https://github.com/Santhosh114/bubble-force-layout-d3")
+//         .text("click me to view the code")
+//         .attr("x", 650)
+//         .attr("y", 400)
+//         .attr("opacity", 0)
 
-        myChart.on("mouseover", function() {
-seemycode.style('opacity', 0.9)
-})
-        myChart.on("mouseout", function() {
-        seemycode.style('opacity', 0)
-})
+//         myChart.on("mouseover", function() {
+// seemycode.style('opacity', 0.9)
+// })
+//         myChart.on("mouseout", function() {
+//         seemycode.style('opacity', 0)
+// })
         
 }else{
 	wdf = window.innerWidth;
@@ -108,7 +109,12 @@ var node = myChart.selectAll('circle')
 	.call(force.drag);
 
  node.append("svg:a")
-   .attr("xlink:href", function(d){return d.img;}).append('circle')
+   .attr("xlink:href", function(d){return d.link
+// if (d.name=='GeoFeedia') { return "/geoSample/index.html"  } 
+//   else{
+//     return d.img;}
+//   }
+}).append('circle')
 	.attr('cx', function(d) { return d.x; })
 	.attr('cy', function(d) { return d.y; })
 	.attr('r',function(d, i) {
@@ -144,7 +150,7 @@ var node = myChart.selectAll('circle')
 	})
 // Append images
   var images = node.append("svg:a")
-   .attr("xlink:href", function(d){return d.img;}).append("svg:image")
+   .attr("xlink:href", function(d){return d.link;}).append("svg:image")
         .attr("xlink:href",  function(d) { return d.img;})
         .attr("x", function(d,i) { if (i>0) { return -40  }
 		else { return -50 }})

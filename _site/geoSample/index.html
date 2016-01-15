@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Evolution of Airports In USA  ">
+    <meta name="keywords" content="Evolution of Airports In USA , Data Visualization, D3">
+   
+
+    <title>Airports Data Visualization</title>
+
+    <link rel="shortcut icon" href="images/flyicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/flyicon.ico" type="image/x-icon">
+<script src="//code.jquery.com/jquery-2.0.0.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Nobile' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+     <script src="js_&_data/master_data.js"></script>
+      <link rel="stylesheet" type="text/css" href="airport_styles/master_style.css">
+
+    </head>
+
+<body>
+      
+       
+<!-- SANDY AREA STARTS -->        
+        <section id="s_three" class="choropleth-categories" style="min-height:300px; bgcolor:White;">
+           <h1>Evolution of Airports In USA</h1></br>
+                    <h4>We wish to depict how this complex system has evolved over the years and how, due to the delays, the system needs to be changed and improved.</h4>
+                    <h5 style="color:#ff0066">[mouseover the vertical bars show more stat on each data point]
+ </h5>
+      <script src="//d3js.org/d3.v3.min.js"></script>
+      <script src="//d3js.org/topojson.v1.min.js"></script>
+
+
+      <div id="us_states">
+
+
+
+
+        <div id="sparkdiv">
+
+  </div>
+      </div>
+      <h2>A Brief Introduction</h2>
+
+
+
+                    
+                    <p>The United States has an extensive air transportation network. In <b>2013</b> there were <b>86 airports</b> in the U.S. that annually handled over <b>1,000,000</b> passengers and twelve of the world's thirty busiest airports by passenger volume in 2014 were in the U.S.Air Travel is the most practical solution in the US, given the vastness of the country.<br>However, this form of travel is not without problems. The entire system is both fascinating and disturbing, given the fact that overall, passengers were delayed <b>320 million hours in 2007</b> with an estimated deadweight economic loss of up to <b>$41 billion</b>.</p>
+<h2>Our Motivation</h2>
+
+                    <p>There is a plethora of Flight visualizations on the flight routes, flight delays and airport to airport maps of routes. 
+But there is no real chronicle on how this huge air transportation network evolved from its onset. 
+
+This was compelling enough for us to venture into this wide corpus of data spanning over 21 years! </p>
+
+                    <p class="concept-reference">
+This dataset is a collection of yearly data of 21 years starting from 1987 to 2008 by DataExpo.
+</p>
+                    </div>
+
+        </section>
+
+<section id="s_stats" class="choropleth-categories" style="min-height:200px;">
+                     <h3 style="color:White">The below shown graphs are smoothened line graph showing elaborate results for the most dynamic airports in the USA.
+</br>
+ </h3>
+
+</p>
+                     
+
+
+ <div id="stats">
+
+  <svg id="visualisation1" width="300" height="150"></svg>
+  <svg id="visualisation2" width="300" height="150"></svg>
+  <svg id="visualisation3" width="300" height="150"></svg>
+  <svg id="visualisation4" width="300" height="150"></svg>
+  <svg id="visualisation5" width="300" height="150"></svg>
+  <svg id="visualisation6" width="300" height="150"></svg>
+  <svg id="visualisation7" width="300" height="150"></svg>
+  <svg id="visualisation8" width="300" height="150"></svg>
+ 
+   </div>
+<h5 style="color:White"> This study has eloborate research and data analysis of over 20GB of real world data. The processes book is attached in my <a style="color:White" href="https://github.com/Santhosh114/Interactive-d3-Visualization-of-Airport-Evolution">GitHub repo.</a>
+</br>
+ </h5>
+        </section>
+<!-- SANDY AREA ENDS -->        
+        
+       
+        
+      <section id="s_four" class="references">
+                        <h2>References</h2>
+                        <ul>
+                            <li><a href="http://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/">Airport Statistics</a>&mdash;Federal Aviation Administration</li>
+                            <li><a href="http://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html?_r=0">Trend and Sparklines</a>&mdash;NY Times</li>
+                            <li><a href="http://www.nytimes.com/interactive/2015/11/24/upshot/thanksgiving-flight-patterns.html?rref=upshot&smid=tw-upshotny&smtyp=cur&_r=1">Thanksgiving Flight Patterns</a>&mdash;NY Times</li>
+                            <li><a href="http://www.bloomberg.com/graphics/2015-pace-of-social-change/">How fast America Changes its mind</a>&mdash;Bloomberg</li>
+                            <li><a href="http://stat-computing.org/dataexpo/2009/the-data.html">Statistical Computing</a>&mdash;Data Set</li>
+                        </ul>
+        </section>
+
+
+
+
+
+
+
+
+        <footer id="s_five">
+                
+                <p><strong><span class="caps">info i-590</span> Data Visualization.</strong><br/>Instructor: <a style="color:#ff0066" href="http://yongyeol.com/">YY Ahn</a>. T.A.: Qing Ke.<br>Fall 2015. Indiana University.</p>
+               
+        </footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+
+  (function() {
+
+
+ 
+     var m_width = $("#us_states").width(),
+          width = 700,
+          height = 400,
+          country,
+          state;
+
+      var projection = d3.geo.albersUsa()
+      .scale(700)
+      .translate([width / 2, height / 2])
+      .precision(.1);
+
+      var path = d3.geo.path()
+      .projection(projection);
+
+
+       var svg = d3.select("#us_states").append("svg")
+          .attr("preserveAspectRatio", "xMidYMid")
+          .attr("viewBox", "0 0 " + width + " " + height)
+          .attr("width", m_width)
+          .attr("height", m_width * height / width);
+
+                                                                 
+
+
+                              svg.append("rect").style("fill", "#f2f2f2").attr("x",600).attr("y",180).attr("height",170).attr("width",70).attr("opacity",0.5)   
+                              svg.append("rect").style("fill", "#f2f2f2").attr("x",0).attr("y",200).attr("height",100).attr("width",100)  
+                              svg.append("rect").style("fill", "#005fcc") .attr("x",612).attr("y",199).attr("height",1).attr("width",6) 
+                              
+                              svg.append("rect").style("fill", "#005fcc") .attr("x",615).attr("y",300).attr("height",35).attr("width",6)
+                              svg.append("rect").style("fill", "#005fcc") .attr("x",630).attr("y",270).attr("height",65).attr("width",6)
+                              svg.append("rect").style("fill", "#005fcc") .attr("x",645).attr("y",240).attr("height",95).attr("width",6) 
+
+                              
+
+
+                              svg.append("rect").style("fill", "darkGray") .attr("x",605).attr("y",225).attr("height",110).attr("width",0.5)                               
+                              svg.append("rect").style("fill", "darkGray").attr("x",605).attr("y",335).attr("height",0.5).attr("width",60)
+                              
+                              
+                              
+                              
+                              
+
+                  /////////////////////////// Text Clocks Elements ///////////////////////////////
+
+                                                             
+                                                                 svg.append("text")
+                                                                    .attr("y", 190)
+                                                                    .attr("x", 610)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'6px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("1Px of Bar Height");
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 210)
+                                                                    .attr("x", 602)
+                                                                    .style( {
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("[The bars show total number of");
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 220)
+                                                                    .attr("x", 604)
+                                                                    .style( {
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("flights per airport during 2008]");
+
+                                                                svg.append("text")
+                                                                    .attr("y", 210)
+                                                                    .attr("x", 2)
+                                                                    .style( {
+                                                                              'font-size':'6.5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("The animated bars represent the"); 
+                                                                
+                                                                svg.append("text")
+                                                                    .attr("y", 218)
+                                                                    .attr("x", 2)
+                                                                    .style( {
+                                                                              'font-size':'6.5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("yearly increase in the number of");
+                                                                
+                                                                svg.append("text")
+                                                                    .attr("y", 226)
+                                                                    .attr("x", 2)
+                                                                    .style( {
+                                                                              'font-size':'6.5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("flights at each airport. The data");
+                                                                
+                                                                svg.append("text")
+                                                                    .attr("y", 234)
+                                                                    .attr("x", 2)
+                                                                    .style( {
+                                                                              'font-size':'6.5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("is captured between 1987 & 2008."); 
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 255)
+                                                                    .attr("x", 2)
+                                                                    .style( {
+                                                                              'font-size':'6.5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Data Source:"); 
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 265)
+                                                                    .attr("x", 2)
+                                                                    .style( {'font-weight':'bold','font-style': 'italic',
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Bureau of Transportation Statistics(BTS)"); 
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 275)
+                                                                    .attr("x", 32)
+                                                                    .style( {'font-weight':'bold','font-style': 'italic',
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("&"); 
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 285)
+                                                                    .attr("x", 2)
+                                                                    .style( {'font-weight':'bold','font-style': 'italic',
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("American Statistical Association"); 
+                                                                           
+
+                                                                svg.append("text")
+                                                                    .attr("y", 200)
+                                                                    .attr("x", 620)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'6px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000").text("= 6000 Flights");
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 295)
+                                                                    .attr("x", 610)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9").style("fill", "#ff0066")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("210K");
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 265)
+                                                                    .attr("x", 625)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9").style("fill", "#ff0066")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("390K");
+
+                                                                    svg.append("text")
+                                                                    .attr("y", 235)
+                                                                    .attr("x", 640)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'5px'})
+                                                                    .style("opacity", "0.9").style("fill", "#ff0066") 
+                                                                    .attr("fill", "#000000")
+                                                                    .text("570K");
+
+
+
+                                                                    svg.append("text")
+                                                                    .attr("y",50)
+                                                                    .attr("x", 700)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'4px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000").attr("transform", "rotate(25)")
+                                                                    .text("Florida");
+
+                                                                    svg.append("text")
+                                                                    .attr("y",43)
+                                                                    .attr("x", 715)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'4px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000").attr("transform", "rotate(25)")
+                                                                    .text("St. Louis");
+
+                                                                    svg.append("text")
+                                                                    .attr("y",37)
+                                                                    .attr("x", 730)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'4px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#000000").attr("transform", "rotate(25)")
+                                                                    .text("Chicago");
+
+
+                                                          var start_val = 1987,
+                                                              end_val = [2008];
+                                                          var clock = svg.append("svg")
+                                                                    .attr("y", 40)
+                                                                    .attr("x", 430)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'30px'})
+                                                                    .attr("fill", "#ff0066");
+
+                                                              clock.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(20900)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                                                          svg.append("text")
+                                                                    .attr("y", 390)
+                                                                    .attr("x", 150)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'10px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#595959")
+                                                                    .text("Total Flights:");
+
+
+
+                                                          var start_val = 135469,
+                                                              end_val = [62135469];
+                                                          var total_flights = svg.append("svg")
+                                                                    .attr("y", 365)
+                                                                    .attr("x", 210)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'20px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#ff0066");
+
+                                                              total_flights.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(17000)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                                                          svg.append("text")
+                                                                    .attr("y", 390)
+                                                                    .attr("x", 330)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'10px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#595959")
+                                                                    .text("Incount:");
+
+
+                                                          var start_val = 1469,
+                                                              end_val = [23365469];
+                                                          var total_flights = svg.append("svg")
+                                                                    .attr("y", 365)
+                                                                    .attr("x", 365)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'20px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#ff0066");
+
+                                                              total_flights.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(17000)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                                                          svg.append("text")
+                                                                    .attr("y", 390)
+                                                                    .attr("x", 470)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'10px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#595959")
+                                                                    .text("Outcount:");
+
+                                                          var start_val = 35469,
+                                                              end_val = [38525469];
+                                                          var total_flights = svg.append("svg")
+                                                                    .attr("y", 365)
+                                                                    .attr("x", 510)
+                                                                    .style( {'font-weight':'bold',
+                                                                              'font-size':'20px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#ff0066");
+
+                                                              total_flights.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(17000)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                 ///////////////////////////// clock ends ///////////////////////////////////////////////
+
+
+
+   d3.json("us.json", function(error, us) {
+    if (error) return console.error(error);
+    console.log(us);
+
+    svg.selectAll("path")
+
+        .data(topojson.feature(us, us.objects.states).features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("class", "map")
+        .attr("fill", "LightGray")
+        .attr("stroke", "White");
+
+
+  ///////////////////////////// Initializing Bars ///////////////////////////////////////////////
+       
+         Animbars = svg.selectAll("g")
+                    .data(sampleData)
+                    .enter()
+                    .append("g")
+                    .attr("class", "Animbars")
+                    .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
+                    
+
+                    ///////////////////////////// text elements for 18 airports///////////////////////////////////////////////
+
+                    //////////////Group 1 Airports///////////////
+
+                                                     ///////////////// den
+
+                                            heading_den=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Denver International Airport").style('opacity', 0);
+
+                                            code_den=   svg.append("text")
+                                                      .attr("y", 135)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: DEN").style('opacity', 0);
+                                             in_den=   svg.append("text")
+                                                      .attr("y", 150)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 239625").style('opacity', 0);
+                                             out_den=   svg.append("text")
+                                                      .attr("y", 160)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 215685").style('opacity', 0);
+
+                                                      ////////////// LAX
+
+                                            heading_lax=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Los Angeles Int. Airport").style('opacity', 0);
+
+                                            code_lax=   svg.append("text")
+                                                      .attr("y", 135)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: LAX").style('opacity', 0);
+                                             in_lax=   svg.append("text")
+                                                      .attr("y", 150)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 249605").style('opacity', 0);
+                                             out_lax=   svg.append("text")
+                                                      .attr("y", 160)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 205680").style('opacity', 0);
+
+
+                                                      ////////////
+
+                                                      ///////////////// SFO
+
+                                            heading_sfo=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("San Francisco Int. Apt").style('opacity', 0);
+
+                                            code_sfo=   svg.append("text")
+                                                      .attr("y", 135)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: SFO").style('opacity', 0);
+                                             in_sfo=   svg.append("text")
+                                                      .attr("y", 150)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 299025").style('opacity', 0);
+                                             out_sfo=   svg.append("text")
+                                                      .attr("y", 160)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008):225085").style('opacity', 0);
+
+                                                      ////////////// PHX
+
+                                            heading_phx=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Phoenix SH Int. Airport").style('opacity', 0);
+
+                                            code_phx=   svg.append("text")
+                                                      .attr("y", 135)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: PHX").style('opacity', 0);
+                                             in_phx=   svg.append("text")
+                                                      .attr("y", 150)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 219600").style('opacity', 0);
+                                             out_phx=   svg.append("text")
+                                                      .attr("y", 160)
+                                                      .attr("x", 120)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 205690").style('opacity', 0);
+
+
+                                                      ////////////
+
+        //////////////Group 2 Airports///////////////
+
+                                                      ////////////// STL
+
+                                            heading_stl=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Lambert-St. Louis Int. Airport").style('opacity', 0);
+
+                                            code_stl=   svg.append("text")
+                                                      .attr("y", 235)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: STL").style('opacity', 0);
+                                             in_stl=   svg.append("text")
+                                                      .attr("y", 250)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 169025").style('opacity', 0);
+                                             out_stl=   svg.append("text")
+                                                      .attr("y", 260)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 215005").style('opacity', 0);
+
+
+                                                      ////////////
+
+
+                                                      ////////////// ATL
+
+                                            heading_atl=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Atlanta International Airport").style('opacity', 0);
+
+                                            code_atl=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: ATL").style('opacity', 0);
+                                             in_atl=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 209625").style('opacity', 0);
+                                             out_atl=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 185685").style('opacity', 0);
+
+
+                                                      ////////////
+
+                                                                         ////////////// CLT
+
+                                            heading_CLT=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Douglas International Airport").style('opacity', 0);
+
+                                            code_CLT=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: CLT").style('opacity', 0);
+                                             in_CLT=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 189625").style('opacity', 0);
+                                             out_CLT=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 195685").style('opacity', 0);
+
+
+                                                      ////////////                     
+                                                                             ////////////// IAH
+
+                                            heading_iah=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Bush Intercontinental Airport").style('opacity', 0);
+
+                                            code_iah=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: IAH").style('opacity', 0);
+                                             in_iah=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 189625").style('opacity', 0);
+                                             out_iah=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 145685").style('opacity', 0);
+
+
+                                                      ////////////
+                                                       ////////////// MCO
+
+                                            heading_mco=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Orlando International Airport").style('opacity', 0);
+
+                                            code_mco=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: MCO").style('opacity', 0);
+                                             in_mco=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 130625").style('opacity', 0);
+                                             out_mco=   svg.append("text")
+                                                      .attr("y", 220)
+                                                      .attr("x", 320)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 114685").style('opacity', 0);
+
+
+                                                      ////////////
+     
+
+//////////////Group 3 Airports///////////////
+                                                      
+                                                      ////////////// MSP
+
+                                            heading_msp=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("St. Paul Int. Airport").style('opacity', 0);
+
+                                            code_msp=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: MSP").style('opacity', 0);
+                                             in_msp=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 219605").style('opacity', 0);
+                                             out_msp=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 275685").style('opacity', 0);
+
+
+                                                      ////////////
+                                           
+                                                      ////////////// ORD
+
+                                            heading_ord=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Chicago O'hare Int. Apt.").style('opacity', 0);
+
+                                            code_ord=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: ORD").style('opacity', 0);
+                                             in_ord=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 239625").style('opacity', 0);
+                                             out_ord=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 255685").style('opacity', 0);
+
+
+                                                      ////////////
+                                                      ////////////// DTW
+
+                                            heading_dtw=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Detroit Metro Airport").style('opacity', 0);
+
+                                            code_dtw=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: DTW").style('opacity', 0);
+                                             in_dtw=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 319625").style('opacity', 0);
+                                             out_dtw=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 385685").style('opacity', 0);
+
+
+                                                      ////////////
+                                                      ////////////// PIT
+
+                                            heading_pit=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Pittsburgh Int. Airport").style('opacity', 0);
+
+                                            code_pit=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: PIT").style('opacity', 0);
+                                             in_pit=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 299625").style('opacity', 0);
+                                             out_pit=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 285685").style('opacity', 0);
+
+
+                                                      ////////////
+
+
+
+                                                      ////////////// EWR
+
+                                            heading_ewr=   svg.append("text")
+                                                     .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Newark Liberty Int. Apt.").style('opacity', 0);
+
+                                            code_ewr=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: EWR").style('opacity', 0);
+                                             in_ewr=   svg.append("text")
+                                                     .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 239625").style('opacity', 0);
+                                             out_ewr=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 215685").style('opacity', 0);
+
+
+                                                      ////////////
+                                                      ////////////// JFK
+
+                                            heading_jfk=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("JFK Int. Airport").style('opacity', 0);
+
+                                            code_jfk=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: JFK").style('opacity', 0);
+                                             in_jfk=   svg.append("text")
+                                                     .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 123925").style('opacity', 0);
+                                             out_jfk=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 121585").style('opacity', 0);
+
+
+                                                      ////////////
+                                                      ////////////// BOS
+
+                                            heading_bos=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "10px")
+                                                      .text("Boston Int. Airport").style('opacity', 0);
+
+                                            code_bos=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "6px")
+                                                      .text("Airport Code: BOS").style('opacity', 0);
+                                             in_bos=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total InCount(2008): 369625").style('opacity', 0);
+                                             out_bos=   svg.append("text")
+                                                      .attr("y", 120)
+                                                      .attr("x", 300)
+                                                      .style("fill", "White")
+                                                      .style("font-size", "8px")
+                                                      .text("Total OutCount(2008): 335685").style('opacity', 0);
+
+
+                                                      ////////////
+          
+                                                    
+
+ 
+
+lin = svg.select("g")
+.attr("class", "lines");
+    
+        
+
+    Animbars.append("rect")
+    .attr('width', 6)
+    .attr('height',  5)
+    .attr("class", "bars")
+    .style("fill", "#005fcc")
+    .attr("transform", "rotate(180)")
+    .on('mouseover', function(d) {
+
+      
+           
+    d3.select(this).transition()
+            .style('opacity', 1)
+            //.style('fill', "#00C5F0")
+            .style('fill', "#000066")
+            .attr('width',  140)
+            .attr('height',  70)
+          
+
+
+
+                                                                    if(d.name == "Denver"){
+
+                                                                    heading_den.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 130)
+                                                                                .attr("x", 140)
+                                                                    code_den.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 140)
+                                                                                .attr("x", 140)
+                                                                    in_den.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 150)
+                                                                                .attr("x", 140)
+                                                                    out_den.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 170)
+                                                                                .attr("x", 140)
+
+                                                                               }
+                                                                    else if(d.name == "Los Angeles"){
+
+                                                                    heading_lax.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 180)
+                                                                                .attr("x", 4)
+                                                                    code_lax.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 190)
+                                                                                .attr("x", 4)
+                                                                    in_lax.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 210)
+                                                                                .attr("x", 4)
+                                                                    out_lax.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 220)
+                                                                                .attr("x", 4)
+
+                                                                               }
+                                                                    else if(d.name == "San Francisco"){
+
+                                                                    heading_sfo.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 120)
+                                                                                .attr("x", 4)
+                                                                    code_sfo.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 135)
+                                                                                .attr("x", 4)
+                                                                    in_sfo.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 145)
+                                                                                .attr("x", 4)
+                                                                    out_sfo.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 165)
+                                                                                .attr("x", 4)
+
+                                                                               }
+                                                                    else if(d.name == "Arizona"){
+
+                                                                    heading_phx.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 200)
+                                                                                .attr("x", 55)
+                                                                    code_phx.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 210)
+                                                                                .attr("x", 55)
+                                                                    in_phx.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 225)
+                                                                                .attr("x", 55)
+                                                                    out_phx.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 240)
+                                                                                .attr("x", 55)
+
+                                                                               }
+
+
+                                                                               //////////////////////group  2 
+
+
+                                                                               else if(d.name == "St. Louis"){
+
+                                                                    heading_stl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 140)
+                                                                                .attr("x", 275)
+                                                                    code_stl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 150)
+                                                                                .attr("x", 275)
+                                                                    in_stl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 165)
+                                                                                .attr("x", 275)
+                                                                    out_stl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 175)
+                                                                                .attr("x", 275)
+
+                                                                               }
+                                                                    else if(d.name == "Atlanta"){
+
+                                                                    heading_atl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 210)
+                                                                                .attr("x", 334)
+                                                                    code_atl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 220)
+                                                                                .attr("x", 334)
+                                                                    in_atl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 235)
+                                                                                .attr("x", 334)
+                                                                    out_atl.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 245)
+                                                                                .attr("x", 334)
+
+                                                                               }
+                                                                    else if(d.name == "Texas"){
+
+                                                                    heading_iah.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 230)
+                                                                                .attr("x", 175)
+                                                                    code_iah.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 240)
+                                                                                .attr("x", 175)
+                                                                    in_iah.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 255)
+                                                                                .attr("x", 175)
+                                                                    out_iah.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 275)
+                                                                                .attr("x", 175)
+
+                                                                               }
+                                                                               else if(d.name == "Florida"){
+
+                                                                    heading_mco.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 260)
+                                                                                .attr("x", 374)
+                                                                    code_mco.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 270)
+                                                                                .attr("x", 374)
+                                                                    in_mco.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 285)
+                                                                                .attr("x", 374)
+                                                                    out_mco.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 295)
+                                                                                .attr("x", 374)
+
+                                                                               }
+                                                                               else if(d.name == "Charlotte"){
+
+                                                                    heading_CLT.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 170)
+                                                                                .attr("x", 374)
+                                                                    code_CLT.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 180)
+                                                                                .attr("x", 374)
+                                                                    in_CLT.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 195)
+                                                                                .attr("x", 374)
+                                                                    out_CLT.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 205)
+                                                                                .attr("x", 374)
+
+                                                                               }
+                                                                               //////////////////////group  3
+
+
+                                                                               else if(d.name == "New York"){
+
+                                                                    heading_jfk.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 100)
+                                                                                .attr("x", 425)
+                                                                    code_jfk.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 110)
+                                                                                .attr("x", 425)
+                                                                    in_jfk.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 125)
+                                                                                .attr("x", 425)
+                                                                    out_jfk.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 135)
+                                                                                .attr("x", 425)
+
+                                                                               }
+
+                                                                                else if(d.name == "New Jersey"){
+
+                                                                    heading_ewr.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 85)
+                                                                                .attr("x", 425)
+                                                                    code_ewr.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 95)
+                                                                                .attr("x", 425)
+                                                                    in_ewr.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 110)
+                                                                                .attr("x", 425)
+                                                                    out_ewr.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 120)
+                                                                                .attr("x", 425)
+
+                                                                               }
+                                                                               else if(d.name == "Boston"){
+
+                                                                    heading_bos.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 70)
+                                                                                .attr("x", 435)
+                                                                    code_bos.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 80)
+                                                                                .attr("x", 435)
+                                                                    in_bos.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 85)
+                                                                                .attr("x", 435)
+                                                                    out_bos.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 95)
+                                                                                .attr("x", 435)
+
+                                                                               }
+                                                                               else if(d.name == "Pittsburg"){
+
+                                                                    heading_pit.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                 .attr("y", 110)
+                                                                                .attr("x", 380)
+                                                                    code_pit.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                 .attr("y", 120)
+                                                                                .attr("x", 380)
+                                                                    in_pit.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 130)
+                                                                                .attr("x", 380)
+                                                                    out_pit.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                 .attr("y",140)
+                                                                                .attr("x", 380)
+                                                                               }
+                                                                               else if(d.name == "Detroit"){
+
+                                                                    heading_dtw.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 85)
+                                                                                .attr("x", 350)
+                                                                    code_dtw.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 95)
+                                                                                .attr("x", 350)
+                                                                    in_dtw.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 110)
+                                                                                .attr("x", 350)
+                                                                    out_dtw.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 120)
+                                                                                .attr("x", 350)
+
+                                                                               }
+                                                                               else if(d.name == "Minnesota"){
+
+                                                                    heading_msp.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 80)
+                                                                                .attr("x", 250)
+                                                                    code_msp.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 90)
+                                                                                .attr("x", 250)
+                                                                    in_msp.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 105)
+                                                                                .attr("x", 250)
+                                                                    out_msp.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 115)
+                                                                                .attr("x", 250)
+
+                                                                               }
+                                                                               else if(d.name == "Chicago"){
+
+                                                                    heading_ord.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 100)
+                                                                                .attr("x", 295)
+                                                                    code_ord.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 110)
+                                                                                .attr("x", 295)
+                                                                    in_ord.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 125)
+                                                                                .attr("x", 295)
+                                                                    out_ord.style('opacity', 0.9)
+                                                                                .transition()
+                                                                                .attr("y", 135)
+                                                                                .attr("x", 295)
+
+                                                                               }
+                                                                              
+
+
+
+
+
+     })
+
+    .on('mouseout', function(d) {
+        
+
+        d3.select(this).transition()
+            .style('opacity', 1)
+            .style('fill', "#005fcc")
+            .attr('width',  6)
+            .attr('height',  function(d) {return d.barheight})
+            
+
+            /////////////////////////////////////////////////////////////////////////////////
+
+                                                                    heading_den.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_den.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_den.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_den.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ///////////////////////
+
+                                                                              heading_lax.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_lax.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_lax.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_lax.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ///////////////////////
+
+                                                                              heading_sfo.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_sfo.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_sfo.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_sfo.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ///////////////////////
+
+                                                                              heading_phx.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_phx.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_phx.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_phx.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              //g3
+
+                                                                                 heading_msp.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_msp.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_msp.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_msp.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ///////////
+
+                                                                                 heading_ord.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_ord.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_ord.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_ord.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+
+                                                                              //////////////
+
+                                                                                 heading_dtw.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_dtw.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_dtw.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_dtw.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ////////////////
+
+                                                                                 heading_ewr.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_ewr.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_ewr.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_ewr.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              /////////////////
+
+
+                                                                                 heading_jfk.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_jfk.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_jfk.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_jfk.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ///////////////////
+
+                                                                                 heading_pit.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_pit.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_pit.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_pit.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              ///////////////////  g2
+
+                                                                               ///////////////////
+                                                                                heading_stl.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_stl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_stl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_stl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+
+                                                                    heading_CLT.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_CLT.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_CLT.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_CLT.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+  ///////////////////
+                                                                                heading_mco.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_mco.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_mco.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_mco.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+
+                                                                              heading_atl.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_atl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_atl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_atl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+
+                                                                                 heading_iah.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_iah.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_iah.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_iah.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+
+                                                                                 heading_pit.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_pit.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_pit.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_pit.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+
+                                                                                 heading_atl.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_atl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_atl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_atl.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+                                                                                heading_bos.transition()
+                                                                              .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                            
+                                                                    code_bos.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    in_bos.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                    out_bos.transition()
+                                                                               .duration(1000)
+                                                                               .attr("y", 120)
+                                                                               .attr("x", 120)
+                                                                              .style('opacity', 0)
+                                                                              ///////////////////
+
+                                                                             
+
+                                                                             
+
+    })
+    .transition()
+    .delay(function(d, i) {
+          return i * 2;
+      })
+      .duration(20000) 
+      .attr('height',  function(d) {return d.barheight}) ;
+
+
+    
+      Animbars.append("text")
+      .style({
+        'fill':'#050505',
+        'font-family':'sans-serif',
+        'font-size':'7px'
+      })  
+             .attr("dy", ".80em")
+    .attr("text-anchor", "start") 
+    .text(function(d) {return d.name})
+
+
+
+///////////////////////////////////////////////////////////// stats- line graphs ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+var vis = d3.select("#visualisation1"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("Chicago");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+
+//Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data11))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data12))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+var vis = d3.select("#visualisation2"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("Atlanta");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data21))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data22))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+
+
+
+
+
+
+var vis = d3.select("#visualisation3"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("New York");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data31))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data32))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+
+
+
+
+
+
+
+
+
+var vis = d3.select("#visualisation4"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("Los Angeles");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data41))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data42))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+
+
+var vis = d3.select("#visualisation5"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("Denver");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data51))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data52))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+
+
+
+
+
+
+
+var vis = d3.select("#visualisation6"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("San Francisco");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data61))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data62))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+
+
+
+var vis = d3.select("#visualisation7"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("St. Louis");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data71))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data72))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+
+
+var vis = d3.select("#visualisation8"),
+    WIDTH = 300,
+    HEIGHT = 150,
+    MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 40
+    },
+
+                  
+    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1988, 2008]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([50, 400]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+vis.style({
+    'background':'White'
+}).append("text").style({
+    'font-size': '20px',
+    'fill': '#2b22a8'}).attr("y", 30)
+          .attr("x", 50)
+          .text("New Jersey");
+
+vis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 5)
+          .attr("x", -80)
+        .attr("dy", "1em")
+        .style({
+           'font-size': '10px',
+           'text-anchor': 'middle'})
+        .text("Value: 1pt=1000 flights");
+
+        //Legend part created by appending rectangles and texts//
+        vis.append("rect").style("fill", "#2b22a8") .attr("x",155).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 170)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("In-Count");
+
+        vis.append("rect").style("fill", "#ff0066") .attr("x",220).attr("y",8).attr("height",8).attr("width",8)
+        vis.append("text")
+                                                                    .attr("y", 16)
+                                                                    .attr("x", 235)
+                                                                    .style("font-size","9px")
+                                                                    .attr("fill", "#000000")
+                                                                    .text("Out-Count");
+
+vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .style('opacity', 0.9)
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .style('opacity', 0.9)
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
+                    var lineGen = d3.svg.line()
+                        
+                        .y(function(d) {
+                            return yScale(d.sale);
+                        })
+                        .x(function(d) {
+                            return xScale(d.year);
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data81))
+                        .attr('stroke', '#ff0066')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data82))
+                        .attr('stroke', '#2b22a8')
+                        .attr('stroke-width', 2)
+                        .attr('fill', 'none')
+                        .style('opacity', 0.9);
+
+
+
+  });
+
+      
+
+
+  $(window).resize(function() {
+        var w = $("#us_states").width();
+        svg.attr("width", w);
+        svg.attr("height", w * height / width);
+      });
+
+  })();
+</script>
+</body>
+</html>

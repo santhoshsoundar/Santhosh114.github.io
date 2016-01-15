@@ -1,0 +1,579 @@
+/***********************************************************************/
+/* Visualization for the Human Development Index by Omar Sosa-Tzec     */
+/* INFO I590 Data Visualization										   */	
+/* Instructor: YY Ahn 												   */	
+/* Indiana University Bloomington			     					   */
+/***********************************************************************/
+
+
+
+/* RESET  */
+/****** reset /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+/* LAYOUT */
+body {
+	font-family: 'Alegreya Sans', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+ 	font-weight: 300;
+ 	background: #fff;
+ 	height: 100%;
+ 	min-width: 800px;
+}
+
+header, footer {
+	display: block;
+	width: 100%-2em;
+	background: #3C2529;
+	color: #FFFAF0;
+	padding: 2em;
+}
+
+h1 {
+	font-family: 'Alegreya Sans SC', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 800;
+	font-size: 2.5em;
+}
+
+
+h2 {
+
+	font-size: 1.5em;
+	font-weight: 800;
+	padding: 0.65em 0em;
+}
+
+
+h3 {
+
+	font-size: 1.35em;
+	font-weight: 100;
+	padding: 0.65em 0em;
+}
+
+
+header h2 {
+
+	font-size: 1.75em;
+	font-weight: 100;
+	padding-bottom: 0em !important;
+}
+
+section {
+	padding:20px;
+	font-size: 1.25em;
+	line-height: 125%;
+	clear: both;
+	width: 100%-2em;
+}
+
+p {
+	padding-bottom: 1.25em;
+}
+
+footer strong {
+	font-weight: bold;
+}
+
+/****************************************************************/
+
+.hdi-concept {
+	background: #77322E;
+	min-height: 500px;
+	color: #fff;
+	font-weight: 100;
+}
+
+
+.hdi-concept strong, .hdi-categories strong {
+	font-weight: bold;
+}
+
+.hdi-concept ul, .hdi-categories ul {
+	font-size: 1.25em;
+	font-weight: 100;
+	margin-bottom: 0.45em;
+}
+
+.hdi-concept ul li strong, .hdi-categories ul li strong {
+	font-weight: bold;
+}
+
+.hdi-concept ul li, .hdi-categories ul li {
+	padding-bottom: 0.75em;
+	margin-left: 2em;
+}
+
+.concept-reference {
+	font-size: 0.750em;
+	text-align: right;
+	font-style: italic;
+	font-weight: lighter;
+}
+
+/****************************************************************/
+
+.hdi-calculation {
+	background: #913D38;
+	font-size: 1.375em;
+	color: #fff;
+	font-weight: 100;
+	line-height: 125%;
+	text-align: center;
+}
+
+/****************************************************************/
+
+.hdi-calculation-diagram 
+{
+	max-width: 900px; 
+    height: auto; 
+    margin-bottom: 1.0em;
+}
+
+/****************************************************************/
+
+
+.hdi-categories {
+	background: #E8D6C0;
+	color: #3C3832;
+}
+
+/****************************************************************/
+
+.choropleth-categories {
+	background: #F5EEE3;
+	color: #402E35;
+	text-align: center;
+
+}
+
+#map01 {
+    height: auto;
+    margin-bottom: 1.0em;
+    padding: 0px important!;
+}
+
+
+.yearSlider {
+	display: block;
+	width: 40%;
+	float: left;
+	padding: 0.2em 0em 0em 0em;
+	background-color: #FCF5EA;
+	border-radius: 0.65em;
+	margin-top: -1em;
+}
+
+
+.yearMetaLabel {
+	display: block;
+	font-size: 0.80em;
+	margin-bottom: 0.1em;
+}
+
+
+#categoryLabel {
+	display: block;
+	font-weight: bold;
+	font-family: 'Alegreya Sans SC', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 800;	font-size: 2.45em;
+	padding: 0.0em 0em 0.25em 0em;
+	color: #871552;
+}
+
+
+#categorySlider {
+	width: 90%;
+}
+
+.categoryColorLegend {
+	display: block;
+	width: 55%;
+	float: right;
+	padding: 0.2em 0em 0em 0em;
+	border-radius: 10px;
+	margin-bottom: 1em;
+	margin-top: -2em;
+}
+
+.categoryColorLabel {
+	display: block;
+	width: 80%;
+	font-size: 0.80em;
+	margin-bottom: 0.1em;
+	border-bottom: 1px solid #500E35;
+	float: right;
+}
+
+
+ul.categoryColorCode li {
+	display: block;
+	width: 40%;
+	text-align: left;
+	float: right;
+	margin-top: 0.40em;
+	font-size: 0.625em;
+}
+
+ul.categoryColorCode li strong{
+	font-weight: bold;
+}
+
+ul.categoryColorCode li span {
+	display: block;
+	width: 1.15em;
+	height: 1.15em;
+	border-radius: 1.5em;
+	float: left;
+	margin-right: 0.25em;
+	margin-top: 0.35em;
+}
+
+ul.categoryColorCode li span.cat01 {
+	background: rgb(251,180,185);
+}
+
+
+ul.categoryColorCode li span.cat02 {
+	background: rgb(247,104,161);
+}
+
+ul.categoryColorCode li span.cat03 {
+	background: rgb(197,27,138);
+}
+
+ul.categoryColorCode li span.cat04 {
+	background: rgb(122,1,119);
+}
+
+ul.categoryColorCode li span.catNA {
+	background: rgb(232,225,218);
+	border: 1px dotted #BEB9B3;
+}
+
+
+/****************************************************************/
+
+#tooltip {
+	 position: absolute;
+	 text-align: center;
+	 width: 24%;
+	 height: auto;
+	 padding: 0;
+	 z-index: 1001;
+	 background: #FFF8EC;
+	 border: 1px;
+	 border-radius: 8px;
+	 pointer-events: none;
+	 padding: 0em 0.2em 0.2em 0.2em;
+	 opacity: 0.90;
+}
+
+.tooltipCurrentCountry {
+	font-size: 0.75em;
+	line-height: 0.5em;
+	height: 1.5em;
+	padding-top: 0.65em;
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.tooltipCurrentPopulation {
+	font-style: italic;
+	font-size: 0.8em;
+	margin-top: 0.0em;
+	display: block;
+}
+
+.tooltipCurrentPopulation strong {
+	font-weight: bold;
+}
+
+
+.tooltipCurrentIndex {
+	font-size: 1.35em;
+	font-weight: bold;
+	display: block;
+	height: auto;
+	padding: 0em;
+	margin-bottom: 0.15em;
+	color: #500E35;
+}
+
+ul.developmentProgressBar, ul.developmentProgressBarLabels {
+	width: 100%;
+	clear: both;
+
+}
+
+.developmentProgressBar li {
+	display: block;
+	float: left;
+	height: 0.7em;
+}
+
+.achievedDevelopment {
+	background: #00AD48;
+	border-top-left-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+}
+
+.remainingDevelopment {
+	background: #F0DAB9;
+	border-top-right-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+}
+
+.hdi-hack {
+	font-variant: small-caps;
+	font-size: 0.75em;
+	font-weight: normal;
+}
+
+ul.developmentProgressBarLabels li {
+	display: block;
+	height: 1em;
+	float: left;
+	width: 50%;
+	font-size: 0.55em;
+	line-height: 0.65em;
+}
+
+.zeroValue {
+	text-align: left;
+}
+
+.oneValue {
+	text-align: right;
+}
+
+.hidden { 
+  display: none; 
+}
+/****************************************************************/
+
+footer {
+	text-align: center;
+	line-height: 1.5em;
+}
+
+footer a {
+	color: #DFF3BE;
+	text-decoration: none;
+}
+/****************************************************************/
+
+.cartogram-categories {
+	background: #DEDEAA;
+	color: #402E35;
+	text-align: center;
+}
+
+/****************************************************************/
+
+.hdi-variations {
+	background: #4B7D78;
+	text-align: center;
+	color: #ffffff;
+}
+
+.hdiSparkline {
+	width: 3em;
+	height: auto;
+}
+
+
+.hdi-sample {
+	width: 100%;
+	line-height: 1em;
+	font-size: 0.8em;
+}
+
+.hdi-sample tr {
+		border-bottom: 1px solid #3B635F;
+}
+
+.hdi-sample tr:hover {
+		background-color:  #487873;
+}
+
+
+.hdi-sample th {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 0.75em;
+	line-height: 1.25em;
+	padding: 0em 0.65em 1em 0.65em;
+	vertical-align: bottom;
+	border-bottom: 3px solid #B4E3E0;
+	
+}
+
+.hdi-sample td {
+	padding: 0.75em 0.4em;
+}
+
+
+
+.rank {
+	width: 5em;
+}
+
+.name {
+	font-weight: bold;
+}
+
+.position {
+	width: 5em;
+}
+
+.population {
+	text-align: right;
+}
+
+.classification {
+	width: 5em;
+}
+
+.note {
+	text-align: left;
+}
+
+.class-divider {
+	border-bottom: 1px solid #B4E3E0 !important;
+}
+
+
+/****************************************************************/
+
+.hdi-insights {
+	background: #6BA39C;
+	color: #ffffff;
+}
+
+/********************************************/
+
+.report-messages {
+	color: #fff;
+	background: #73353B; /* #B45A64 ;*/
+}
+
+.report-messages ul li {
+	list-style-position: outside;
+	list-style-type: disc;
+	margin-left: 1em;
+	margin-bottom: 1.35em;
+}
+
+/********************************************/
+
+.references {
+	color: #fff;
+	background: #B45A64;
+}
+
+.references ul li {
+	list-style-position: outside;
+	list-style-type: disc;
+	margin-left: 1em;
+	margin-bottom: 1.35em;
+}
+
+.references a {
+	color: #22313F;
+}
+
+
+/********************************************/
+
+.country {
+	stroke: #807C6B;
+	stroke-width: 0.5px;
+}
+
+.country-base {
+	stroke: #B2AEA6;
+	stroke-width: 0.75px;
+	fill: #FFF8ED;
+}
+
+/********************************************/
+
+.caps {
+	font-variant: small-caps;
+}
+
+.blank {
+	clear: both;
+}
+
+
+
+
+
+
+/* SECTION BG COLOR 18F6EC(light) 855F47(brown) */
+
+#s_one{ background:#bdc3c7;color: #22313F;
+	font-weight: 100;}
+#s_two{ background-image:url(../images/flightBWd.jpg); background-repeat:no-repeat; background-position:center center; background-size:cover; padding:0;  }
+.bg_color{background:rgba(75,220,252,0.75) ;	padding: 2em;
+}
+#s_three{background:White;}
+#s_stats{background: #10103d}
+#s_four{background:rgba(75,220,252,0.85);}
+#s_five{background:#bdc3c7;}
