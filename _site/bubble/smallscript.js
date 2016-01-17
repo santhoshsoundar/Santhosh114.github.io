@@ -32,7 +32,7 @@ var nodes = [
       { name: "Data Analysis",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "/geoSample/index.html"},
       { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog",link: "/geoSample/index.html"},
       { name: "NoSQL", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog",link: "/geoSample/index.html"},
-      { name: "Git Projects", target: [1],target: [0], img: "bubble/bbl/pjt_bbl.png",click:"View Projects",link: "/geoSample/index.html"},
+      { name: "Git Projects", target: [1],target: [0], img: "bubble/bbl/pjt_bbl.png",click:"View Projects",link: "https://github.com/Santhosh114"},
       { name: "Visualizations-D3.js", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"Read Blog",link: "/geoSample/index.html"}
 ];
 
