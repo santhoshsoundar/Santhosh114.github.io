@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-01-17T18:53:15Z</updated>
+  <updated>2016-01-30T00:37:21Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -14,7 +14,7 @@
   <rights type="text">Copyright © 2016 Santhosh. All rights reserved.</rights>
   
   <entry>
-  <title type="text">A Full and Comprehensive Style Test (HTML)</title>
+  <title type="text">A Full and Comprehensive Style Test (HTML)cc</title>
   <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post1.html" />
   <id>http://santhosh114.github.io//post1</id>
   <published>2013-06-05T00:00:00Z</published>
@@ -678,12 +678,40 @@ c.draw = function() {
 
 
   <entry>
+  <title type="text">My First Blog Article</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post3.html" />
+  <id>http://santhosh114.github.io//post3</id>
+  <published>2013-05-27T00:00:00Z</published>
+  <updated>2013-05-27T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <div id="us_states">
+</div>
+
+
+<script src="airport/jquery-1.10.2.js"></script>
+
+
+<script src="airport/d3.v3.min.js"></script>
+
+
+<script src="airport/topojson.v1.min.js"></script>
+
+
+<script src="airport/airport_viz.js"></script>
+
+
+
+ ]]></content>
+</entry>
+
+
+  <entry>
   <title type="text">Another markdown full cheatsheet demo (Markdown)</title>
   <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post2.html" />
   <id>http://santhosh114.github.io//post2</id>
   <published>2013-05-27T00:00:00Z</published>
   <updated>2013-05-27T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <blockquote><p>This is Markdown Cheatsheet Demo for <strong>Sustain</strong>, this Jekyll theme. Please check the raw content of this file for the markdown usage.</p></blockquote>
+  <content type="html"><![CDATA[ <div class="divider"></div>
+
 
 <h2>Typography Elements in One</h2>
 
@@ -705,6 +733,8 @@ c.draw = function() {
 <h5>H5 Heading</h5>
 
 <h6>H6 Heading</h6>
+
+<h2>hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtagboy1</h2>
 
 <div class="divider"></div>
 
@@ -740,6 +770,179 @@ c.draw = function() {
 
 
 <h2>Code Blocks</h2>
+
+<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure></p>
+
+<p><figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span><br/>
+<span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><br/>
+<span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
+    <span class="s">&quot;Docs&hellip;&quot;</span>
+    <span class="k">return</span></code></pre></figure></p>
+
+<p><figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/<em> css synthax highlighting </em>/</span>
+<span class="nf">#container</span> <span class="p">{</span>
+    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure></p>
+
+<pre><code>No language indicated, so no syntax highlighting.
+But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
+</code></pre>
+
+<div class="divider"></div>
+
+
+<h2>Table</h2>
+
+<h3>Table 1: With Alignment</h3>
+
+<table>
+<thead>
+<tr>
+<th> Tables        </th>
+<th style="text-align:center;"> Are           </th>
+<th style="text-align:right;"> Cool  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> col 3 is      </td>
+<td style="text-align:center;"> right-aligned </td>
+<td style="text-align:right;"> $1600 </td>
+</tr>
+<tr>
+<td> col 2 is      </td>
+<td style="text-align:center;"> centered      </td>
+<td style="text-align:right;">   $12 </td>
+</tr>
+<tr>
+<td> zebra stripes </td>
+<td style="text-align:center;"> are neat      </td>
+<td style="text-align:right;">    $1 </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Table 2: With Typography Elements</h3>
+
+<table>
+<thead>
+<tr>
+<th>Markdown </th>
+<th> Less </th>
+<th> Pretty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Still</em> </td>
+<td> <code>renders</code> </td>
+<td> <strong>nicely</strong></td>
+</tr>
+<tr>
+<td>1 </td>
+<td> 2 </td>
+<td> 3</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="divider"></div>
+
+
+<h2>Horizontal Line</h2>
+
+<p>The HTML <code>&lt;hr&gt;</code> element is for creating a &ldquo;thematic break&rdquo; between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+
+<ul>
+<li><code>___</code>: three consecutive underscores</li>
+<li><code>---</code>: three consecutive dashes</li>
+<li><code>***</code>: three consecutive asterisks</li>
+</ul>
+
+
+<p>renders to:</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<div class="divider"></div>
+
+
+<h2>Media</h2>
+
+<h3>YouTube Embedded Iframe</h3>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen></iframe>
+
+
+<h3>Image</h3>
+
+<p><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSn8cwf82ee9tfml4Wx-tsM5AUavJ_DRHIiXXE4RejRp0RF2L7f6g" alt="Nature" /></p>
+
+<h4>Santhoshfiddle</h4>
+
+<p>Let&rsquo;s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let&rsquo;s <strong><em>combine</em></strong> them together. Yeah, that&rsquo;s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
+
+<div class="divider"></div>
+
+
+<h2>Headings H1 to H6</h2>
+
+<h1>H1 Heading</h1>
+
+<h2>H2 Heading</h2>
+
+<h3>H3 Heading</h3>
+
+<h4>H4 Heading</h4>
+
+<h5>H5 Heading</h5>
+
+<h6>H6 Heading</h6>
+
+<div class="divider"></div>
+
+
+<h4>Blockquote</h4>
+
+<p>Let&rsquo;s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <a href="Footnote">^1</a>. You can even add more footnotes, with link! <a href="A">^2</a></p>
+
+<div class="divider"></div>
+
+
+<h3>Blockquote</h3>
+
+<blockquote><p>Start by doing what&rsquo;s necessary; then do what&rsquo;s possible; and suddenly you are doing the impossible. &ndash;Francis of Assisi</p></blockquote>
+
+<p><strong>NOTE:</strong> This theme does NOT support nested blockquotes.</p>
+
+<div class="divider"></div>
+
+
+<h3>List Items</h3>
+
+<ol>
+<li>First order list item</li>
+<li><p>Second item</p></li>
+<li><p>Unordered list can use asterisks</p></li>
+<li>Or minuses</li>
+<li>Or pluses</li>
+</ol>
+
+
+<div class="divider"></div>
+
+
+<h3>Code Blocks</h3>
 
 <p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure></p>

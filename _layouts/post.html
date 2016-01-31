@@ -4,18 +4,25 @@ layout: layout
 
 <div class="container">
 	<div class="blog-post">
-		<h3>
-		  <strong><a href="{{ page.url }}">{{ page.title }}</a></strong>
-		</h3>
+		<div class="col-sm-12"><h2>
+		 <a href="{{ page.url }}">{{ page.title }}</a>
+		</h2></div>
 	</div>
-	<div class="blog-title">
-		<h4>
+	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
+		<h5><div class="col-sm-3" style="text-align:left;">
 		{{ page.date | date: "%B %e, %Y" }}
-			&nbsp;&nbsp;
+			
+			</div>
+			<div class="col-sm-9 tagsin">
 			{% for tag in page.tags %}
-			 <span class="label label-success">{{ tag }}</span>
+			 
+				#{{ tag }}  &nbsp;
+			
 			{% endfor %}
-		</h4>
+		    </div>
+
+
+		</h5>
 	</div>
 	<div class="panel panel-default">
 		<div class="panel-body">

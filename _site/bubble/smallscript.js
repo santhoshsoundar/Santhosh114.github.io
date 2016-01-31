@@ -148,10 +148,6 @@ var node = myChart.selectAll('circle')
 		if (i>0) { return palette.black }
 		else { return  palette.greensustain}
 	})
-
-
-
-	
 // Append images
   var images = node.append("svg:a")
    .attr("xlink:href", function(d){return d.link;}).append("svg:image")

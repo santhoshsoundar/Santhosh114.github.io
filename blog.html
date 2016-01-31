@@ -1,6 +1,7 @@
 ---
 layout: layout
 title: Blog
+
 ---
 
 <div class="container">
@@ -8,17 +9,25 @@ title: Blog
   <div class="panel panel-default">
     <div class="panel-body">
 		{% for post in site.posts %}
-			<div class="row">
+			<div class="row blog_post">
 				 <div class="col-sm-4 col-md-4 col-lg-4">
-					 <h5 style="text-align: right">
+					 <h5 class="post_date">
 					 	{{ post.date | date: "%B %e, %Y" }}
 					 </h5>
 				 </div>
-				 <div class="col-sm-8 col-md-8 col-lg-8">
-					 <h5 style="text-align: left">
+				 <div class="col-sm-8 col-md-8 col-lg-8 post_title">
+					 <h5 style="text-align: right">
 					 	<strong><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></strong>
-					 </h5>
+					 </h5>  
 				 </div>
+				 <div class="col-sm-12 col-md-12 col-lg-12">
+
+                           {{ post.img }}
+                 </div>
+				<div class="col-sm-12 tags">
+				{{ post.mytags }}
+				</div>
+                                                   				 
 			</div>
 	    {% endfor %}
 	</div>

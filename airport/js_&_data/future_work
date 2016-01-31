@@ -1,0 +1,39 @@
+g 0CE233
+
+
+
+
+
+dark #002EA3
+
+
+#00C5F0
+
+
+
+
+
+new greeeeeee       2AC800
+
+
+
+
+    future:
+
+//     var circles = Animbars.selectAll("circle")
+//     .data(sampleData)
+//                           .enter()
+//                        .append("circle");
+
+// circles
+//                    .attr("cx", function (d) { return d.cx; })
+//                    .attr("cy", function (d) { return d.cy; })
+//                    .attr("r", function (d) { return d.radius; })
+//                    .style("fill", function (d) { return d.color; });
+//                    .style('opacity', 0)
+
+sampleData->
+
+var circleData = [
+ 2  { "cx": 20, "cy": 20, "radius": 20, "color" : "green" },
+ 3  { "cx": 70, "cy": 70, "radius": 20, "color" : "purple" }];
