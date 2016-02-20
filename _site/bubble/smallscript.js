@@ -170,7 +170,7 @@ var node = myChart.selectAll('circle')
             // select element in current context
             d3.select( this )
               .transition()
-              .duration(1000) 
+              .duration(600) 
               .style('opacity', 0);
              
           })

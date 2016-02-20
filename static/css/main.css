@@ -225,3 +225,8 @@ blockquote{display: inline-block;}
 @media only screen and (max-width:768px){
   .navbar-brand{ width:178px; margin-left:auto; margin-right:auto; float:none;}
 }
+
+/* To center images */
+.center {
+    text-align: center;
+}

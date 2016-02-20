@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-02-10T09:20:43Z</updated>
+  <updated>2016-02-13T03:58:30Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -14,12 +14,246 @@
   <rights type="text">Copyright © 2016 Santhosh. All rights reserved.</rights>
   
   <entry>
-  <title type="text">A Full and Comprehensive Style Test (HTML)cc</title>
+  <title type="text">Neo4j Based Graph Schema Alternative for Facebook DB</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post2.html" />
+  <id>http://santhosh114.github.io//post2</id>
+  <published>2016-01-19T00:00:00Z</published>
+  <updated>2016-01-19T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;"/></p>
+
+
+<blockquote><p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p></blockquote>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Goal:</a></h3>
+
+<p>Host the complex and very large Facebook data. </p>
+
+<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;"/></p>
+
+
+<p>Provide efficient data search and access. </p>
+
+<ul>
+<li>A traditional RDBMS model</li>
+<li>Drawbacks of Relational model</li>
+<li>A more efficient Graph Data Model</li>
+<li>Timeline Trees</li>
+</ul>
+
+
+<div class="divider"></div>
+
+
+<h3><a href="">Limitations of Relational Data Model:</a></h3>
+
+<p>A typical query in connected data model involves JOIN operations between tables.    
+This leads to expensive search computation.</p>
+
+<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;"/></p>
+
+
+<p>Find more at <a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Neo4j graph-db-vs-rdbms</a></p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Graph Relationship Model:</a></h3>
+
+<h5>Why Graph Database?</h5>
+
+<ul>
+<li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
+<li><p>Data model that evolves in step with the iterative and incremental development.</p>
+
+<pre><code>    - Rewritable Schema: Can add nodes and relationships dynamically
+</code></pre></li>
+<li><p>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</p></li>
+<li>Memory use or Latency of a query with a join is obliterated</li>
+<li>Average Speed of Graph Database
+
+<pre><code>    - 4 million nodes/ sec! 
+</code></pre></li>
+<li>Geared towards Pattern Mining – the search queries natively look for patterns.
+Eg. It searches Common Friends based on common profile properties such as
+
+<pre><code>                      - Location
+                      - Education
+                      - Work etc. 
+</code></pre></li>
+</ul>
+
+
+<div class="divider"></div>
+
+
+<h3><a href="">Graph Schema Entities:</a></h3>
+
+<h5>Node</h5>
+
+<pre><code>      -  Node is an entity bag/object containing attributes 
+           {eg. – name, age, location etc. }
+</code></pre>
+
+<h5>Relationship(vertices)</h5>
+
+<pre><code>      -  Relationship is a named &amp; directed entity that produce a schematic structure
+      -  It can have properties like strength/weight, cardinality 
+      -  Weights in relationships are used for shortest path traversals 
+</code></pre>
+
+<div class="divider"></div>
+
+
+<h3>Labeled property graph<a href="">(neo4j)</a></h3>
+
+<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;"/></p>
+
+
+<p>Labels in property graph facilitate defining &amp; finding patterns using ASCII –Art &amp; deriving instances that contain a path expression</p>
+
+<p><figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure></p>
+
+<p>Similar objects can contain different set of properties in a Labeled property graph!</p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Timeline Trees:</a></h3>
+
+<p>To search posts/events over a specific period of time.</p>
+
+<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;"/></p>
+
+
+
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">Interactive Visualization of US Airport Evolution</title>
   <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post1.html" />
   <id>http://santhosh114.github.io//post1</id>
+  <published>2015-11-10T00:00:00Z</published>
+  <updated>2015-11-10T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <div id="us_states">
+</div>
+
+
+<blockquote><p>This is an academic project for I590: Data Visualization course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>. Visualization is built by a team of 2: <a href="santhoshfiddle.com">myself</a> and <a href="https://www.linkedin.com/in/anusharamamurthy">Anusha Ramamurthy</a>. I am not gona talk much about the project ideation, view the <a href="http://www.santhoshfiddle.com/geoSample/index.html">project page</a> for info on how we landed here in terms of design but defenitely we developed it keeping <a href="http://www.lucify.com/the-flow-towards-europe/">The Flow of Refugee Towards Europe</a> in mind, tailored to our design needs.</p></blockquote>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Goal:</a></h3>
+
+<p>This is a step by step tutorial on creating transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
+
+<p>Everything is rendered in SVG!</p>
+
+<p>A few weeks ago, I wrote a blog titled <a href="">&ldquo;Interactive Maps with d3.js&rdquo;</a>. Check that for how the map is generated with TopoJSON.</p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Goal:</a></h3>
+
+<script src="airport/jquery-1.10.2.js"></script>
+
+
+<script src="airport/d3.v3.min.js"></script>
+
+
+<script src="airport/topojson.v1.min.js"></script>
+
+
+<script src="airport/airport_viz.js"></script>
+
+
+
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">A Precinct-Level Choropleth Map of Election Results</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post3.html" />
+  <id>http://santhosh114.github.io//post3</id>
+  <published>2015-10-05T00:00:00Z</published>
+  <updated>2015-10-05T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <p><img src="../static/img/blog/Critique/main.png" alt="Test Image" style="width:704px;height:427px;"/></p>
+
+
+<h3>Note</h3>
+
+<blockquote><p>This is my critique on the article titled &ldquo;The Most Detailed Maps You’ll See From the Midterm Elections&rdquo; <a href="http://www.nytimes.com/interactive/2014/11/04/upshot/senate-maps.html?_r=0">@nytimes/upshot</a></p></blockquote>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Infograph Overview:</a></h3>
+
+<p>This visualization is a precinct-level choropleth map of election results from the midterm elections. The objective of the visualization is to show a fine-grained analysis of how the Republicans and Democrats are spread along with the population density, measured by the graduated color scale.</p>
+
+<p>A precinct is one of the part into which a town or city is divided in order to organize elections, as reported by the article- “there were more than 175,000 precincts in the United States in 2012, fifty times the number of counties”.</p>
+
+<p>So this demonstrates the sheer efficacy of the precinct-level data and how effectively one can draw insights when the data is much finer. Now the county level analysis of polling results gives a clearer picture of how the data spread within the county. Hence, this visualization for me appears to have the potential to convey actionable insights.</p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Visualization Technique:</a></h3>
+
+<p>This is a geo-location based map visualization technique called choropleth map and it uses a coloring scheme inside defined areas on a map in order to show value levels and indicate the average values of some property or quantity in those areas.</p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">How it works:</a></h3>
+
+<p>The basic design is to represent Democratic in blue and Republican in red with various hue levels based on the population density within the precincts. Much needed zoom functionality is provided with dynamic county-level labeling in the first layer and precinct-level labeling in the further zoom levels.</p>
+
+<ul>
+<li>Key insights described as a result of detected patterns at different areas/regions.</li>
+<li>Overall percentage split-up shown state wide per candidate.</li>
+<li>Compare and contrasts population based on its metadata like candidate origin, racial attributes etc.</li>
+<li>Population density as hue variation augmented with party specific colors.</li>
+<li>MouseOver shows the candidate information and total number of votes.</li>
+<li>Minimal design with the insights described in the form of plain text.</li>
+<li>Every visualization technique has it own pros and cons in terms of how well it depicts the data. This is an excellent example of geo-data-visualization with optimal usage of design, color and area breakdown. The following are the few points summarizing this.</li>
+</ul>
+
+
+<div class="divider"></div>
+
+
+<h3><a href="">Design Mileage:</a></h3>
+
+<p>The precinct-level data clearly adds a lot of detail and outlines distinct clusters.
+Helpful for finding intriguing relationships between two or more geographic location based on the nature of the population.
+Give an idea of how each area compares with other in terms of number and spread of votes.</p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Data Sources:</a></h3>
+
+<p>State wise polling data is sourced from the corresponding state’s Board of Elections, therefore the probe for data integrity will be simply out of question, at least from where I stand.
+Streets data by OpenStreetMap contributers.</p>
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">A Full and Comprehensive Style Test (HTML)cc</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post5.html" />
+  <id>http://santhosh114.github.io//post5</id>
   <published>2013-06-05T00:00:00Z</published>
   <updated>2013-06-05T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <blockquote><p>This is Markdown Cheatsheet Demo for <strong>Sustain</strong>, this Jekyll theme. Please check the raw content of this file for the markdown usage.</p></blockquote>
+  <content type="html"><![CDATA[ <blockquote><p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p></blockquote>
 
 <p>This is just an <em>ipsis verbis</em> copy of the first example running on the <a href="http://demo.ghost.io">Ghost Demo</a>. This shows how you can use html styling to achieve your hopes.</p>
 
@@ -679,8 +913,8 @@ c.draw = function() {
 
   <entry>
   <title type="text">My First Blog Article</title>
-  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post3.html" />
-  <id>http://santhosh114.github.io//post3</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post6.html" />
+  <id>http://santhosh114.github.io//post6</id>
   <published>2013-05-27T00:00:00Z</published>
   <updated>2013-05-27T00:00:00Z</updated>
   <content type="html"><![CDATA[ <div id="us_states">
@@ -706,8 +940,8 @@ c.draw = function() {
 
   <entry>
   <title type="text">Another markdown full cheatsheet demo (Markdown)</title>
-  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post2.html" />
-  <id>http://santhosh114.github.io//post2</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post4.html" />
+  <id>http://santhosh114.github.io//post4</id>
   <published>2013-05-27T00:00:00Z</published>
   <updated>2013-05-27T00:00:00Z</updated>
   <content type="html"><![CDATA[ <div class="divider"></div>
@@ -1222,19 +1456,6 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 <p>By <strong>Martin Luther King</strong></p>
 
 <p>An American pastor, activist, humanitarian. People know him for leading the African-American Civil Rights movement using nonviolent civil disobedience.</p>
- ]]></content>
-</entry>
-
-
-  <entry>
-  <title type="text">Nice sticky footer down there &amp;darr; &amp;darr;</title>
-  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post7.html" />
-  <id>http://santhosh114.github.io//post7</id>
-  <published>2012-11-04T00:00:00Z</published>
-  <updated>2012-11-04T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <p>Lorem ipsum dolor sit amet, te semper nostrud eos, ei feugiat dignissim nam, graeco aliquid vix ad. Ut nec erant pericula, ei mollis nominati qui. Vim an case vidit sententiae, est at euismod laboramus efficiantur. Ei sit brute lorem, ea eam timeam viderer aliquid, cu integre omittam moderatius quo.</p>
-
-<p>Per cu prompta minimum. No sit stet aliquam, et duo tale possit minimum. Cu dicta mundi consequat sed. Ut duo sint probatus deserunt. Iriure copiosae te sed. Duo ea unum lorem tempor, per ex novum dicit concludaturque, ei ullum sanctus luptatum eum.</p>
  ]]></content>
 </entry>
 

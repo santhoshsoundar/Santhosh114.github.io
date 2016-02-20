@@ -27,7 +27,7 @@
 <meta name="theme-color" content="#ffffff">
 
     
-      <title>Another markdown full cheatsheet demo (Markdown)</title>
+      <title>Neo4j Based Graph Schema Alternative for Facebook DB</title>
     
 	
     <!-- Bootstrap -->
@@ -74,8 +74,8 @@
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="blogc.html">Blog</a></li>
-        <li><a href="https://github.com/Santhosh114">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="https://www.linkedin.com/in/santhoshsoundararajan">Resume</a></li>
       </ul>
     </div>
@@ -85,30 +85,30 @@
     <div class="container">
 	<div class="blog-post">
 		<div class="col-sm-12"><h2>
-		 <a href="/post2.html">Another markdown full cheatsheet demo (Markdown)</a>
+		 <a href="/post2.html">Neo4j Based Graph Schema Alternative for Facebook DB</a>
 		</h2></div>
 	</div>
 	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
 		<h5><div class="col-sm-3" style="text-align:left;">
-		May 27, 2013
+		January 19, 2016
 			
 			</div>
 			<div class="col-sm-9 tagsin">
 			
 			 
-				#News  &nbsp;
+				#Neo4j  &nbsp;
 			
 			
 			 
-				#Tags  &nbsp;
+				#Schema_Design  &nbsp;
 			
 			
 			 
-				#Blog  &nbsp;
+				#noSQL  &nbsp;
 			
 			
 			 
-				#Post  &nbsp;
+				#GraphDB  &nbsp;
 			
 			
 		    </div>
@@ -119,356 +119,116 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="blogpost">
-			  <div class="divider"></div>
+			  <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;"/></p>
 
 
-<h2>Typography Elements in One</h2>
-
-<p>Let&rsquo;s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let&rsquo;s <strong><em>combine</em></strong> them together. Yeah, that&rsquo;s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
+<blockquote><p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p></blockquote>
 
 <div class="divider"></div>
 
 
-<h2>Headings H1 to H6</h2>
+<h3><a href="">Goal:</a></h3>
 
-<h1>H1 Heading</h1>
+<p>Host the complex and very large Facebook data. </p>
 
-<h2>H2 Heading</h2>
-
-<h3>H3 Heading</h3>
-
-<h4>H4 Heading</h4>
-
-<h5>H5 Heading</h5>
-
-<h6>H6 Heading</h6>
-
-<h2>hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtagboy1</h2>
-
-<div class="divider"></div>
+<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;"/></p>
 
 
-<h2>Footnote</h2>
+<p>Provide efficient data search and access. </p>
 
-<p>Let&rsquo;s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <a href="Footnote">^1</a>. You can even add more footnotes, with link! <a href="A">^2</a></p>
-
-<div class="divider"></div>
-
-
-<h2>Blockquote</h2>
-
-<blockquote><p>Start by doing what&rsquo;s necessary; then do what&rsquo;s possible; and suddenly you are doing the impossible. &ndash;Francis of Assisi</p></blockquote>
-
-<p><strong>NOTE:</strong> This theme does NOT support nested blockquotes.</p>
-
-<div class="divider"></div>
-
-
-<h2>List Items</h2>
-
-<ol>
-<li>First order list item</li>
-<li><p>Second item</p></li>
-<li><p>Unordered list can use asterisks</p></li>
-<li>Or minuses</li>
-<li>Or pluses</li>
-</ol>
+<ul>
+<li>A traditional RDBMS model</li>
+<li>Drawbacks of Relational model</li>
+<li>A more efficient Graph Data Model</li>
+<li>Timeline Trees</li>
+</ul>
 
 
 <div class="divider"></div>
 
 
-<h2>Code Blocks</h2>
+<h3><a href="">Limitations of Relational Data Model:</a></h3>
 
-<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure></p>
+<p>A typical query in connected data model involves JOIN operations between tables.    
+This leads to expensive search computation.</p>
 
-<p><figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span><br/>
-<span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><br/>
-<span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
-    <span class="s">&quot;Docs&hellip;&quot;</span>
-    <span class="k">return</span></code></pre></figure></p>
+<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;"/></p>
 
-<p><figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/<em> css synthax highlighting </em>/</span>
-<span class="nf">#container</span> <span class="p">{</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
-    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure></p>
 
-<pre><code>No language indicated, so no syntax highlighting.
-But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
+<p>Find more at <a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Neo4j graph-db-vs-rdbms</a></p>
+
+<div class="divider"></div>
+
+
+<h3><a href="">Graph Relationship Model:</a></h3>
+
+<h5>Why Graph Database?</h5>
+
+<ul>
+<li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
+<li><p>Data model that evolves in step with the iterative and incremental development.</p>
+
+<pre><code>    - Rewritable Schema: Can add nodes and relationships dynamically
+</code></pre></li>
+<li><p>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</p></li>
+<li>Memory use or Latency of a query with a join is obliterated</li>
+<li>Average Speed of Graph Database
+
+<pre><code>    - 4 million nodes/ sec! 
+</code></pre></li>
+<li>Geared towards Pattern Mining – the search queries natively look for patterns.
+Eg. It searches Common Friends based on common profile properties such as
+
+<pre><code>                      - Location
+                      - Education
+                      - Work etc. 
+</code></pre></li>
+</ul>
+
+
+<div class="divider"></div>
+
+
+<h3><a href="">Graph Schema Entities:</a></h3>
+
+<h5>Node</h5>
+
+<pre><code>      -  Node is an entity bag/object containing attributes 
+           {eg. – name, age, location etc. }
+</code></pre>
+
+<h5>Relationship(vertices)</h5>
+
+<pre><code>      -  Relationship is a named &amp; directed entity that produce a schematic structure
+      -  It can have properties like strength/weight, cardinality 
+      -  Weights in relationships are used for shortest path traversals 
 </code></pre>
 
 <div class="divider"></div>
 
 
-<h2>Table</h2>
+<h3>Labeled property graph<a href="">(neo4j)</a></h3>
 
-<h3>Table 1: With Alignment</h3>
-
-<table>
-<thead>
-<tr>
-<th> Tables        </th>
-<th style="text-align:center;"> Are           </th>
-<th style="text-align:right;"> Cool  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> col 3 is      </td>
-<td style="text-align:center;"> right-aligned </td>
-<td style="text-align:right;"> $1600 </td>
-</tr>
-<tr>
-<td> col 2 is      </td>
-<td style="text-align:center;"> centered      </td>
-<td style="text-align:right;">   $12 </td>
-</tr>
-<tr>
-<td> zebra stripes </td>
-<td style="text-align:center;"> are neat      </td>
-<td style="text-align:right;">    $1 </td>
-</tr>
-</tbody>
-</table>
+<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;"/></p>
 
 
-<h3>Table 2: With Typography Elements</h3>
+<p>Labels in property graph facilitate defining &amp; finding patterns using ASCII –Art &amp; deriving instances that contain a path expression</p>
 
-<table>
-<thead>
-<tr>
-<th>Markdown </th>
-<th> Less </th>
-<th> Pretty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>Still</em> </td>
-<td> <code>renders</code> </td>
-<td> <strong>nicely</strong></td>
-</tr>
-<tr>
-<td>1 </td>
-<td> 2 </td>
-<td> 3</td>
-</tr>
-</tbody>
-</table>
+<p><figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure></p>
 
+<p>Similar objects can contain different set of properties in a Labeled property graph!</p>
 
 <div class="divider"></div>
 
 
-<h2>Horizontal Line</h2>
+<h3><a href="">Timeline Trees:</a></h3>
 
-<p>The HTML <code>&lt;hr&gt;</code> element is for creating a &ldquo;thematic break&rdquo; between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+<p>To search posts/events over a specific period of time.</p>
 
-<ul>
-<li><code>___</code>: three consecutive underscores</li>
-<li><code>---</code>: three consecutive dashes</li>
-<li><code>***</code>: three consecutive asterisks</li>
-</ul>
+<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;"/></p>
 
 
-<p>renders to:</p>
 
-<hr />
-
-<hr />
-
-<hr />
-
-<div class="divider"></div>
-
-
-<h2>Media</h2>
-
-<h3>YouTube Embedded Iframe</h3>
-
-<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen></iframe>
-
-
-<h3>Image</h3>
-
-<p><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSn8cwf82ee9tfml4Wx-tsM5AUavJ_DRHIiXXE4RejRp0RF2L7f6g" alt="Nature" /></p>
-
-<h4>Santhoshfiddle</h4>
-
-<p>Let&rsquo;s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let&rsquo;s <strong><em>combine</em></strong> them together. Yeah, that&rsquo;s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
-
-<div class="divider"></div>
-
-
-<h2>Headings H1 to H6</h2>
-
-<h1>H1 Heading</h1>
-
-<h2>H2 Heading</h2>
-
-<h3>H3 Heading</h3>
-
-<h4>H4 Heading</h4>
-
-<h5>H5 Heading</h5>
-
-<h6>H6 Heading</h6>
-
-<div class="divider"></div>
-
-
-<h4>Blockquote</h4>
-
-<p>Let&rsquo;s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <a href="Footnote">^1</a>. You can even add more footnotes, with link! <a href="A">^2</a></p>
-
-<div class="divider"></div>
-
-
-<h3>Blockquote</h3>
-
-<blockquote><p>Start by doing what&rsquo;s necessary; then do what&rsquo;s possible; and suddenly you are doing the impossible. &ndash;Francis of Assisi</p></blockquote>
-
-<p><strong>NOTE:</strong> This theme does NOT support nested blockquotes.</p>
-
-<div class="divider"></div>
-
-
-<h3>List Items</h3>
-
-<ol>
-<li>First order list item</li>
-<li><p>Second item</p></li>
-<li><p>Unordered list can use asterisks</p></li>
-<li>Or minuses</li>
-<li>Or pluses</li>
-</ol>
-
-
-<div class="divider"></div>
-
-
-<h3>Code Blocks</h3>
-
-<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure></p>
-
-<p><figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span><br/>
-<span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><br/>
-<span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
-    <span class="s">&quot;Docs&hellip;&quot;</span>
-    <span class="k">return</span></code></pre></figure></p>
-
-<p><figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/<em> css synthax highlighting </em>/</span>
-<span class="nf">#container</span> <span class="p">{</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
-    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure></p>
-
-<pre><code>No language indicated, so no syntax highlighting.
-But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
-</code></pre>
-
-<div class="divider"></div>
-
-
-<h2>Table</h2>
-
-<h3>Table 1: With Alignment</h3>
-
-<table>
-<thead>
-<tr>
-<th> Tables        </th>
-<th style="text-align:center;"> Are           </th>
-<th style="text-align:right;"> Cool  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> col 3 is      </td>
-<td style="text-align:center;"> right-aligned </td>
-<td style="text-align:right;"> $1600 </td>
-</tr>
-<tr>
-<td> col 2 is      </td>
-<td style="text-align:center;"> centered      </td>
-<td style="text-align:right;">   $12 </td>
-</tr>
-<tr>
-<td> zebra stripes </td>
-<td style="text-align:center;"> are neat      </td>
-<td style="text-align:right;">    $1 </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Table 2: With Typography Elements</h3>
-
-<table>
-<thead>
-<tr>
-<th>Markdown </th>
-<th> Less </th>
-<th> Pretty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>Still</em> </td>
-<td> <code>renders</code> </td>
-<td> <strong>nicely</strong></td>
-</tr>
-<tr>
-<td>1 </td>
-<td> 2 </td>
-<td> 3</td>
-</tr>
-</tbody>
-</table>
-
-
-<div class="divider"></div>
-
-
-<h2>Horizontal Line</h2>
-
-<p>The HTML <code>&lt;hr&gt;</code> element is for creating a &ldquo;thematic break&rdquo; between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
-
-<ul>
-<li><code>___</code>: three consecutive underscores</li>
-<li><code>---</code>: three consecutive dashes</li>
-<li><code>***</code>: three consecutive asterisks</li>
-</ul>
-
-
-<p>renders to:</p>
-
-<hr />
-
-<hr />
-
-<hr />
-
-<div class="divider"></div>
-
-
-<h2>Media</h2>
-
-<h3>YouTube Embedded Iframe</h3>
-
-<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen></iframe>
-
-
-<h3>Image</h3>
-
-<p><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSn8cwf82ee9tfml4Wx-tsM5AUavJ_DRHIiXXE4RejRp0RF2L7f6g" alt="Nature" /></p>
 
 			   <hr>
 			   <div class="related-posts">
@@ -477,38 +237,38 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 						<div class="row">
 							 <div class="col-sm-4 col-md-4 col-lg-4">
 								 <h6 style="text-align: right">
+								 	November 10, 2015
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/post1.html">Interactive Visualization of US Airport Evolution</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	October  5, 2015
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/post3.html">A Precinct-Level Choropleth Map of Election Results</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
 								 	June  5, 2013
 								 </h6>
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/post1.html">A Full and Comprehensive Style Test (HTML)cc</a></strong>
-								 </h6>
-							 </div>
-						</div>
-					
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4">
-								 <h6 style="text-align: right">
-								 	May 27, 2013
-								 </h6>
-							 </div>
-							 <div class="col-sm-8 col-md-8 col-lg-8">
-								 <h6 style="text-align: left">
-								 	<strong><a href="/post3.html">My First Blog Article</a></strong>
-								 </h6>
-							 </div>
-						</div>
-					
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4">
-								 <h6 style="text-align: right">
-								 	April  2, 2013
-								 </h6>
-							 </div>
-							 <div class="col-sm-8 col-md-8 col-lg-8">
-								 <h6 style="text-align: left">
-								 	<strong><a href="/post3.html">Now some lorem ipsum</a></strong>
+								 	<strong><a href="/post5.html">A Full and Comprehensive Style Test (HTML)cc</a></strong>
 								 </h6>
 							 </div>
 						</div>
