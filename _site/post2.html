@@ -119,115 +119,87 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="blogpost">
-			  <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;"/></p>
+			  <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;" /></p>
 
-
-<blockquote><p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p></blockquote>
+<blockquote>
+  <p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p>
+</blockquote>
 
 <div class="divider"></div>
 
-
-<h3><a href="">Goal:</a></h3>
+<h3 id="goal"><a href="">Goal:</a></h3>
 
 <p>Host the complex and very large Facebook data. </p>
-
-<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;"/></p>
-
-
+<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;" /></p>
 <p>Provide efficient data search and access. </p>
 
 <ul>
-<li>A traditional RDBMS model</li>
-<li>Drawbacks of Relational model</li>
-<li>A more efficient Graph Data Model</li>
-<li>Timeline Trees</li>
+  <li>A traditional RDBMS model</li>
+  <li>Drawbacks of Relational model</li>
+  <li>A more efficient Graph Data Model</li>
+  <li>Timeline Trees</li>
 </ul>
-
 
 <div class="divider"></div>
 
-
-<h3><a href="">Limitations of Relational Data Model:</a></h3>
+<h3 id="limitations-of-relational-data-model"><a href="">Limitations of Relational Data Model:</a></h3>
 
 <p>A typical query in connected data model involves JOIN operations between tables.    
 This leads to expensive search computation.</p>
-
-<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;"/></p>
-
-
+<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;" /></p>
 <p>Find more at <a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Neo4j graph-db-vs-rdbms</a></p>
 
 <div class="divider"></div>
 
+<h3 id="graph-relationship-model"><a href="">Graph Relationship Model:</a></h3>
 
-<h3><a href="">Graph Relationship Model:</a></h3>
-
-<h5>Why Graph Database?</h5>
-
+<h5 id="why-graph-database">Why Graph Database?</h5>
 <ul>
-<li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
-<li><p>Data model that evolves in step with the iterative and incremental development.</p>
-
-<pre><code>    - Rewritable Schema: Can add nodes and relationships dynamically
-</code></pre></li>
-<li><p>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</p></li>
-<li>Memory use or Latency of a query with a join is obliterated</li>
-<li>Average Speed of Graph Database
-
-<pre><code>    - 4 million nodes/ sec! 
-</code></pre></li>
-<li>Geared towards Pattern Mining – the search queries natively look for patterns.
+  <li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
+  <li>
+    <p>Data model that evolves in step with the iterative and incremental development.
+        - Rewritable Schema: Can add nodes and relationships dynamically</p>
+  </li>
+  <li>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</li>
+  <li>Memory use or Latency of a query with a join is obliterated</li>
+  <li>Average Speed of Graph Database
+        - 4 million nodes/ sec!</li>
+  <li>Geared towards Pattern Mining – the search queries natively look for patterns.
 Eg. It searches Common Friends based on common profile properties such as
-
-<pre><code>                      - Location
-                      - Education
-                      - Work etc. 
-</code></pre></li>
+                          - Location
+                          - Education
+                          - Work etc.</li>
 </ul>
-
 
 <div class="divider"></div>
 
+<h3 id="graph-schema-entities"><a href="">Graph Schema Entities:</a></h3>
 
-<h3><a href="">Graph Schema Entities:</a></h3>
-
-<h5>Node</h5>
-
+<h5 id="node">Node</h5>
 <pre><code>      -  Node is an entity bag/object containing attributes 
-           {eg. – name, age, location etc. }
-</code></pre>
-
-<h5>Relationship(vertices)</h5>
-
-<pre><code>      -  Relationship is a named &amp; directed entity that produce a schematic structure
+           {eg. – name, age, location etc. } #####Relationship(vertices)
+      -  Relationship is a named &amp; directed entity that produce a schematic structure
       -  It can have properties like strength/weight, cardinality 
       -  Weights in relationships are used for shortest path traversals 
 </code></pre>
 
 <div class="divider"></div>
 
+<h3 id="labeled-property-graphneo4j">Labeled property graph<a href="">(neo4j)</a></h3>
 
-<h3>Labeled property graph<a href="">(neo4j)</a></h3>
-
-<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;"/></p>
-
-
+<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;" /></p>
 <p>Labels in property graph facilitate defining &amp; finding patterns using ASCII –Art &amp; deriving instances that contain a path expression</p>
 
-<p><figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure></p>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure>
 
 <p>Similar objects can contain different set of properties in a Labeled property graph!</p>
 
 <div class="divider"></div>
 
-
-<h3><a href="">Timeline Trees:</a></h3>
+<h3 id="timeline-trees"><a href="">Timeline Trees:</a></h3>
 
 <p>To search posts/events over a specific period of time.</p>
-
-<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;"/></p>
-
-
+<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;" /></p>
 
 
 			   <hr>

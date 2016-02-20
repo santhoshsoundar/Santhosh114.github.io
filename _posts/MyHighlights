@@ -1,0 +1,65 @@
+Blockquote:      >   Start by doing
+
+
+
+**NOTE:** This theme does NOT support nested blockquotes.
+
+
+
+
+
+## List Items
+
+1. First order list item
+2. Second item
+
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
+
+
+
+## Code Blocks
+
+{% highlight javascript %}
+var s = "JavaScript syntax highlighting";
+alert(s);
+{% endhighlight %}
+
+{% highlight python %}
+import sys  
+s = "Python syntax highlighting"
+print(s)  
+def run_some_function():
+    "Docs..."
+    return
+{% endhighlight %}
+
+{% highlight css %}
+/* css synthax highlighting */ 
+#container {
+   ....
+}
+{% endhighlight %}
+
+
+
+
+
+
+
+## Horizontal Line
+
+The HTML `<hr>` element is for creating a "thematic break" between paragraph-level elements. In markdown, you can create a `<hr>` with any of the following:
+
+* `___`: three consecutive underscores
+* `---`: three consecutive dashes
+* `***`: three consecutive asterisks
+
+renders to:
+
+___
+
+---
+
+***

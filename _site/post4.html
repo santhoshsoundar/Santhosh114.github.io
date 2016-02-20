@@ -121,159 +121,152 @@
 			<div class="blogpost">
 			  <div class="divider"></div>
 
+<h2 id="typography-elements-in-one">Typography Elements in One</h2>
 
-<h2>Typography Elements in One</h2>
-
-<p>Let&rsquo;s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let&rsquo;s <strong><em>combine</em></strong> them together. Yeah, that&rsquo;s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
-
-<div class="divider"></div>
-
-
-<h2>Headings H1 to H6</h2>
-
-<h1>H1 Heading</h1>
-
-<h2>H2 Heading</h2>
-
-<h3>H3 Heading</h3>
-
-<h4>H4 Heading</h4>
-
-<h5>H5 Heading</h5>
-
-<h6>H6 Heading</h6>
-
-<h2>hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtag&nbsp;&nbsp;#hashtagboy1</h2>
+<p>Let’s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let’s <strong><em>combine</em></strong> them together. Yeah, that’s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
 
 <div class="divider"></div>
 
+<h2 id="headings-h1-to-h6">Headings H1 to H6</h2>
 
-<h2>Footnote</h2>
+<h1 id="h1-heading">H1 Heading</h1>
 
-<p>Let&rsquo;s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <a href="Footnote">^1</a>. You can even add more footnotes, with link! <a href="A">^2</a></p>
+<h2 id="h2-heading">H2 Heading</h2>
+
+<h3 id="h3-heading">H3 Heading</h3>
+
+<h4 id="h4-heading">H4 Heading</h4>
+
+<h5 id="h5-heading">H5 Heading</h5>
+
+<h6 id="h6-heading">H6 Heading</h6>
+
+<h2 id="hashtagnbspnbsphashtagnbspnbsphashtagnbspnbsphashtagnbspnbsphashtagboy1">hashtag  #hashtag  #hashtag  #hashtag  #hashtagboy1</h2>
+<div class="divider"></div>
+
+<h2 id="footnote">Footnote</h2>
+
+<p>Let’s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. You can even add more footnotes, with link! <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
 
 <div class="divider"></div>
 
+<h2 id="blockquote">Blockquote</h2>
 
-<h2>Blockquote</h2>
-
-<blockquote><p>Start by doing what&rsquo;s necessary; then do what&rsquo;s possible; and suddenly you are doing the impossible. &ndash;Francis of Assisi</p></blockquote>
+<blockquote>
+  <p>Start by doing what’s necessary; then do what’s possible; and suddenly you are doing the impossible. –Francis of Assisi</p>
+</blockquote>
 
 <p><strong>NOTE:</strong> This theme does NOT support nested blockquotes.</p>
 
 <div class="divider"></div>
 
-
-<h2>List Items</h2>
+<h2 id="list-items">List Items</h2>
 
 <ol>
-<li>First order list item</li>
-<li><p>Second item</p></li>
-<li><p>Unordered list can use asterisks</p></li>
-<li>Or minuses</li>
-<li>Or pluses</li>
+  <li>First order list item</li>
+  <li>Second item</li>
 </ol>
 
+<ul>
+  <li>Unordered list can use asterisks</li>
+  <li>Or minuses</li>
+  <li>Or pluses</li>
+</ul>
 
 <div class="divider"></div>
 
+<h2 id="code-blocks">Code Blocks</h2>
 
-<h2>Code Blocks</h2>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure>
 
-<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure></p>
-
-<p><figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span><br/>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>  
 <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><br/>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  
 <span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
-    <span class="s">&quot;Docs&hellip;&quot;</span>
-    <span class="k">return</span></code></pre></figure></p>
+    <span class="s">&quot;Docs...&quot;</span>
+    <span class="k">return</span></code></pre></figure>
 
-<p><figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/<em> css synthax highlighting </em>/</span>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* css synthax highlighting */</span> 
 <span class="nf">#container</span> <span class="p">{</span>
     <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
     <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
     <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure></p>
+<span class="p">}</span></code></pre></figure>
 
-<pre><code>No language indicated, so no syntax highlighting.
+<p><code>
+No language indicated, so no syntax highlighting.
 But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
-</code></pre>
+</code></p>
 
 <div class="divider"></div>
 
+<h2 id="table">Table</h2>
 
-<h2>Table</h2>
-
-<h3>Table 1: With Alignment</h3>
-
-<table>
-<thead>
-<tr>
-<th> Tables        </th>
-<th style="text-align:center;"> Are           </th>
-<th style="text-align:right;"> Cool  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> col 3 is      </td>
-<td style="text-align:center;"> right-aligned </td>
-<td style="text-align:right;"> $1600 </td>
-</tr>
-<tr>
-<td> col 2 is      </td>
-<td style="text-align:center;"> centered      </td>
-<td style="text-align:right;">   $12 </td>
-</tr>
-<tr>
-<td> zebra stripes </td>
-<td style="text-align:center;"> are neat      </td>
-<td style="text-align:right;">    $1 </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Table 2: With Typography Elements</h3>
+<h3 id="table-1-with-alignment">Table 1: With Alignment</h3>
 
 <table>
-<thead>
-<tr>
-<th>Markdown </th>
-<th> Less </th>
-<th> Pretty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>Still</em> </td>
-<td> <code>renders</code> </td>
-<td> <strong>nicely</strong></td>
-</tr>
-<tr>
-<td>1 </td>
-<td> 2 </td>
-<td> 3</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Tables</th>
+      <th style="text-align: center">Are</th>
+      <th style="text-align: right">Cool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>col 3 is</td>
+      <td style="text-align: center">right-aligned</td>
+      <td style="text-align: right">$1600</td>
+    </tr>
+    <tr>
+      <td>col 2 is</td>
+      <td style="text-align: center">centered</td>
+      <td style="text-align: right">$12</td>
+    </tr>
+    <tr>
+      <td>zebra stripes</td>
+      <td style="text-align: center">are neat</td>
+      <td style="text-align: right">$1</td>
+    </tr>
+  </tbody>
 </table>
 
+<h3 id="table-2-with-typography-elements">Table 2: With Typography Elements</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>Less</th>
+      <th>Pretty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Still</em></td>
+      <td><code>renders</code></td>
+      <td><strong>nicely</strong></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="divider"></div>
 
+<h2 id="horizontal-line">Horizontal Line</h2>
 
-<h2>Horizontal Line</h2>
-
-<p>The HTML <code>&lt;hr&gt;</code> element is for creating a &ldquo;thematic break&rdquo; between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+<p>The HTML <code>&lt;hr&gt;</code> element is for creating a “thematic break” between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
 
 <ul>
-<li><code>___</code>: three consecutive underscores</li>
-<li><code>---</code>: three consecutive dashes</li>
-<li><code>***</code>: three consecutive asterisks</li>
+  <li><code>___</code>: three consecutive underscores</li>
+  <li><code>---</code>: three consecutive dashes</li>
+  <li><code>***</code>: three consecutive asterisks</li>
 </ul>
-
 
 <p>renders to:</p>
 
@@ -285,168 +278,161 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
 <div class="divider"></div>
 
+<h2 id="media">Media</h2>
 
-<h2>Media</h2>
+<h3 id="youtube-embedded-iframe">YouTube Embedded Iframe</h3>
 
-<h3>YouTube Embedded Iframe</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen=""></iframe>
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen></iframe>
-
-
-<h3>Image</h3>
+<h3 id="image">Image</h3>
 
 <p><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSn8cwf82ee9tfml4Wx-tsM5AUavJ_DRHIiXXE4RejRp0RF2L7f6g" alt="Nature" /></p>
 
-<h4>Santhoshfiddle</h4>
+<h4 id="santhoshfiddle">Santhoshfiddle</h4>
 
-<p>Let&rsquo;s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let&rsquo;s <strong><em>combine</em></strong> them together. Yeah, that&rsquo;s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
-
-<div class="divider"></div>
-
-
-<h2>Headings H1 to H6</h2>
-
-<h1>H1 Heading</h1>
-
-<h2>H2 Heading</h2>
-
-<h3>H3 Heading</h3>
-
-<h4>H4 Heading</h4>
-
-<h5>H5 Heading</h5>
-
-<h6>H6 Heading</h6>
+<p>Let’s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let’s <strong><em>combine</em></strong> them together. Yeah, that’s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
 
 <div class="divider"></div>
 
+<h2 id="headings-h1-to-h6-1">Headings H1 to H6</h2>
 
-<h4>Blockquote</h4>
+<h1 id="h1-heading-1">H1 Heading</h1>
 
-<p>Let&rsquo;s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <a href="Footnote">^1</a>. You can even add more footnotes, with link! <a href="A">^2</a></p>
+<h2 id="h2-heading-1">H2 Heading</h2>
+
+<h3 id="h3-heading-1">H3 Heading</h3>
+
+<h4 id="h4-heading-1">H4 Heading</h4>
+
+<h5 id="h5-heading-1">H5 Heading</h5>
+
+<h6 id="h6-heading-1">H6 Heading</h6>
 
 <div class="divider"></div>
 
+<h4 id="blockquote-1">Blockquote</h4>
 
-<h3>Blockquote</h3>
+<p>Let’s say you have text that you want to refer with a footnote, you can do that too! This is an example for the footnote number one <sup id="fnref:1:1"><a href="#fn:1" class="footnote">1</a></sup>. You can even add more footnotes, with link! <sup id="fnref:2:1"><a href="#fn:2" class="footnote">2</a></sup></p>
 
-<blockquote><p>Start by doing what&rsquo;s necessary; then do what&rsquo;s possible; and suddenly you are doing the impossible. &ndash;Francis of Assisi</p></blockquote>
+<div class="divider"></div>
+
+<h3 id="blockquote-2">Blockquote</h3>
+
+<blockquote>
+  <p>Start by doing what’s necessary; then do what’s possible; and suddenly you are doing the impossible. –Francis of Assisi</p>
+</blockquote>
 
 <p><strong>NOTE:</strong> This theme does NOT support nested blockquotes.</p>
 
 <div class="divider"></div>
 
-
-<h3>List Items</h3>
+<h3 id="list-items-1">List Items</h3>
 
 <ol>
-<li>First order list item</li>
-<li><p>Second item</p></li>
-<li><p>Unordered list can use asterisks</p></li>
-<li>Or minuses</li>
-<li>Or pluses</li>
+  <li>First order list item</li>
+  <li>Second item</li>
 </ol>
 
+<ul>
+  <li>Unordered list can use asterisks</li>
+  <li>Or minuses</li>
+  <li>Or pluses</li>
+</ul>
 
 <div class="divider"></div>
 
+<h3 id="code-blocks-1">Code Blocks</h3>
 
-<h3>Code Blocks</h3>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure>
 
-<p><figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
-<span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure></p>
-
-<p><figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span><br/>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>  
 <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><br/>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  
 <span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
-    <span class="s">&quot;Docs&hellip;&quot;</span>
-    <span class="k">return</span></code></pre></figure></p>
+    <span class="s">&quot;Docs...&quot;</span>
+    <span class="k">return</span></code></pre></figure>
 
-<p><figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/<em> css synthax highlighting </em>/</span>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* css synthax highlighting */</span> 
 <span class="nf">#container</span> <span class="p">{</span>
     <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
     <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
     <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure></p>
+<span class="p">}</span></code></pre></figure>
 
-<pre><code>No language indicated, so no syntax highlighting.
+<p><code>
+No language indicated, so no syntax highlighting.
 But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
-</code></pre>
+</code></p>
 
 <div class="divider"></div>
 
+<h2 id="table-1">Table</h2>
 
-<h2>Table</h2>
-
-<h3>Table 1: With Alignment</h3>
-
-<table>
-<thead>
-<tr>
-<th> Tables        </th>
-<th style="text-align:center;"> Are           </th>
-<th style="text-align:right;"> Cool  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> col 3 is      </td>
-<td style="text-align:center;"> right-aligned </td>
-<td style="text-align:right;"> $1600 </td>
-</tr>
-<tr>
-<td> col 2 is      </td>
-<td style="text-align:center;"> centered      </td>
-<td style="text-align:right;">   $12 </td>
-</tr>
-<tr>
-<td> zebra stripes </td>
-<td style="text-align:center;"> are neat      </td>
-<td style="text-align:right;">    $1 </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Table 2: With Typography Elements</h3>
+<h3 id="table-1-with-alignment-1">Table 1: With Alignment</h3>
 
 <table>
-<thead>
-<tr>
-<th>Markdown </th>
-<th> Less </th>
-<th> Pretty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>Still</em> </td>
-<td> <code>renders</code> </td>
-<td> <strong>nicely</strong></td>
-</tr>
-<tr>
-<td>1 </td>
-<td> 2 </td>
-<td> 3</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Tables</th>
+      <th style="text-align: center">Are</th>
+      <th style="text-align: right">Cool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>col 3 is</td>
+      <td style="text-align: center">right-aligned</td>
+      <td style="text-align: right">$1600</td>
+    </tr>
+    <tr>
+      <td>col 2 is</td>
+      <td style="text-align: center">centered</td>
+      <td style="text-align: right">$12</td>
+    </tr>
+    <tr>
+      <td>zebra stripes</td>
+      <td style="text-align: center">are neat</td>
+      <td style="text-align: right">$1</td>
+    </tr>
+  </tbody>
 </table>
 
+<h3 id="table-2-with-typography-elements-1">Table 2: With Typography Elements</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>Less</th>
+      <th>Pretty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Still</em></td>
+      <td><code>renders</code></td>
+      <td><strong>nicely</strong></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="divider"></div>
 
+<h2 id="horizontal-line-1">Horizontal Line</h2>
 
-<h2>Horizontal Line</h2>
-
-<p>The HTML <code>&lt;hr&gt;</code> element is for creating a &ldquo;thematic break&rdquo; between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+<p>The HTML <code>&lt;hr&gt;</code> element is for creating a “thematic break” between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
 
 <ul>
-<li><code>___</code>: three consecutive underscores</li>
-<li><code>---</code>: three consecutive dashes</li>
-<li><code>***</code>: three consecutive asterisks</li>
+  <li><code>___</code>: three consecutive underscores</li>
+  <li><code>---</code>: three consecutive dashes</li>
+  <li><code>***</code>: three consecutive asterisks</li>
 </ul>
-
 
 <p>renders to:</p>
 
@@ -458,17 +444,26 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
 <div class="divider"></div>
 
+<h2 id="media-1">Media</h2>
 
-<h2>Media</h2>
+<h3 id="youtube-embedded-iframe-1">YouTube Embedded Iframe</h3>
 
-<h3>YouTube Embedded Iframe</h3>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen=""></iframe>
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/nN6QuNqmAwk" frameborder="0" allowfullscreen></iframe>
-
-
-<h3>Image</h3>
+<h3 id="image-1">Image</h3>
 
 <p><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSn8cwf82ee9tfml4Wx-tsM5AUavJ_DRHIiXXE4RejRp0RF2L7f6g" alt="Nature" /></p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Footnote number one yeah baby! <a href="#fnref:1" class="reversefootnote">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:2">
+      <p>A footnote you can link to - <a href="#">click here!</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
 
 			   <hr>
 			   <div class="related-posts">
