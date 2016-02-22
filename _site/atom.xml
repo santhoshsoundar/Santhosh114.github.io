@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-02-22T13:12:58Z</updated>
+  <updated>2016-02-22T13:19:00Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -474,7 +474,7 @@ var borderPath = svg.append("rect")
   <id>http://santhosh114.github.io//post3</id>
   <published>2015-10-05T00:00:00Z</published>
   <updated>2015-10-05T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <p><img src="../static/img/blog/Critique/main.png" alt="Test Image" style="width:704px;height:427px;" /></p>
+  <content type="html"><![CDATA[ <p><img src="../static/img/blog/critique/main.png" alt="Test Image" style="width:704px;height:427px;" /></p>
 
 <blockquote>
   <p>This is my critique on the article titled <a href="http://www.nytimes.com/interactive/2014/11/04/upshot/senate-maps.html?_r=0">“The Most Detailed Maps You’ll See From the Midterm Elections”</a>
