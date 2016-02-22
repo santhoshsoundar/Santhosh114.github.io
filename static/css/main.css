@@ -226,6 +226,14 @@ blockquote{display: inline-block;}
   .navbar-brand{ width:178px; margin-left:auto; margin-right:auto; float:none;}
 }
 
+
+blockquote {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size:12px
+}
+
+
 /* To center images */
 .center {
     text-align: center;

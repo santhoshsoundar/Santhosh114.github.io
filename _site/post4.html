@@ -48,7 +48,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
   <link href='https://fonts.googleapis.com/css?family=Raleway:400,200,500,300,100' rel='stylesheet' type='text/css'>
-
+  <link href='https://fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet' type='text/css'>
     <!-- Google Analytics -->
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -123,7 +123,7 @@
 
 <h2 id="typography-elements-in-one">Typography Elements in One</h2>
 
-<p>Let’s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let’s <strong><em>combine</em></strong> them together. Yeah, that’s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
+<p>Let’s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let’s <strong><em>combine</em></strong> them together. Yeah, that’s right! I have code to highlight, so <code class="highlighter-rouge">ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
 
 <div class="divider"></div>
 
@@ -177,24 +177,24 @@
 
 <h2 id="code-blocks">Code Blocks</h2>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">"JavaScript syntax highlighting"</span><span class="p">;</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>  
-<span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s">"Python syntax highlighting"</span>
 <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  
 <span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
-    <span class="s">&quot;Docs...&quot;</span>
+    <span class="s">"Docs..."</span>
     <span class="k">return</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* css synthax highlighting */</span> 
 <span class="nf">#container</span> <span class="p">{</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
-    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
-<p><code>
+<p><code class="highlighter-rouge">
 No language indicated, so no syntax highlighting.
 But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 </code></p>
@@ -245,7 +245,7 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
   <tbody>
     <tr>
       <td><em>Still</em></td>
-      <td><code>renders</code></td>
+      <td><code class="highlighter-rouge">renders</code></td>
       <td><strong>nicely</strong></td>
     </tr>
     <tr>
@@ -260,12 +260,12 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
 <h2 id="horizontal-line">Horizontal Line</h2>
 
-<p>The HTML <code>&lt;hr&gt;</code> element is for creating a “thematic break” between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+<p>The HTML <code class="highlighter-rouge">&lt;hr&gt;</code> element is for creating a “thematic break” between paragraph-level elements. In markdown, you can create a <code class="highlighter-rouge">&lt;hr&gt;</code> with any of the following:</p>
 
 <ul>
-  <li><code>___</code>: three consecutive underscores</li>
-  <li><code>---</code>: three consecutive dashes</li>
-  <li><code>***</code>: three consecutive asterisks</li>
+  <li><code class="highlighter-rouge">___</code>: three consecutive underscores</li>
+  <li><code class="highlighter-rouge">---</code>: three consecutive dashes</li>
+  <li><code class="highlighter-rouge">***</code>: three consecutive asterisks</li>
 </ul>
 
 <p>renders to:</p>
@@ -290,7 +290,7 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
 <h4 id="santhoshfiddle">Santhoshfiddle</h4>
 
-<p>Let’s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let’s <strong><em>combine</em></strong> them together. Yeah, that’s right! I have code to highlight, so <code>ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
+<p>Let’s start with a informative paragraph. <strong>This text is bolded.</strong> But not this one! <em>How about italic text?</em> Cool right? Ok, let’s <strong><em>combine</em></strong> them together. Yeah, that’s right! I have code to highlight, so <code class="highlighter-rouge">ThisIsMyCode()</code>. What a nice! Good people will hyperlink away, so <a href="#">here we go</a> or <a href="http://www.example.com">http://www.example.com</a>.</p>
 
 <div class="divider"></div>
 
@@ -343,24 +343,24 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
 <h3 id="code-blocks-1">Code Blocks</h3>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;JavaScript syntax highlighting&quot;</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">"JavaScript syntax highlighting"</span><span class="p">;</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>  
-<span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Python syntax highlighting&quot;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s">"Python syntax highlighting"</span>
 <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  
 <span class="k">def</span> <span class="nf">run_some_function</span><span class="p">():</span>
-    <span class="s">&quot;Docs...&quot;</span>
+    <span class="s">"Docs..."</span>
     <span class="k">return</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* css synthax highlighting */</span> 
 <span class="nf">#container</span> <span class="p">{</span>
-    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
-    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
-    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
-<p><code>
+<p><code class="highlighter-rouge">
 No language indicated, so no syntax highlighting.
 But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 </code></p>
@@ -411,7 +411,7 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
   <tbody>
     <tr>
       <td><em>Still</em></td>
-      <td><code>renders</code></td>
+      <td><code class="highlighter-rouge">renders</code></td>
       <td><strong>nicely</strong></td>
     </tr>
     <tr>
@@ -426,12 +426,12 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 
 <h2 id="horizontal-line-1">Horizontal Line</h2>
 
-<p>The HTML <code>&lt;hr&gt;</code> element is for creating a “thematic break” between paragraph-level elements. In markdown, you can create a <code>&lt;hr&gt;</code> with any of the following:</p>
+<p>The HTML <code class="highlighter-rouge">&lt;hr&gt;</code> element is for creating a “thematic break” between paragraph-level elements. In markdown, you can create a <code class="highlighter-rouge">&lt;hr&gt;</code> with any of the following:</p>
 
 <ul>
-  <li><code>___</code>: three consecutive underscores</li>
-  <li><code>---</code>: three consecutive dashes</li>
-  <li><code>***</code>: three consecutive asterisks</li>
+  <li><code class="highlighter-rouge">___</code>: three consecutive underscores</li>
+  <li><code class="highlighter-rouge">---</code>: three consecutive dashes</li>
+  <li><code class="highlighter-rouge">***</code>: three consecutive asterisks</li>
 </ul>
 
 <p>renders to:</p>
@@ -477,7 +477,7 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/post2.html">Neo4j Based Graph Schema Alternative for Facebook DB</a></strong>
+								 	<strong><a href="/post2.html">Neo4j Based Graph Schema Alternative for Facebook's DB</a></strong>
 								 </h6>
 							 </div>
 						</div>
@@ -503,7 +503,7 @@ But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/post3.html">A Precinct-Level Choropleth Map of Election Results</a></strong>
+								 	<strong><a href="/post3.html">My Critique on Precinct-Level Choropleth Map</a></strong>
 								 </h6>
 							 </div>
 						</div>

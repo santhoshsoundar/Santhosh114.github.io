@@ -48,7 +48,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
   <link href='https://fonts.googleapis.com/css?family=Raleway:400,200,500,300,100' rel='stylesheet' type='text/css'>
-
+  <link href='https://fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet' type='text/css'>
     <!-- Google Analytics -->
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -125,25 +125,6 @@
 			<div class="blogpost">
 			  <div id="us_states">
 </div>
-
-<blockquote>
-  <p>This is an academic project for I590: Data Visualization course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>. Visualization is built by a team of 2: <a href="santhoshfiddle.com">myself</a> and <a href="https://www.linkedin.com/in/anusharamamurthy">Anusha Ramamurthy</a>. I am not gona talk much about the project ideation, view the <a href="http://www.santhoshfiddle.com/geoSample/index.html">project page</a> for info on how we landed here in terms of design but defenitely we developed it keeping <a href="http://www.lucify.com/the-flow-towards-europe/">The Flow of Refugee Towards Europe</a> in mind, tailored to our design needs.</p>
-</blockquote>
-
-<div class="divider"></div>
-
-<h3 id="goal"><a href="">Goal:</a></h3>
-
-<p>This is a step by step tutorial on creating transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
-
-<p>Everything is rendered in SVG!</p>
-
-<p>A few weeks ago, I wrote a blog titled <a href="">“Interactive Maps with d3.js”</a>. Check that for how the map is generated with TopoJSON.</p>
-
-<div class="divider"></div>
-
-<h3 id="goal-1"><a href="">Goal:</a></h3>
-
 <script src="airport/jquery-1.10.2.js"></script>
 
 <script src="airport/d3.v3.min.js"></script>
@@ -152,6 +133,347 @@
 
 <script src="airport/airport_viz.js"></script>
 
+<blockquote>
+  <p>This is an academic project for I590: Data Visualization course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>. Visit the project <a href="http://www.santhoshfiddle.com/geoSample/index.html">page</a> for more info on this concept ideation and our team.</p>
+</blockquote>
+
+<div class="myNote"></div>
+
+<div class="divider"></div>
+
+<h3 id="overview"><a href="">Overview:</a></h3>
+
+<p>This is a walkthrough of my project on creating interactive transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
+
+<p>Everything here is rendered in SVG!</p>
+
+<p>Check my blog titled <a href="">“Basemaps with d3.js”</a> for how the US map is generated with TopoJSON and many other ways of representing cartograms.</p>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<h5>United States - Basemap:</h5>
+
+<div id="states">
+<script type="text/javascript">
+(function() {
+
+var projection = d3.geo.albersUsa()
+    .scale(1000)
+    .translate([800/2, 500/2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("#states").append("svg")
+    .attr("width", 750)
+    .attr("height", 500);
+
+d3.json("airport/us.json", function(error, us) {
+  if (error) return console.error(error);
+  console.log(us);
+
+  svg.selectAll("path")
+     .data(topojson.feature(us, us.objects.states).features)
+      .enter()
+      .append("path")
+      .attr("d", path)
+      .attr("fill", "LightGray")
+      .attr("stroke", "White")
+      .on("mouseover", function(d) {
+          d3.select(this).style("fill", "CornflowerBlue");
+          })                  
+      .on("mouseout", function(d) {
+           d3.select(this).style("fill", "LightGray");
+          });
+
+});
+
+
+})();
+</script>
+</div>
+
+<p>The .on(“mouseover”,…) part is what makes this map interactive!</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="kd">var</span> <span class="nx">projection</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">geo</span><span class="p">.</span><span class="nx">albersUsa</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">scale</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">translate</span><span class="p">([</span><span class="mi">800</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="o">/</span><span class="mi">2</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">geo</span><span class="p">.</span><span class="nx">path</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">projection</span><span class="p">(</span><span class="nx">projection</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"#states"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+
+<span class="nx">d3</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="s2">"airport/us.json"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">us</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">us</span><span class="p">);</span>
+
+  <span class="nx">svg</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">"path"</span><span class="p">)</span>
+     <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">topojson</span><span class="p">.</span><span class="nx">feature</span><span class="p">(</span><span class="nx">us</span><span class="p">,</span> <span class="nx">us</span><span class="p">.</span><span class="nx">objects</span><span class="p">.</span><span class="nx">states</span><span class="p">).</span><span class="nx">features</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"path"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"LightGray"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"stroke"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"mouseover"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"CornflowerBlue"</span><span class="p">);</span>
+          <span class="p">})</span>                  
+      <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"mouseout"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"LightGray"</span><span class="p">);</span>
+          <span class="p">});</span>
+<span class="p">});</span>
+<span class="p">})();</span></code></pre></figure>
+
+<div class="divider"></div>
+
+<div class="divider"></div>
+
+<p>A basemap is set at this point, lets go ahead and place the bar objects based on the geo-location or Lat/Long values that we pass along as a javascript variable “sampleData”.</p>
+
+<div id="unitedstates">
+<script type="text/javascript">
+(function() {
+
+var projection = d3.geo.albersUsa()
+    .scale(1000)
+    .translate([800/2, 500/2]);
+
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("#unitedstates").append("svg")
+    .attr("width", 750)
+    .attr("height", 500);
+
+d3.json("airport/us.json", function(error, us) {
+  if (error) return console.error(error);
+  console.log(us);
+
+  svg.selectAll("path")
+     .data(topojson.feature(us, us.objects.states).features)
+      .enter()
+      .append("path")
+      .attr("d", path)
+      .attr("fill", "LightGray")
+      .attr("stroke", "White");
+
+
+
+var  sampleData = [ {"name": "San Francisco", "coordinates": [-122.417,37.783], "barheight": 100},
+            {"name": "Indiana", "coordinates": [-86.682,39.52], "barheight": 50},
+            {"name": "NewYork", "coordinates": [-73.778,40.63], "barheight": 80}              
+            ];
+
+  bars = svg.selectAll("g")
+    .data(sampleData)
+    .enter()
+    .append("g")
+    .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
+    
+    bars.append("rect")
+    .attr("transform", "rotate(180)")
+    .attr('width', 10)
+    .attr('height',  0)
+    .style("fill", "CornflowerBlue")
+    .attr('height',  function(d) {return d.barheight});
+
+      bars.append("text")
+      .style({
+        'fill':'#050505',
+        'font-family':'sans-serif',
+        'font-size':'7px'
+      })  
+      .attr("dy", ".80em")
+    .attr("text-anchor", "start") 
+    .text(function(d) {return d.name});
+
+
+  });
+
+
+})();
+</script>
+</div>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span>  <span class="nx">sampleData</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"San Francisco"</span><span class="p">,</span> <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">122.417</span><span class="p">,</span><span class="mf">37.783</span><span class="p">],</span> <span class="s2">"barheight"</span><span class="p">:</span> <span class="mi">100</span><span class="p">},{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Indiana"</span><span class="p">,</span> <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">86.682</span><span class="p">,</span><span class="mf">39.52</span><span class="p">],</span> <span class="s2">"barheight"</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"NewYork"</span><span class="p">,</span> <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">73.778</span><span class="p">,</span><span class="mf">40.63</span><span class="p">],</span> <span class="s2">"barheight"</span><span class="p">:</span> <span class="mi">80</span><span class="p">}];</span>
+
+  <span class="nx">bars</span> <span class="o">=</span> <span class="nx">svg</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">"g"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">sampleData</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"g"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"transform"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="s2">"translate("</span> <span class="o">+</span> <span class="nx">projection</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">coordinates</span><span class="p">)</span> <span class="o">+</span> <span class="s2">")"</span><span class="p">;});</span>
+    
+  <span class="nx">bars</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"transform"</span><span class="p">,</span> <span class="s2">"rotate(180)"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"CornflowerBlue"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">barheight</span><span class="p">});</span>
+
+  <span class="nx">bars</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"text"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">style</span><span class="p">({</span>
+       <span class="s1">'fill'</span><span class="p">:</span><span class="s1">'#050505'</span><span class="p">,</span>
+       <span class="s1">'font-family'</span><span class="p">:</span><span class="s1">'sans-serif'</span><span class="p">,</span>
+       <span class="s1">'font-size'</span><span class="p">:</span><span class="s1">'7px'</span>
+      <span class="p">})</span>  
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"dy"</span><span class="p">,</span> <span class="s2">".80em"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"text-anchor"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">)</span> 
+    <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">name</span><span class="p">});</span>
+
+      </code></pre></figure>
+
+<div class="divider"></div>
+
+<p>And to create the bar transition representing the magnitude of flights in each airport is done in the following way:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">bars</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"transform"</span><span class="p">,</span> <span class="s2">"rotate(180)"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"CornflowerBlue"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">transition</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">delay</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">20</span><span class="p">;</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">15000</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nx">d</span><span class="p">.</span><span class="nx">barheight</span><span class="p">});</span>
+
+        </code></pre></figure>
+
+<div class="divider"></div>
+<p>Once the bars and their magnitudes are passed to the “bars” svg variable, we are set to make the final transition of the bar into a rectangle that can hold text in it.</p>
+
+<p>And I wont claim this as to be an ideal way to create a tooltip, infact this is not intented to be a tooltip but an overlay of line graphs similar to <a href="http://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html">this @nytime_upshot</a> on mouseover event!</p>
+
+<div id="trans">
+<script type="text/javascript">
+(function() {
+var border=1;
+var bordercolor='black';
+
+var svg = d3.select("#trans").append("svg")
+	.attr('border', border)
+    .attr('width',740)
+	.attr('height',300);
+
+var borderPath = svg.append("rect")
+       			.attr("x", 0)
+       			.attr("y", 0)
+       			.attr("height", 300)
+       			.attr("width", 740)
+       			.style("stroke", bordercolor)
+       			.style("fill", "none")
+       			.style("stroke-width", border);
+
+
+	svg.append('rect').style('fill', '#005fcc')
+	    .attr("y", 20)
+		.attr("x", 20)
+        .attr('width', 15)
+        .attr('height', 100)
+        .attr("transform", function(d) {
+        	movinText = svg.append("text")
+			      .attr("y", 300)
+			      .attr("x", 800)
+			      .style("fill", "LightGrey")
+			      .style("font-size", "17px")
+			      .style("font-weight", "bold")
+			      .text("Denver International Airport").style('opacity', 0);
+        })
+        .on('mouseover',function(d) {
+		    d3.select(this).transition()
+		            .style('opacity', 1)
+		            .style('fill', "000066")
+		            .attr('width',  300)
+		            .attr('height',  160)
+		    movinText.style('opacity', 0.9)
+                    .transition()
+                    .attr("y", 100)
+                    .attr("x", 60)
+                    .duration(500)
+        })
+        .on('mouseout',function(d) {
+		    d3.select(this).transition()
+		            .style('opacity', 1)
+		            .style('fill', "#005fcc")
+		            .attr('width',  20)
+		            .attr('height',  100)
+		    movinText
+                    .transition()
+                    .attr("y", 300)
+                    .attr("x", 800)
+                    .style('opacity', 0)
+                    .duration(500)
+        })
+        
+        
+
+})();
+</script>
+</div>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"#trans"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span><span class="mi">700</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span>
+
+	<span class="nx">svg</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'rect'</span><span class="p">).</span><span class="nx">style</span><span class="p">(</span><span class="s1">'fill'</span><span class="p">,</span> <span class="s1">'#005fcc'</span><span class="p">)</span>
+	    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+		<span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"transform"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+        	<span class="nx">movinText</span> <span class="o">=</span> <span class="nx">svg</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"text"</span><span class="p">)</span>
+			      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+			      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+			      <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"LightGrey"</span><span class="p">)</span>
+			      <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"font-size"</span><span class="p">,</span> <span class="s2">"17px"</span><span class="p">)</span>
+			      <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"font-weight"</span><span class="p">,</span> <span class="s2">"bold"</span><span class="p">)</span>
+			      <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">"Denver International Airport"</span><span class="p">).</span><span class="nx">style</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'mouseover'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+		    <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">transition</span><span class="p">()</span>
+		            <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+		            <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'fill'</span><span class="p">,</span> <span class="s2">"000066"</span><span class="p">)</span>
+		            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span>  <span class="mi">300</span><span class="p">)</span>
+		            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span>  <span class="mi">160</span><span class="p">)</span>
+		    <span class="nx">movinText</span><span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">transition</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'mouseout'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+		    <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">transition</span><span class="p">()</span>
+		            <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+		            <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'fill'</span><span class="p">,</span> <span class="s2">"#005fcc"</span><span class="p">)</span>
+		            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'width'</span><span class="p">,</span>  <span class="mi">20</span><span class="p">)</span>
+		            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'height'</span><span class="p">,</span>  <span class="mi">100</span><span class="p">)</span>
+		    <span class="nx">movinText</span>
+                    <span class="p">.</span><span class="nx">transition</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s1">'opacity'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+        <span class="p">})</span>
+        
+        
+
+<span class="p">})();</span></code></pre></figure>
+
+<div class="divider"></div>
+
+<p>Putting things together would result in the visualization shown <a href="http://www.santhoshfiddle.com/geoSample/index.html">here!</a></p>
+
+<p>I hope this is helpfull in building an interactive map based visualization, I posted another blogpost on bubble plot on maps where the Year Clock is implemented.</p>
 
 			   <hr>
 			   <div class="related-posts">
@@ -165,7 +487,7 @@
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/post2.html">Neo4j Based Graph Schema Alternative for Facebook DB</a></strong>
+								 	<strong><a href="/post2.html">Neo4j Based Graph Schema Alternative for Facebook's DB</a></strong>
 								 </h6>
 							 </div>
 						</div>
@@ -178,20 +500,7 @@
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/post3.html">A Precinct-Level Choropleth Map of Election Results</a></strong>
-								 </h6>
-							 </div>
-						</div>
-					
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4">
-								 <h6 style="text-align: right">
-								 	June  5, 2013
-								 </h6>
-							 </div>
-							 <div class="col-sm-8 col-md-8 col-lg-8">
-								 <h6 style="text-align: left">
-								 	<strong><a href="/post5.html">A Full and Comprehensive Style Test (HTML)cc</a></strong>
+								 	<strong><a href="/post3.html">My Critique on Precinct-Level Choropleth Map</a></strong>
 								 </h6>
 							 </div>
 						</div>
