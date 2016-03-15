@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-02-22T13:27:21Z</updated>
+  <updated>2016-03-15T17:18:51Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -14,103 +14,9 @@
   <rights type="text">Copyright © 2016 Santhosh. All rights reserved.</rights>
   
   <entry>
-  <title type="text">Neo4j Based Graph Schema Alternative for Facebook&#39;s DB</title>
-  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post2.html" />
-  <id>http://santhosh114.github.io//post2</id>
-  <published>2016-01-19T00:00:00Z</published>
-  <updated>2016-01-19T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;" /></p>
-
-<blockquote>
-  <p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p>
-</blockquote>
-
-<div class="divider"></div>
-
-<h3 id="objective"><a href="">Objective:</a></h3>
-
-<p>To host a very large and complex data such as the Facebook’s friends network graph data.</p>
-<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;" /></p>
-<p>Provide efficient data search and access. </p>
-
-<ul>
-  <li>A traditional RDBMS model</li>
-  <li>Drawbacks of Relational model</li>
-  <li>A more efficient Graph Data Model</li>
-  <li>Timeline Trees</li>
-</ul>
-
-<div class="divider"></div>
-
-<h3 id="limitations-of-relational-data-model"><a href="">Limitations of Relational Data Model:</a></h3>
-
-<p>A typical query in connected data model involves JOIN operations between tables.    
-This leads to expensive search computation.</p>
-<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;" /></p>
-<p><a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Image Source</a>
-Find more at <a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Neo4j discussion on Graph DB vs RDBMS</a></p>
-
-<div class="divider"></div>
-
-<h3 id="graph-relationship-model"><a href="">Graph Relationship Model:</a></h3>
-
-<h5 id="why-graph-database">Why Graph Database?</h5>
-<ul>
-  <li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
-  <li>
-    <p>Data model that evolves in step with the iterative and incremental development.
-        - Rewritable Schema: Can add nodes and relationships dynamically</p>
-  </li>
-  <li>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</li>
-  <li>Memory use or Latency of a query with a join is obliterated</li>
-  <li>Average Speed of Graph Database
-        - 4 million nodes/ sec!</li>
-  <li>Geared towards Pattern Mining – the search queries natively look for patterns.
-Eg. It searches Common Friends based on common profile properties such as
-                          - Location
-                          - Education
-                          - Work etc.</li>
-</ul>
-
-<div class="divider"></div>
-
-<h3 id="graph-schema-entities"><a href="">Graph Schema Entities:</a></h3>
-
-<h5 id="node">Node</h5>
-<ul>
-  <li>Node is an entity bag/object containing attributes 
-             {eg. – name, age, location etc. }</li>
-  <li>Relationship is a named &amp; directed entity that produce a schematic structure</li>
-  <li>It can have properties like strength/weight, cardinality</li>
-  <li>Weights in relationships are used for shortest path traversals</li>
-</ul>
-
-<div class="divider"></div>
-
-<h3 id="labeled-property-graphneo4j">Labeled property graph<a href="">(neo4j)</a></h3>
-
-<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;" /></p>
-<p>Labels in property graph facilitate defining &amp; finding patterns using ASCII –Art &amp; deriving instances that contain a path expression</p>
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure>
-
-<p>Similar objects can contain different set of properties in a Labeled property graph!</p>
-
-<div class="divider"></div>
-
-<h3 id="timeline-trees"><a href="">Timeline Trees:</a></h3>
-
-<p>To search posts/events over a specific period of time.</p>
-<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;" /></p>
-
- ]]></content>
-</entry>
-
-
-  <entry>
   <title type="text">Interactive Visualization of US Airport Evolution</title>
-  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post1.html" />
-  <id>http://santhosh114.github.io//post1</id>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//airport.html" />
+  <id>http://santhosh114.github.io//airport</id>
   <published>2015-11-10T00:00:00Z</published>
   <updated>2015-11-10T00:00:00Z</updated>
   <content type="html"><![CDATA[ <div id="us_states">
@@ -469,11 +375,214 @@ var borderPath = svg.append("rect")
 
 
   <entry>
+  <title type="text">Bubble plots for Salary outcomes of US College Majors</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//collegemajors.html" />
+  <id>http://santhosh114.github.io//collegemajors</id>
+  <published>2015-10-25T00:00:00Z</published>
+  <updated>2015-10-25T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <iframe width="804" height="470" frameborder="0" scrolling="no" src="https://plot.ly/~sandyorbit/2.embed"></iframe>
+
+<h3 id="overview"><a href="">Overview:</a></h3>
+
+<p>This is an exploratory analysis of salary outcomes across various majors in the US.
+Also it would attempt to give the viewer a quick view of how various college majors are placed in the job market relatively. This features mean salaries and respective 25th and 75th percentile salary plotted to give a comprehensive outlook towards the salary distributiion itself in the following posts.</p>
+
+<h3 id="dataset"><a href="">Dataset:</a></h3>
+<p>Although this data is smaller in size, it is a high dimentional sample with 17 features that makes it interesting for us to work with.
+Our dataset is sourced from census.org of college majors 2012-13 from <a href="https://github.com/fivethirtyeight/data/tree/master/college-majors">fivethirtyeight</a></p>
+
+<h3 id="visualization-technique"><a href="">Visualization Technique:</a></h3>
+
+<p>We have used the Bubble plot to visualize the magnitude of the student sample in terms of area of the bubble, the y-axis is the median salary of college majors, the x-axis is the total number of employed students in the respective majors. Bubbles are color coded besed on the type of major.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Bubble plot of Median salary Vs number of students employed. </span>
+
+<span class="c"># We used four variables to give a comprehensive view of the college majors salary outcomes</span>
+<span class="c"># and those are:  1)Median salary in X-axis</span>
+<span class="c">#                 2)Employed # of students</span>
+<span class="c">#                 3)Color code for each major based on the major code</span>
+<span class="c">#                 4)Bubble area for the total number of students graduated. </span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="kn">as</span> <span class="nn">py</span>         
+<span class="c"># plot.ly is the api that we used to get the color smoothening and spacial spread</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>                     
+<span class="c"># (*) urllib2 for in-session downloads</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="c"># Import data file from URL into pd datafram in session</span>
+<span class="n">salary_data_url</span> <span class="o">=</span> <span class="s">'https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/all-ages.csv'</span>
+<span class="n">data_file</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">salary_data_url</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">','</span><span class="p">)</span>
+
+<span class="n">unemp_data_url</span> <span class="o">=</span> <span class="s">'https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/recent-grads.csv'</span>
+<span class="n">data_file2</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">unemp_data_url</span><span class="p">)</span>
+<span class="n">unemp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">','</span><span class="p">)</span>
+
+<span class="n">salary_bubble</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>          
+<span class="c"># set new figure object to pass it to the plot.ly api </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">salary_bubble</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>  
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Number of Employed Students'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Median salary'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">25000</span><span class="p">,</span> <span class="mi">110000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">2100000</span><span class="p">])</span>
+
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'Employed_full_time_year_round'</span><span class="p">],</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'Median'</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">'Major_code'</span><span class="p">],</span>                <span class="c"># using majorcode as our color scale</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'Total'</span><span class="p">]),</span>             <span class="c"># taking square root to set the area for the bubbles  </span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s">'w'</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i_X</span><span class="p">,</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="n">X</span><span class="p">[</span><span class="s">'Employed_full_time_year_round'</span><span class="p">],</span>
+        <span class="n">X</span><span class="p">[</span><span class="s">'Median'</span><span class="p">],</span>
+        <span class="n">X</span><span class="p">[</span><span class="s">'Major'</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span>              <span class="c"># only the first 15 letters</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">'center'</span>
+    <span class="p">)</span></code></pre></figure>
+
+<p><img src="../static/img/blog/college/1.png" border="5" alt="Responsive image" /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="kn">as</span> <span class="nn">cf</span>             
+<span class="c">#importing cufflinks api to set the zooming for the plot</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">set_config_file</span><span class="p">(</span><span class="n">offline</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s">'pearl'</span><span class="p">)</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot_mpl</span><span class="p">(</span><span class="n">salary_bubble</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">'s6_bubble-chart'</span><span class="p">)</span> <span class="c">#passing the salary object to get the plot.ly style graph</span></code></pre></figure>
+
+<p><img width="804" height="380" src="../static/img/blog/college/2.png" border="5" alt="Responsive image" /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">pylab</span> <span class="kr">import</span> <span class="o">*</span>
+<span class="nx">from</span> <span class="nx">scipy</span> <span class="kr">import</span> <span class="o">*</span>
+<span class="kr">import</span> <span class="nx">matplotlib</span><span class="p">.</span><span class="nx">pyplot</span> <span class="nx">as</span> <span class="nx">plt</span>
+<span class="kr">import</span> <span class="nx">numpy</span> <span class="nx">as</span> <span class="nx">np</span>
+<span class="kr">import</span> <span class="nx">pandas</span> <span class="nx">as</span> <span class="nx">pd</span>
+
+
+<span class="nx">output_category</span><span class="o">=</span><span class="p">[]</span>                
+<span class="err">#</span> <span class="nx">a</span> <span class="nx">list</span> <span class="nx">to</span> <span class="nx">store</span> <span class="nx">all</span> <span class="nx">the</span> <span class="nx">categories</span>  
+<span class="k">for</span> <span class="nx">xcategory</span> <span class="k">in</span> <span class="nx">df</span><span class="p">[</span><span class="s1">'Major_category'</span><span class="p">]</span><span class="err">:</span>
+    <span class="k">if</span> <span class="nx">xcategory</span> <span class="nx">not</span> <span class="k">in</span> <span class="nx">output_category</span><span class="err">:</span>
+        <span class="nx">output_category</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">xcategory</span><span class="p">)</span>
+
+<span class="nx">print</span> <span class="nx">len</span><span class="p">(</span><span class="nx">output_category</span><span class="p">)</span>        
+<span class="err">#</span><span class="nx">check</span> <span class="nx">the</span> <span class="nx">length</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">list</span> <span class="nx">of</span> <span class="nx">categories</span> <span class="nx">to</span> <span class="nx">set</span> <span class="nx">colors</span> <span class="nx">based</span> <span class="nx">on</span> <span class="nx">its</span> <span class="nx">number</span>  
+
+<span class="nx">colour</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"teal"</span><span class="p">,</span><span class="s2">"brown"</span><span class="p">,</span><span class="s2">"goldenrod"</span><span class="p">,</span> <span class="s2">"purple"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span>     
+          <span class="s2">"mediumspringgreen"</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">,</span><span class="s2">"cyan"</span><span class="p">,</span><span class="s2">"deeppink"</span><span class="p">,</span> 
+          <span class="s2">"yellow"</span><span class="p">,</span><span class="s2">"pink"</span><span class="p">,</span> <span class="s2">"gold"</span><span class="p">,</span><span class="s2">"olive"</span><span class="p">,</span><span class="s2">"orchid"</span><span class="p">,</span><span class="s2">"tomato"</span><span class="p">,</span><span class="s2">"dodgerblue"</span><span class="p">,</span><span class="s2">"darkorange"</span> <span class="p">]</span>
+<span class="err">#</span> <span class="nx">setting</span> <span class="nx">colors</span> <span class="nx">manually</span> <span class="nx">and</span> <span class="nx">I</span> <span class="nx">chose</span> <span class="nx">minimal</span> <span class="nx">color</span> <span class="nx">palette</span> 
+
+
+<span class="nx">cat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">area</span><span class="o">=</span><span class="p">[]</span>
+<span class="nx">category_employed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">category_median</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">small_fig_bubble</span> <span class="o">=</span> <span class="nx">plt</span><span class="p">.</span><span class="nx">figure</span><span class="p">()</span>
+
+<span class="err">#</span><span class="s1">'for'</span> <span class="nx">loop</span> <span class="nx">to</span> <span class="nx">set</span> <span class="nx">the</span> <span class="nx">values</span> <span class="nx">of</span> <span class="nx">those</span> <span class="mi">16</span> <span class="nx">majors</span> <span class="nx">by</span> <span class="nx">taking</span> <span class="nx">the</span> <span class="nx">mean</span> <span class="nx">salaries</span><span class="p">,</span><span class="nx">totals</span> <span class="nx">etc</span>
+<span class="k">for</span> <span class="nx">category</span> <span class="k">in</span> <span class="nx">output_category</span><span class="err">:</span>       
+    <span class="nx">cat</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">category</span><span class="p">)</span>
+    <span class="nx">category_employed</span><span class="p">.</span><span class="nx">append</span><span class="p">((</span><span class="nx">np</span><span class="p">.</span><span class="nx">mean</span><span class="p">(</span><span class="nx">df</span><span class="p">[</span><span class="nx">df</span><span class="p">[</span><span class="s1">'Major_category'</span><span class="p">]</span> <span class="o">==</span> <span class="nx">category</span><span class="p">].</span><span class="nx">Employed</span><span class="p">)))</span>
+    <span class="nx">category_median</span><span class="p">.</span><span class="nx">append</span><span class="p">((</span><span class="nx">np</span><span class="p">.</span><span class="nx">mean</span><span class="p">(</span><span class="nx">df</span><span class="p">[</span><span class="nx">df</span><span class="p">[</span><span class="s1">'Major_category'</span><span class="p">]</span> <span class="o">==</span> <span class="nx">category</span><span class="p">].</span><span class="nx">Median</span><span class="p">)))</span>
+    <span class="nx">area</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="nx">sqrt</span><span class="p">((</span><span class="nx">np</span><span class="p">.</span><span class="nx">mean</span><span class="p">(</span><span class="nx">df</span><span class="p">[</span><span class="nx">df</span><span class="p">[</span><span class="s1">'Major_category'</span><span class="p">]</span> <span class="o">==</span> <span class="nx">category</span><span class="p">].</span><span class="nx">Total</span><span class="p">))))</span>  <span class="err">#</span><span class="nx">the</span> <span class="nx">area</span> <span class="nx">is</span> <span class="nx">magnified</span> <span class="nx">by</span> <span class="mi">6</span> <span class="nx">times</span> <span class="nx">to</span> <span class="nx">show</span> <span class="nx">a</span> <span class="nx">real</span> <span class="nx">sense</span> <span class="nx">of</span> <span class="nx">area</span><span class="p">.</span>
+
+<span class="k">for</span> <span class="nx">vals</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span><span class="err">:</span>
+    <span class="nx">text</span><span class="p">(</span><span class="nx">category_employed</span><span class="p">[</span><span class="nx">vals</span><span class="p">],</span> <span class="nx">category_median</span><span class="p">[</span><span class="nx">vals</span><span class="p">],</span> <span class="nx">cat</span><span class="p">[</span><span class="nx">vals</span><span class="p">],</span> <span class="nx">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>  <span class="err">#</span><span class="nx">infusing</span> <span class="nx">the</span> <span class="nx">lables</span> <span class="nx">into</span> <span class="nx">the</span> <span class="mi">16</span> <span class="nx">categories</span>
+
+    
+<span class="nx">scatter</span><span class="p">(</span><span class="nx">category_employed</span><span class="p">,</span><span class="nx">category_median</span><span class="p">,</span><span class="nx">c</span><span class="o">=</span><span class="nx">colour</span><span class="p">,</span><span class="nx">s</span><span class="o">=</span><span class="nx">area</span><span class="p">,</span><span class="nx">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="nx">edgecolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span><span class="nx">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="nx">plt</span><span class="p">.</span><span class="nx">xlabel</span><span class="p">(</span><span class="s1">'Number of Employed Students'</span><span class="p">)</span>
+<span class="nx">plt</span><span class="p">.</span><span class="nx">ylabel</span><span class="p">(</span><span class="s1">'Median salary'</span><span class="p">)</span>
+<span class="nx">plt</span><span class="p">.</span><span class="nx">ylim</span><span class="p">([</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">])</span>
+<span class="nx">plt</span><span class="p">.</span><span class="nx">xlim</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">660000</span><span class="p">])</span>
+<span class="nx">show</span><span class="p">()</span>                     <span class="err">#</span> <span class="nx">we</span> <span class="nx">get</span> <span class="nx">a</span> <span class="nx">clearer</span> <span class="nx">picture</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">story</span> <span class="nx">by</span> <span class="nx">categorizing</span> <span class="nx">the</span> <span class="nx">data</span> <span class="nx">points</span></code></pre></figure>
+
+<p><img src="../static/img/blog/college/3.png" border="5" alt="Responsive image" /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="kn">as</span> <span class="nn">cf</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">set_config_file</span><span class="p">(</span><span class="n">offline</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s">'pearl'</span><span class="p">)</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot_mpl</span><span class="p">(</span><span class="n">small_fig_bubble</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">'s6_bubble-chart'</span><span class="p">)</span>       
+<span class="c"># again we want to use plot.ly to give a pritty image of the above visualization</span>
+<span class="c"># but this time around the colors have been chosen and set by us! </span></code></pre></figure>
+
+<iframe width="804" height="470" frameborder="0" scrolling="no" src="https://plot.ly/~sandyorbit/2.embed"></iframe>
+
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">Diceyness of Visual Perception</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//steve.html" />
+  <id>http://santhosh114.github.io//steve</id>
+  <published>2015-10-08T00:00:00Z</published>
+  <updated>2015-10-08T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <p><img src="../static/img/blog/steve/main.png" alt="Test Image" style="width:680px;height:450px;" /></p>
+
+<blockquote>
+  <p>This is an extract from I590: Data Visualization course discussions at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>.</p>
+</blockquote>
+
+<h3 id="overview"><a href="">Overview:</a></h3>
+<p>Information Visualization is a marriage of multiple disciplines such as Psychology, Human Computer Interaction and Data Science, which again includes Computer Science, and Statistics! So they’re many reasons to be intrigued by its sheer depth and this post quickly gives a glimpse of Psychological aspect of Information Visualization.</p>
+
+<p>In terms of our visual apparatus, we’re not as good at judging differences in certain parameters and NOT good at some and Stevens’ Power Law gives us a quick way to measure this phenomenon.</p>
+
+<h3 id="stevens-power-law"><a href="">Stevens’ Power Law:</a></h3>
+<p>The general form of the law is</p>
+
+<script type="math/tex; mode=display">\psi(I) = kI^a,</script>
+
+<p>where \( I \) is the magnitude of the physical stimulus, \( \psi(I) \) is the subjective magnitude of the sensation evoked by the stimulus, \( a \) is an exponent that depends on the type of stimulation and \( k \) is a proportionality constant that depends on the units used.</p>
+<div class="divider"></div>
+
+<p><img src="../static/img/blog/steve/steve.png" alt="Test Image" style="width:438px;height:450px;" /></p>
+<p><a href="http://d.hatena.ne.jp/keiono/20110324/1301049705">Image Source</a></p>
+
+<p>Charting this out gives us an interesting array of stimulus and from the below image one can generalize the stimulus exaggeration that happens with the responses below the line (Length n=1.0) namely area, loudness and brightness. This means the change in these parameters (area, loudness and brightness) is in some way underestimated by the human perception and the reverse is true for the upper side of the line. This is why we give careful consideration while designing an infographic with colors and their brightness. <a href="http://www.santhoshfiddle.com/post3.html">My case-study on choropleth maps</a></p>
+
+<h3 id="example-length-vs-area"><a href="">Example: Length vs Area</a></h3>
+<p>From Stevens’ Power Law we can immediately conclude that we’re not as good at judging differences area as we are in length. We use length as a means to judge sizes and therefore tend to underestimate differences in areas especially of the circles.</p>
+<p><img src="../static/img/blog/steve/comp.png" alt="Test Image" style="width:640px;height:266px;" /></p>
+
+<p>For this reason, a circle that actually has 3x the area of another appears comparable because our brain is relating their radii, which differ by a factor of 1.72x.</p>
+
+<p><img src="../static/img/blog/steve/circle.png" alt="Test Image" style="width:600px;height:350px;" /></p>
+<p>The above comparison is from <a href="http://vis.stanford.edu/files/2010-MTurk-CHI.pdf">Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design</a> by Jeffrey Heer and Michael Bostock.</p>
+
+<div class="divider"></div>
+
+<p>And an interesting ordering of these visual elements for general use is listed <a href="http://hci.stanford.edu/courses/cs448b/w09/lectures/20090126-Perception.pdf">here</a> by Jeffrey Heer @Stanford HCI Group lectures.</p>
+<p><img src="../static/img/blog/steve/heer.png" alt="Test Image" style="width:700px;height:490px;" /></p>
+
+<div class="divider"></div>
+
+<h3 id="pie"><a href="">Pie:</a></h3>
+<p>This is one reason why one of the most overused pie charts are getting dicey at a point where you wants to really visualize information in a precise way.</p>
+
+<p><img src="../static/img/blog/steve/pie.png" alt="Test Image" style="width:500px;height:480px;" /></p>
+
+ ]]></content>
+</entry>
+
+
+  <entry>
   <title type="text">My Critique on Precinct-Level Choropleth Map</title>
-  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//post3.html" />
-  <id>http://santhosh114.github.io//post3</id>
-  <published>2015-10-05T00:00:00Z</published>
-  <updated>2015-10-05T00:00:00Z</updated>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//critique.html" />
+  <id>http://santhosh114.github.io//critique</id>
+  <published>2015-09-05T00:00:00Z</published>
+  <updated>2015-09-05T00:00:00Z</updated>
   <content type="html"><![CDATA[ <p><img src="../static/img/blog/critique/main.png" alt="Test Image" style="width:704px;height:427px;" /></p>
 
 <blockquote>
@@ -527,6 +636,100 @@ Give an idea of how each area compares with other in terms of number and spread 
 
 <p>State wise polling data is sourced from the corresponding state’s Board of Elections, therefore the probe for data integrity will be simply out of question, at least from where I stand. 
 Streets data by OpenStreetMap contributers.</p>
+
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">Neo4j Based Graph Schema for Facebook’s Friends Network</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//neo4j.html" />
+  <id>http://santhosh114.github.io//neo4j</id>
+  <published>2015-01-19T00:00:00Z</published>
+  <updated>2015-01-19T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;" /></p>
+
+<blockquote>
+  <p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p>
+</blockquote>
+
+<div class="divider"></div>
+
+<h3 id="objective"><a href="">Objective:</a></h3>
+
+<p>To host a very large and complex data such as the Facebook’s friends network graph data.</p>
+<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;" /></p>
+<p>Provide efficient data search and access. </p>
+
+<ul>
+  <li>A traditional RDBMS model</li>
+  <li>Drawbacks of Relational model</li>
+  <li>A more efficient Graph Data Model</li>
+  <li>Timeline Trees</li>
+</ul>
+
+<div class="divider"></div>
+
+<h3 id="limitations-of-relational-data-model"><a href="">Limitations of Relational Data Model:</a></h3>
+
+<p>A typical query in connected data model involves JOIN operations between tables.    
+This leads to expensive search computation.</p>
+<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;" /></p>
+<p><a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Image Source</a>
+Find more at <a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Neo4j discussion on Graph DB vs RDBMS</a></p>
+
+<div class="divider"></div>
+
+<h3 id="graph-relationship-model"><a href="">Graph Relationship Model:</a></h3>
+
+<h5 id="why-graph-database">Why Graph Database?</h5>
+<ul>
+  <li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
+  <li>
+    <p>Data model that evolves in step with the iterative and incremental development.
+        - Rewritable Schema: Can add nodes and relationships dynamically</p>
+  </li>
+  <li>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</li>
+  <li>Memory use or Latency of a query with a join is obliterated</li>
+  <li>Average Speed of Graph Database
+        - 4 million nodes/ sec!</li>
+  <li>Geared towards Pattern Mining – the search queries natively look for patterns.
+Eg. It searches Common Friends based on common profile properties such as
+                          - Location
+                          - Education
+                          - Work etc.</li>
+</ul>
+
+<div class="divider"></div>
+
+<h3 id="graph-schema-entities"><a href="">Graph Schema Entities:</a></h3>
+
+<h5 id="node">Node</h5>
+<ul>
+  <li>Node is an entity bag/object containing attributes 
+             {eg. – name, age, location etc. }</li>
+  <li>Relationship is a named &amp; directed entity that produce a schematic structure</li>
+  <li>It can have properties like strength/weight, cardinality</li>
+  <li>Weights in relationships are used for shortest path traversals</li>
+</ul>
+
+<div class="divider"></div>
+
+<h3 id="labeled-property-graphneo4j">Labeled property graph<a href="">(neo4j)</a></h3>
+
+<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;" /></p>
+<p>Labels in property graph facilitate defining &amp; finding patterns using ASCII –Art &amp; deriving instances that contain a path expression</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure>
+
+<p>Similar objects can contain different set of properties in a Labeled property graph!</p>
+
+<div class="divider"></div>
+
+<h3 id="timeline-trees"><a href="">Timeline Trees:</a></h3>
+
+<p>To search posts/events over a specific period of time.</p>
+<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;" /></p>
 
  ]]></content>
 </entry>

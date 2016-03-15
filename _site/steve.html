@@ -31,7 +31,7 @@
 </script>
 
     
-      <title>Neo4j Based Graph Schema Alternative for Facebook's DB</title>
+      <title>Diceyness of Visual Perception</title>
     
 	
     <!-- Bootstrap -->
@@ -89,30 +89,26 @@
     <div class="container">
 	<div class="blog-post">
 		<div class="col-sm-12"><h2>
-		 <a href="/post2.html">Neo4j Based Graph Schema Alternative for Facebook's DB</a>
+		 <a href="/steve.html">Diceyness of Visual Perception</a>
 		</h2></div>
 	</div>
 	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
 		<h5><div class="col-sm-3" style="text-align:left;">
-		January 19, 2016
+		October  8, 2015
 			
 			</div>
 			<div class="col-sm-9 tagsin">
 			
 			 
-				#Neo4j  &nbsp;
+				#Stevens' Power Law  &nbsp;
 			
 			
 			 
-				#Schema_Design  &nbsp;
+				#pre-attentive conjecture  &nbsp;
 			
 			
 			 
-				#noSQL  &nbsp;
-			
-			
-			 
-				#GraphDB  &nbsp;
+				#AreaVsLength  &nbsp;
 			
 			
 		    </div>
@@ -123,89 +119,50 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="blogpost">
-			  <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;" /></p>
+			  <p><img src="../static/img/blog/steve/main.png" alt="Test Image" style="width:680px;height:450px;" /></p>
 
 <blockquote>
-  <p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p>
+  <p>This is an extract from I590: Data Visualization course discussions at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>.</p>
 </blockquote>
 
+<h3 id="overview"><a href="">Overview:</a></h3>
+<p>Information Visualization is a marriage of multiple disciplines such as Psychology, Human Computer Interaction and Data Science, which again includes Computer Science, and Statistics! So they’re many reasons to be intrigued by its sheer depth and this post quickly gives a glimpse of Psychological aspect of Information Visualization.</p>
+
+<p>In terms of our visual apparatus, we’re not as good at judging differences in certain parameters and NOT good at some and Stevens’ Power Law gives us a quick way to measure this phenomenon.</p>
+
+<h3 id="stevens-power-law"><a href="">Stevens’ Power Law:</a></h3>
+<p>The general form of the law is</p>
+
+<script type="math/tex; mode=display">\psi(I) = kI^a,</script>
+
+<p>where \( I \) is the magnitude of the physical stimulus, \( \psi(I) \) is the subjective magnitude of the sensation evoked by the stimulus, \( a \) is an exponent that depends on the type of stimulation and \( k \) is a proportionality constant that depends on the units used.</p>
 <div class="divider"></div>
 
-<h3 id="objective"><a href="">Objective:</a></h3>
+<p><img src="../static/img/blog/steve/steve.png" alt="Test Image" style="width:438px;height:450px;" /></p>
+<p><a href="http://d.hatena.ne.jp/keiono/20110324/1301049705">Image Source</a></p>
 
-<p>To host a very large and complex data such as the Facebook’s friends network graph data.</p>
-<p><img src="../static/img/blog/fbschema/complex.png" alt="Test Image" style="width:704px;height:79px;" /></p>
-<p>Provide efficient data search and access. </p>
+<p>Charting this out gives us an interesting array of stimulus and from the below image one can generalize the stimulus exaggeration that happens with the responses below the line (Length n=1.0) namely area, loudness and brightness. This means the change in these parameters (area, loudness and brightness) is in some way underestimated by the human perception and the reverse is true for the upper side of the line. This is why we give careful consideration while designing an infographic with colors and their brightness. <a href="http://www.santhoshfiddle.com/post3.html">My case-study on choropleth maps</a></p>
 
-<ul>
-  <li>A traditional RDBMS model</li>
-  <li>Drawbacks of Relational model</li>
-  <li>A more efficient Graph Data Model</li>
-  <li>Timeline Trees</li>
-</ul>
+<h3 id="example-length-vs-area"><a href="">Example: Length vs Area</a></h3>
+<p>From Stevens’ Power Law we can immediately conclude that we’re not as good at judging differences area as we are in length. We use length as a means to judge sizes and therefore tend to underestimate differences in areas especially of the circles.</p>
+<p><img src="../static/img/blog/steve/comp.png" alt="Test Image" style="width:640px;height:266px;" /></p>
 
-<div class="divider"></div>
+<p>For this reason, a circle that actually has 3x the area of another appears comparable because our brain is relating their radii, which differ by a factor of 1.72x.</p>
 
-<h3 id="limitations-of-relational-data-model"><a href="">Limitations of Relational Data Model:</a></h3>
-
-<p>A typical query in connected data model involves JOIN operations between tables.    
-This leads to expensive search computation.</p>
-<p><img src="../static/img/blog/fbschema/limit.png" alt="Test Image" style="width:704px;height:450px;" /></p>
-<p><a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Image Source</a>
-Find more at <a href="http://neo4j.com/developer/graph-db-vs-rdbms/">Neo4j discussion on Graph DB vs RDBMS</a></p>
-
-<div class="divider"></div>
-
-<h3 id="graph-relationship-model"><a href="">Graph Relationship Model:</a></h3>
-
-<h5 id="why-graph-database">Why Graph Database?</h5>
-<ul>
-  <li>Graph Schema: The best possible abstraction for modeling connectedness.</li>
-  <li>
-    <p>Data model that evolves in step with the iterative and incremental development.
-        - Rewritable Schema: Can add nodes and relationships dynamically</p>
-  </li>
-  <li>Answers by traversing (querying) the graph rather than resorting to latent map-reduce computations.</li>
-  <li>Memory use or Latency of a query with a join is obliterated</li>
-  <li>Average Speed of Graph Database
-        - 4 million nodes/ sec!</li>
-  <li>Geared towards Pattern Mining – the search queries natively look for patterns.
-Eg. It searches Common Friends based on common profile properties such as
-                          - Location
-                          - Education
-                          - Work etc.</li>
-</ul>
+<p><img src="../static/img/blog/steve/circle.png" alt="Test Image" style="width:600px;height:350px;" /></p>
+<p>The above comparison is from <a href="http://vis.stanford.edu/files/2010-MTurk-CHI.pdf">Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design</a> by Jeffrey Heer and Michael Bostock.</p>
 
 <div class="divider"></div>
 
-<h3 id="graph-schema-entities"><a href="">Graph Schema Entities:</a></h3>
-
-<h5 id="node">Node</h5>
-<ul>
-  <li>Node is an entity bag/object containing attributes 
-             {eg. – name, age, location etc. }</li>
-  <li>Relationship is a named &amp; directed entity that produce a schematic structure</li>
-  <li>It can have properties like strength/weight, cardinality</li>
-  <li>Weights in relationships are used for shortest path traversals</li>
-</ul>
+<p>And an interesting ordering of these visual elements for general use is listed <a href="http://hci.stanford.edu/courses/cs448b/w09/lectures/20090126-Perception.pdf">here</a> by Jeffrey Heer @Stanford HCI Group lectures.</p>
+<p><img src="../static/img/blog/steve/heer.png" alt="Test Image" style="width:700px;height:490px;" /></p>
 
 <div class="divider"></div>
 
-<h3 id="labeled-property-graphneo4j">Labeled property graph<a href="">(neo4j)</a></h3>
+<h3 id="pie"><a href="">Pie:</a></h3>
+<p>This is one reason why one of the most overused pie charts are getting dicey at a point where you wants to really visualize information in a precise way.</p>
 
-<p><img src="../static/img/blog/fbschema/share copy.png" alt="Test Image" style="width:345px;height:201px;" /></p>
-<p>Labels in property graph facilitate defining &amp; finding patterns using ASCII –Art &amp; deriving instances that contain a path expression</p>
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css">   <span class="o">(</span><span class="nt">person</span><span class="o">)</span><span class="nt">-</span><span class="o">[</span><span class="nd">:LIKE</span><span class="o">]</span><span class="nt">-</span><span class="o">&gt;(</span><span class="nt">thing</span><span class="o">)</span> </code></pre></figure>
-
-<p>Similar objects can contain different set of properties in a Labeled property graph!</p>
-
-<div class="divider"></div>
-
-<h3 id="timeline-trees"><a href="">Timeline Trees:</a></h3>
-
-<p>To search posts/events over a specific period of time.</p>
-<p><img src="../static/img/blog/fbschema/template.png" alt="Test Image" style="width:704px;height:560px;" /></p>
+<p><img src="../static/img/blog/steve/pie.png" alt="Test Image" style="width:500px;height:480px;" /></p>
 
 
 			   <hr>
@@ -215,38 +172,38 @@ Eg. It searches Common Friends based on common profile properties such as
 						<div class="row">
 							 <div class="col-sm-4 col-md-4 col-lg-4">
 								 <h6 style="text-align: right">
-								 	January  5, 2016
-								 </h6>
-							 </div>
-							 <div class="col-sm-8 col-md-8 col-lg-8">
-								 <h6 style="text-align: left">
-								 	<strong><a href="/collegemajors.html">Live Bubble plots for Salary outcomes of US College Majors</a></strong>
-								 </h6>
-							 </div>
-						</div>
-					
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4">
-								 <h6 style="text-align: right">
-								 	November 10, 2015
-								 </h6>
-							 </div>
-							 <div class="col-sm-8 col-md-8 col-lg-8">
-								 <h6 style="text-align: left">
-								 	<strong><a href="/usairport.html">Time Series Visualization of US Airport Evolution</a></strong>
-								 </h6>
-							 </div>
-						</div>
-					
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4">
-								 <h6 style="text-align: right">
 								 	November 10, 2015
 								 </h6>
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
 								 	<strong><a href="/airport.html">Interactive Visualization of US Airport Evolution</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	October 25, 2015
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/collegemajors.html">Bubble plots for Salary outcomes of US College Majors</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	September  5, 2015
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/critique.html">My Critique on Precinct-Level Choropleth Map</a></strong>
 								 </h6>
 							 </div>
 						</div>
@@ -261,8 +218,8 @@ Eg. It searches Common Friends based on common profile properties such as
 <script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 		var disqus_shortname = 'username'; // required: replace example with your forum shortname
-		var disqus_identifier = '/post2.html';
-		var disqus_url = 'http://santhosh114.github.io//post2.html';
+		var disqus_identifier = '/steve.html';
+		var disqus_url = 'http://santhosh114.github.io//steve.html';
  
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {

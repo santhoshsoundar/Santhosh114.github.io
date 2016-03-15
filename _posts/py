@@ -1,0 +1,141 @@
+
+
+
+{% highlight python %}
+###Hence we manahed to get a visualization from 4 variables namely: 
+# 1)Median salary in X-axis
+#                 2)Employed # of students
+#                 3)Color code for each major based on the major code
+#                 4)Bubble area for the total number of students graduated.
+###
+
+
+## We want to plot the indidual major's unemployment rates and we have achieved this with a   horizontal barplot 
+
+
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Import data file from URL into pd datafram in session
+salary_data_url = 'https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/recent-grads.csv'
+data_file = urllib2.urlopen(salary_data_url)
+df_bar = pd.read_csv(data_file, sep=',')
+
+output_category_unemp=[]                # a list to store all the categories  
+for xcategory in df_bar['Major_category']:
+    if xcategory not in output_category_unemp:
+        output_category_unemp.append(xcategory)
+
+category_unemployed = []
+category_men = []
+category_wom = []
+small_fig_bubble = plt.figure()    
+for category in output_category_unemp:       #a for loop to set the values of those 16 majors by taking the mean salaries,totals etc.
+    category_men.append((np.mean(df_bar[df_bar['Major_category'] == category].Men)))
+    category_wom.append((np.mean(df_bar[df_bar['Major_category'] == category].Women)))
+    category_unemployed.append((np.mean(100*(df_bar[df_bar['Major_category'] == category].Unemployment_rate))))
+    
+objects = ('Engineering', 'Business', 'Physical Sciences', 'Law & Public Policy', 'Computers & Mathematics', 'Agriculture & Natural Resources', 'Industrial Arts & Consumer Services', 'Arts', 'Health', 'Social Science', 'Biology & Life Science', 'Education', 'Humanities & Liberal Arts', 'Psychology & Social Work', 'Communications & Journalism', 'Interdisciplinary')
+y_pos = np.arange(len(objects))   # we set the y axis lables 
+performance = category_unemployed
+ 
+
+plt.barh(y_pos, performance, align='center',color='dodgerblue', alpha=0.5)
+plt.yticks(y_pos, objects)
+plt.xlabel('(0-10% shown)')
+plt.ylabel('Majors')
+plt.title('Average Unemployment % for each major')
+plt.rcdefaults()
+plt.show()
+{% endhighlight %}
+
+
+
+#This bar plot shows us the comparitive numbers between Men & Women
+### We use horizontal bar plot to do so! 
+
+
+
+
+{% highlight python %}
+# data to plot
+n_groups = 16
+tuple(category_men)
+tuple(category_wom)
+ 
+# create plot
+fig, ax = plt.subplots()
+index = np.arange(n_groups)
+bar_width = 0.35
+opacity = 0.6
+ 
+rects1 = plt.barh(index, tuple(category_men), bar_width,
+                 alpha=opacity,
+                 color='dodgerblue',
+                 label='Men')
+ 
+rects2 = plt.barh(index + bar_width, tuple(category_wom), bar_width,
+                 alpha=opacity,
+                 color='tomato',
+                 label='Women')
+ 
+
+plt.ylabel('Majors')
+plt.title('Number of students graduated in each Major')
+plt.yticks(index + bar_width, (objects))
+plt.legend()
+plt.show()
+
+{% endhighlight %}
+
+##Box plot and Violin plots: Our major findings are 
+
+####From the Box plot below we will be able to find the major with the highest median salary and we can also see the order of the majors.
+
+####Below that from the violin plot we are able to notice the spread of the majors and the maximum majors have a salary range from 62,000 to 82,000
+
+####And from the other violin plot we see that the maximum number of majors have a unemployment rate spread between the 2% and 7%.
+
+
+{% highlight python %}
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+np.random.seed(sum(map(ord, "categorical")))
+from bokeh.plotting import figure, show
+from bokeh.io import output_notebook
+import csv
+import seaborn as sns
+
+grad_df = []
+grad_df = pd.read_csv('Data.csv', delimiter=',')
+grad_df1 = pd.read_csv('Data1.csv', delimiter=',')
+
+
+x = grad_df['Majors_Num']
+y = grad_df['Averages_majors']
+
+ax = sns.boxplot(x=grad_df['Major_category'], y=grad_df['Grad_median'])
+ax.figure.set_size_inches(12, 8)
+sns.plt.ylim(0,)
+
+sns.set(style="ticks", palette="muted", color_codes=True)
+sns.stripplot(x = x , y = y,jitter=True, size=3, color=".3", linewidth=0)
+
+                            
+f, ax = plt.subplots()
+sns.violinplot(y)
+sns.despine(offset=10, trim=False);
+z = []
+
+z = grad_df1['Grad_unemployment_rate']
+
+z1 = grad_df1['Grad_P25']
+z2 = grad_df1['Grad_P75']
+z3 = grad_df1['Grad_employed']   
+
+f, ax = plt.subplots()
+sns.violinplot(z)
+sns.despine(offset=10, trim=False);
+{% endhighlight %}
