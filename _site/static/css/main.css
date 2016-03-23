@@ -86,12 +86,14 @@ body {
   }
 }
 
+
+
 /* Custom page CSS
 -------------------------------------------------- */
 
 .container {
   width: auto;
-  max-width: 800px;
+  max-width: 900px;
   text-align: center;
 
 }
@@ -238,3 +240,5 @@ blockquote {
 .center {
     text-align: center;
 }
+
+.demo_item{ border:0.3px solid #333333; height:100px ; overflow:hidden;}

@@ -31,7 +31,7 @@
 </script>
 
     
-      <title>DataScience Blog</title>
+      <title>Demo2</title>
     
 	
     <!-- Bootstrap -->
@@ -86,49 +86,159 @@
   </div>
 </nav>
 
-    <section id="about">
-	<div class="container">
-	  
-	  <div id="chart"></div>
-	  <style>@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900,300italic);</style>
-<style>@import url(https://fonts.googleapis.com/css?family=Play:700);</style>
-  <script src="bubble/d3.min.js"></script>
-  <script src="bubble/smallscript.js"></script>
+    <style>.container {
+  width: auto;
+  max-width: 1060px;
+  text-align: center;
 
-
-<div class="sandy_intro">
-	  <h3>I'm <strong>Santhosh</strong>, Data Science graduate student <a href="https://github.com/Santhosh114">@IU</a></h3>
-	  <h3>I play with data counting on Bayesian and Classical Statistics</h3>
-	  <h3>&amp; this site contains posts that are an extract of my study.</h3>
-	  <h3>I love graph data &amp; to discern patterns, I visualize data with D3.js</h3>
-	  <h3>Have a look at some of my<a href="http://www.santhoshfiddle.com/blog.html"> projects</a>.</h3>
-	  <h3>For more check out my academic &amp; professional <a href="https://www.linkedin.com/in/santhoshsoundararajan">Resume</a>.</h3>
-	  <h3>Contact me at <a href="http://twitter.com/Santhosh7114">@Santhosh7114</a> or by <a href="mailto:soundars@umail.iu.edu">email</a>.</h3>
-	  <div class="social">
-	<h4>
-    
-	  <a href="http://github.com/santhosh114"><i class="fa fa-github"></i></a>
-    
-    
-	  <a href="mailto:soundars@umail.iu.edu"><i class="fa fa-envelope"></i></a>
-    
-
-    
-	  <a href="http://twitter.com/Santhosh7114"><i class="fa fa-twitter"></i></a>
-    
-    
-	  <a href="http://linkedin.com/in/Santhosh Soundararajan"><i class="fa fa-linkedin"></i></a>
-    
-    
-	  <a href="http://stackoverflow.com/username"><i class="fa fa-stack-overflow"></i></a>
-    
-	</h4>
-</div>
-
-</div>
-
+}
+</style>
+<div class="container">
+	<div class="blog-post">
+		<div class="col-sm-12"><h2>
+		 <a href="/demo4.html">Demo2</a>
+		</h2></div>
 	</div>
-</section>
+	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
+		<h5><div class="col-sm-3" style="text-align:left;">
+		May 13, 2015
+			
+			</div>
+			<div class="col-sm-9 tagsin">
+			
+			 
+				#D3.js  &nbsp;
+			
+			
+			 
+				#visualization  &nbsp;
+			
+			
+			 
+				#airports  &nbsp;
+			
+			
+			 
+				#map  &nbsp;
+			
+			
+			 
+				#1987-2008  &nbsp;
+			
+			
+		    </div>
+
+
+		</h5>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blogpost">
+			  <style>
+  .state{
+    fill: none;
+    stroke: #99cd0d;
+    stroke-width: 1;
+  }
+  .state:hover{
+    fill-opacity:0.5;
+  }
+  #tooltip {   
+    position: absolute;           
+    text-align: center;
+    padding: 20px;             
+    margin: 10px;
+    font: 12px sans-serif;        
+    background: lightsteelblue;   
+    border: 1px;      
+    border-radius: 2px;           
+    pointer-events: none;         
+  }
+  #tooltip h4{
+    margin:0;
+    font-size:14px;
+  }
+  #tooltip{
+    background:rgba(0,0,0,0.9);
+    border:1px solid grey;
+    border-radius:5px;
+    font-size:12px;
+    width:auto;
+    padding:4px;
+    color:white;
+    opacity:0;
+  }
+  #tooltip table{
+    table-layout:fixed;
+  }
+  #tooltip tr td{
+    padding:0;
+    margin:0;
+  }
+  #tooltip tr td:nth-child(1){
+    width:50px;
+  }
+  #tooltip tr td:nth-child(2){
+    text-align:center;
+  }
+  
+</style>
+
+<div id="tooltip"></div>
+<!-- div to hold tooltip. -->
+<div class="myNote">
+<svg width="1000" height="650" id="statesvg"></svg> <!-- svg to hold the map. -->
+<script src="../static/js/uStates.js"></script> <!-- creates uStates. -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+  function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
+    return "<h4>"+n+"</h4><table>"+
+      "<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
+      "<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
+      "<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
+      "</table>";
+  }
+  
+  var sampleData ={}; /* Sample random data. */ 
+  ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+  "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+  "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+  "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+  "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+    .forEach(function(d){ 
+      var low=Math.round(100*Math.random()), 
+        mid=Math.round(100*Math.random()), 
+        high=Math.round(100*Math.random());
+      sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+          avg:Math.round((low+mid+high)/3), color:d3.interpolate("#e9ff6f", "#037b7f")(low/100)}; 
+    });
+  
+  /* draw states on id #statesvg */ 
+  choropleth.draw("#statesvg", sampleData, tooltipHtml);
+</script>
+</div>
+
+<blockquote>
+  <p>This is an academic project for I590: Data Visualization course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>. Visit the project <a href="http://www.santhoshfiddle.com/geoSample/index.html">page</a> for more info on this concept ideation and our team.</p>
+</blockquote>
+
+<div class="divider"></div>
+
+<h3 id="overview"><a href="">Overview:</a></h3>
+
+<p>This is a walkthrough of my project on creating interactive transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
+
+<p>Everything here is rendered in SVG!</p>
+
+
+			   
+			  
+			</div>
+		</div>
+	</div>
+	
+</div>
 
 
   </div>

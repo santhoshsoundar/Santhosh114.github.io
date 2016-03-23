@@ -9,7 +9,13 @@ tags:
 - Critique
 
 ---
+<style>.container {
+  width: auto;
+  max-width: 800px;
+  text-align: center;
 
+}
+</style>
 <p><img src="../static/img/blog/critique/main.png" alt="Test Image" style="width:704px;height:427px;"/></p>
 
 > This is my critique on the article titled ["The Most Detailed Maps You’ll See From the Midterm Elections"](http://www.nytimes.com/interactive/2014/11/04/upshot/senate-maps.html?_r=0)

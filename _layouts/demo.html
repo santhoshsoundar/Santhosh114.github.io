@@ -1,0 +1,43 @@
+---
+layout: layout
+---
+<style>.container {
+  width: auto;
+  max-width: 1060px;
+  text-align: center;
+
+}
+</style>
+<div class="container">
+	<div class="blog-post">
+		<div class="col-sm-12"><h2>
+		 <a href="{{ page.url }}">{{ page.title }}</a>
+		</h2></div>
+	</div>
+	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
+		<h5><div class="col-sm-3" style="text-align:left;">
+		{{ page.date | date: "%B %e, %Y" }}
+			
+			</div>
+			<div class="col-sm-9 tagsin">
+			{% for tag in page.tags %}
+			 
+				#{{ tag }}  &nbsp;
+			
+			{% endfor %}
+		    </div>
+
+
+		</h5>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blogpost">
+			  {{ content }}
+			   
+			  
+			</div>
+		</div>
+	</div>
+	
+</div>

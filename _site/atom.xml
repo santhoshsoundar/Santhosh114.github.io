@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-03-18T05:35:20Z</updated>
+  <updated>2016-03-23T12:14:22Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -528,7 +528,15 @@ Our dataset is sourced from census.org of college majors 2012-13 from <a href="h
   <id>http://santhosh114.github.io//steve</id>
   <published>2015-10-08T00:00:00Z</published>
   <updated>2015-10-08T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <p><img src="../static/img/blog/steve/main.png" alt="Test Image" style="width:680px;height:450px;" /></p>
+  <content type="html"><![CDATA[ <style>.container {
+  width: auto;
+  max-width: 800px;
+  text-align: center;
+
+}
+</style>
+
+<p><img src="../static/img/blog/steve/main.png" alt="Test Image" style="width:680px;height:450px;" /></p>
 
 <blockquote>
   <p>This is an extract from I590: Data Visualization course discussions at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>.</p>
@@ -583,7 +591,15 @@ Our dataset is sourced from census.org of college majors 2012-13 from <a href="h
   <id>http://santhosh114.github.io//critique</id>
   <published>2015-09-05T00:00:00Z</published>
   <updated>2015-09-05T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <p><img src="../static/img/blog/critique/main.png" alt="Test Image" style="width:704px;height:427px;" /></p>
+  <content type="html"><![CDATA[ <style>.container {
+  width: auto;
+  max-width: 800px;
+  text-align: center;
+
+}
+</style>
+
+<p><img src="../static/img/blog/critique/main.png" alt="Test Image" style="width:704px;height:427px;" /></p>
 
 <blockquote>
   <p>This is my critique on the article titled <a href="http://www.nytimes.com/interactive/2014/11/04/upshot/senate-maps.html?_r=0">“The Most Detailed Maps You’ll See From the Midterm Elections”</a>
@@ -642,12 +658,122 @@ Streets data by OpenStreetMap contributers.</p>
 
 
   <entry>
+  <title type="text">Interactive Choropleth Map - US</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//chloro.html" />
+  <id>http://santhosh114.github.io//chloro</id>
+  <published>2015-08-11T00:00:00Z</published>
+  <updated>2015-08-11T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <style>
+  .state{
+    fill: none;
+    stroke: #99cd0d;
+    stroke-width: 1;
+  }
+  .state:hover{
+    fill-opacity:0.5;
+  }
+  #tooltip {   
+    position: absolute;           
+    text-align: center;
+    padding: 20px;             
+    margin: 10px;
+    font: 12px sans-serif;        
+    background: lightsteelblue;   
+    border: 1px;      
+    border-radius: 2px;           
+    pointer-events: none;         
+  }
+  #tooltip h4{
+    margin:0;
+    font-size:14px;
+  }
+  #tooltip{
+    background:rgba(0,0,0,0.9);
+    border:1px solid grey;
+    border-radius:5px;
+    font-size:12px;
+    width:auto;
+    padding:4px;
+    color:white;
+    opacity:0;
+  }
+  #tooltip table{
+    table-layout:fixed;
+  }
+  #tooltip tr td{
+    padding:0;
+    margin:0;
+  }
+  #tooltip tr td:nth-child(1){
+    width:50px;
+  }
+  #tooltip tr td:nth-child(2){
+    text-align:center;
+  }
+
+</style>
+
+<div id="tooltip"></div>
+<!-- div to hold tooltip. -->
+<div class="myNote">
+<svg width="1000" height="650" id="statesvg"></svg> <!-- svg to hold the map. -->
+<script src="../static/js/uStates.js"></script> <!-- creates uStates. -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+  function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
+    return "<h4>"+n+"</h4><table>"+
+      "<tr><td>Low</td><td>"+(d.low)+"</td></tr>"+
+      "<tr><td>Average</td><td>"+(d.avg)+"</td></tr>"+
+      "<tr><td>High</td><td>"+(d.high)+"</td></tr>"+
+      "</table>";
+  }
+  
+  var sampleData ={}; /* Sample random data. */ 
+  ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+  "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+  "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+  "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+  "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+    .forEach(function(d){ 
+      var low=Math.round(100*Math.random()), 
+        mid=Math.round(100*Math.random()), 
+        high=Math.round(100*Math.random());
+      sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]), 
+          avg:Math.round((low+mid+high)/3), color:d3.interpolate("#e9ff6f", "#037b7f")(low/100)}; 
+    });
+  
+  /* draw states on id #statesvg */ 
+  choropleth.draw("#statesvg", sampleData, tooltipHtml);
+</script>
+</div>
+
+<div class="divider"></div>
+
+<h3 id="infographic-overview"><a href="">Infographic Overview:</a></h3>
+
+<p>This is a Choropleth map of US based on Math.random data(you would notice the data changing for every page refresh) is a thematic map in which areas are shaded or patterned in proportion to the measurement of the statistical variable being displayed on the map, such as population density or per-capita income.</p>
+
+<p>It is interactive in nature by showing some simple stats!</p>
+ ]]></content>
+</entry>
+
+
+  <entry>
   <title type="text">Neo4j Based Graph Schema for Facebook’s Friends Network</title>
   <link rel="alternate" type="text/html" href="http://santhosh114.github.io//neo4j.html" />
   <id>http://santhosh114.github.io//neo4j</id>
   <published>2015-01-19T00:00:00Z</published>
   <updated>2015-01-19T00:00:00Z</updated>
-  <content type="html"><![CDATA[ <p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;" /></p>
+  <content type="html"><![CDATA[ <style>.container {
+  width: auto;
+  max-width: 800px;
+  text-align: center;
+
+}
+</style>
+
+<p><img src="../static/img/blog/fbschema/main.png" alt="Test Image" style="width:704px;height:503px;" /></p>
 
 <blockquote>
   <p>This is an extract of my inclass presentations of Z604:Big Data Analytics for Web and Text course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>. Instructor: <a href="https://www.ils.indiana.edu/people/profile.html?profile_id=100">Xiaozhong Liu</a></p>
