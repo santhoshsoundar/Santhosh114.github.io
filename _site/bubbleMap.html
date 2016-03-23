@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="author" content="Santhosh" />
+    <meta name="description" content="my personal blog and resume">
+    <link rel="favicon" href="static/img/favicon.ico">
+
+<link rel="apple-touch-icon" sizes="57x57" href="static/img/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="static/img/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="static/img/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="static/img/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="static/img/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="static/img/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="static/img/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="static/img/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="static/img/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="static/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="static/img/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="static/img/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    
+      <title>Time-Series Bubble Map</title>
+    
+	
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,200,500,300,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet' type='text/css'>
+    <!-- Google Analytics -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69391421-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+  <!-- Main Body-->
+  <body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+    <!-- Navbar header -->
+    <nav class="navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html"><h1><i class="fa fa-home"></i>santhosh<span>fiddle</span></h1></a>
+
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="https://github.com/Santhosh114">Projects</a></li>
+        <li><a href="https://www.linkedin.com/in/santhoshsoundararajan">Resume</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <style>.container {
+  width: auto;
+  max-width: 900px;
+  text-align: center;
+
+}
+</style>
+<div class="container">
+	<div class="blog-post">
+		<div class="col-sm-12"><h2>
+		 <a href="/bubbleMap.html">Time-Series Bubble Map</a>
+		</h2></div>
+	</div>
+	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
+		<h5><div class="col-sm-3" style="text-align:left;">
+		February 13, 2015
+			
+			</div>
+			<div class="col-sm-9 tagsin">
+			
+			 
+				#D3.js  &nbsp;
+			
+			
+			 
+				#visualization  &nbsp;
+			
+			
+			 
+				#TopoJSON  &nbsp;
+			
+			
+			 
+				#SVG-map  &nbsp;
+			
+			
+		    </div>
+
+
+		</h5>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blogpost">
+			  <script src="//code.jquery.com/jquery-2.0.0.js"></script>
+
+<style>
+
+          .airports {
+          fill: #036;
+          stroke: #6cb0e0;
+          stroke-width: 0.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          vector-effect: non-scaling-stroke;
+                }
+      </style>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+<script src="//d3js.org/topojson.v1.min.js"></script>
+
+<div id="us_states"></div>
+<script type="text/javascript">
+  (function() {
+
+     var m_width = $("#us_states").width(),
+          width = 1060,
+          height = 600,
+          country,
+          state;
+
+      var projection = d3.geo.albersUsa()
+      .scale(1060)
+      .translate([width / 2, height / 2])
+      .precision(.1);
+
+  var path = d3.geo.path()
+      .projection(projection);
+
+
+
+       var svg = d3.select("#us_states").append("svg")
+          .attr("preserveAspectRatio", "xMidYMid")
+          .attr("viewBox", "0 0 " + width + " " + height)
+          .attr("width", m_width)
+          .attr("height", m_width * height / width);
+
+ var start_val = 1987,
+                                                              end_val = [2008];
+                                                          var clock = svg.append("svg")
+                                                                    .attr("y", 100)
+                                                                    .attr("x", 700)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'30px'})  
+                                                                    .attr("fill", "steelblue");
+
+                                                              clock.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(20900)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                                                          svg.append("text")
+                                                                    .attr("y", 570)
+                                                                    .attr("x", 320)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'10px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#595959")
+                                                                    .text("Total Flights:");
+
+
+
+                                                          var start_val = 135469,
+                                                              end_val = [62135469];
+                                                          var total_flights = svg.append("svg")
+                                                                    .attr("y", 550)
+                                                                    .attr("x", 380)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'20px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "steelblue");
+
+                                                              total_flights.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(17000)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                                                          svg.append("text")
+                                                                    .attr("y", 570)
+                                                                    .attr("x", 520)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'10px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#595959")
+                                                                    .text("Incount:");
+
+
+                                                          var start_val = 1469,
+                                                              end_val = [23365469];
+                                                          var total_flights = svg.append("svg")
+                                                                    .attr("y", 550)
+                                                                    .attr("x", 560)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'20px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "steelblue");
+
+                                                              total_flights.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(17000)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+
+                                                          svg.append("text")
+                                                                    .attr("y", 570)
+                                                                    .attr("x", 680)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'10px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "#595959")
+                                                                    .text("Outcount:");
+
+                                                          var start_val = 35469,
+                                                              end_val = [38525469];
+                                                          var total_flights = svg.append("svg")
+                                                                    .attr("y", 550)
+                                                                    .attr("x", 730)
+                                                                    .style( {'font-weight':'bold', 'font-family':'sans-serif',
+                                                                              'font-size':'20px'})
+                                                                    .style("opacity", "0.9") 
+                                                                    .attr("fill", "steelblue");
+
+                                                              total_flights.selectAll(".txt")
+                                                              .data(end_val)
+                                                              .enter()
+                                                              .append("text")
+                                                              .text(start_val)
+                                                              .attr("class", "txt")
+                                                              .attr("x", 10)
+                                                              .attr("y", 25)
+                                                              .transition()
+                                                              .duration(17000)
+                                                                  .tween("text", function(d) {
+                                                                      var i = d3.interpolate(this.textContent, d),
+                                                                          prec = (d + "").split("."),
+                                                                          round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+                                                                      return function(t) {
+                                                                          this.textContent = Math.round(i(t) * round) / round;
+                                                                      };
+                                                                  });
+   d3.json("../geoSample/us.json", function(error, us) {
+    if (error) return console.error(error);
+    console.log(us);
+
+    svg.selectAll("path")
+        .data(topojson.feature(us, us.objects.states).features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("fill", "LightGray")
+        .attr("stroke", "White");
+
+      var  sampleData = [{name: "San Francisco", coordinates: [-122.417,37.783], barheight: 50,airportName:"San Francisco International Airport", airportCode:"SFO"},
+    {name: "Los Angeles", coordinates: [-118.682,33.52], barheight: 40,airportName:"Los Angeles International Airport", airportCode:"LAX"},
+    {name: "Denver", coordinates: [-104.8778,39.673], barheight: 37,airportName:"Denver International Airport", airportCode:"DEN"},    
+    {name: "St. Louis", coordinates: [-90.505,38.788], barheight: 33,airportName:"Lambert-St. Louis International Airport", airportCode:"STL"},
+    {name: "Atlanta", coordinates: [-84.682,33.52], barheight: 45,airportName:"Atlanta International Airport", airportCode:"ATL"},
+    {name: "Arizona", coordinates: [-112.682,33.52], barheight: 27,airportName:"Phoenix Sky Harbor International Airport", airportCode:"PHX"},
+    {name: "Minnesota", coordinates: [-93.682,44.52], barheight: 22,airportName:"St. Paul International Airport", airportCode:"MSP"},
+    {name: "Chicago", coordinates: [-87.9067,41.988], barheight: 47,airportName:"Chicago O'hare International Airport", airportCode:"ORD"},
+    {name: "Detroit", coordinates: [-83.417,42.783], barheight: 27,airportName:"Detroit Metro Airport", airportCode:"DTW"},
+     {name: "Pittsburg", coordinates: [-80.682,40.52], barheight: 25,airportName:"Pittsburgh International Airport", airportCode:"PIT"},
+      {name: "Charlotte", coordinates: [-80.682,35.52], barheight: 24,airportName:"Douglas International Airport", airportCode:"CLT"},
+       {name: "New Jersey", coordinates: [-74.1682,41.52], barheight: 30,airportName:"Newark Liberty International Airport", airportCode:"EWR"},
+     {name: "New York", coordinates: [-73.682,40.0952], barheight: 42,airportName:"John F. Kennedy International Airport", airportCode:"JFK"},
+    {name: "Boston", coordinates: [-71.505,42.488], barheight: 20,airportName:"Boston Logan International Airport", airportCode:"BOS"},
+    {name: "Texas", coordinates: [-100.682,31.52], barheight: 20, airportName:"Bush Intercontinental Airport", airportCode:"IAH"},
+    {name: "Florida", coordinates: [-81.682,28.52], barheight: 17,airportName:"Orlando International Airport", airportCode:"MCO"}            
+    ];
+
+
+
+    bars = svg.selectAll("g")
+    .data(sampleData)
+    .enter()
+    .append("g")
+    .attr("class", "bars")
+    .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
+    
+    bars.append("circle")
+    .attr("cx", function (d) { return d.x_axis; })
+    .attr("cy", function (d) { return d.y_axis; })
+    .attr("class", "bars")
+    .attr("r", 6)
+    .style("fill", "green")
+    .style("stroke", "White")
+    .style("stroke-width", 0.5)
+    .style("opacity", 0.5)
+    .transition()
+    .delay(function(d, i) {
+          return i * 20;
+      })
+      .duration(15000) 
+      
+    .attr("r", function (d) { return d.barheight; });
+
+bars.append("text")
+      .style({
+        'fill':'#050505',
+        'font-family':'sans-serif',
+        'font-size':'7px'
+      })  
+             .attr("dy", ".80em")
+    .attr("text-anchor", "start") 
+    .text(function(d) {return d.name});
+  });
+
+
+
+
+
+
+
+  $(window).resize(function() {
+        var w = $("#us_states").width();
+        svg.attr("width", w);
+        svg.attr("height", w * height / width);
+      });
+
+  })();
+</script>
+
+<h3 id="overview"><a href="">Overview:</a></h3>
+
+<p>This is a walkthrough of my project on creating interactive transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
+
+<p>Everything here is rendered in SVG!</p>
+
+
+			   
+			  
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">© All rights reserved. Powered by <a href="http://jekyllrb.com/">Jekyll</a> and
+            <a href="https://github.com/Santhosh114">GitHub</a> with ♥</br>Santhosh Soundararajan</p>
+            
+        </div>
+    </div>
+</footer>
+<div class="footer"></div>
+
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+    crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="static/js/docs.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
