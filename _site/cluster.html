@@ -31,7 +31,7 @@
 </script>
 
     
-      <title>Demo2</title>
+      <title>Simple Force Layout</title>
     
 	
     <!-- Bootstrap -->
@@ -96,7 +96,7 @@
 <div class="container">
 	<div class="blog-post">
 		<div class="col-sm-12"><h2>
-		 <a href="/demo4.html">Demo2</a>
+		 <a href="/cluster.html">Simple Force Layout</a>
 		</h2></div>
 	</div>
 	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
@@ -111,19 +111,11 @@
 			
 			
 			 
-				#visualization  &nbsp;
+				#ForceLayout  &nbsp;
 			
 			
 			 
-				#airports  &nbsp;
-			
-			
-			 
-				#map  &nbsp;
-			
-			
-			 
-				#1987-2008  &nbsp;
+				#graphData  &nbsp;
 			
 			
 		    </div>
@@ -148,14 +140,33 @@
 <div id="forceLay"></div>
 
 <blockquote>
-  <p>This is an academic project for I590: Data Visualization course at <a href="https://www.indiana.edu">Indiana University, Bloomington</a>, Instructor: <a href="http://yongyeol.com">Yong Yeol Ahn</a>. Visit the project <a href="http://www.santhoshfiddle.com/geoSample/index.html">page</a> for more info on this concept ideation and our team.</p>
+  <p>Thanks to <a href="http://www.coppelia.io/2014/07/an-a-to-z-of-extra-features-for-the-d3-force-layout/">SIMON RAPER</a>, for providing data and a niche tutorial to make such a force layout.</p>
 </blockquote>
 
 <h3 id="overview"><a href="">Overview:</a></h3>
 
-<p>This is a walkthrough of my project on creating interactive transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
+<p>This is a simple force layout designed on a custom made graph data set. It can be used with various features like Search, Pinning down nodes etc.</p>
 
-<p>Everything here is rendered in SVG!</p>
+<h3 id="data"><a href="">Data:</a></h3>
+<p>This is a connected data with a cluster formation among node based on the Group attribute in the data.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// sample of data used for the nodes in the form of a json type variable. </span>
+<span class="s2">"nodes"</span><span class="err">:</span> <span class="p">[{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Myriel"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Napoleon"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Mlle.Baptistine"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Isabeau"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Gervais"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}]</span></code></pre></figure>
 
 <script type="application/json" id="mis">
     {
@@ -1419,7 +1430,7 @@ var width = 800,
     height = 500;
 
 //Set up the colour scale
-var color = d3.scale.category20();
+var color = d3.scale.category10();
 
 //Set up the force layout
 var force = d3.layout.force()

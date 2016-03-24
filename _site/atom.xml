@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-03-23T17:18:18Z</updated>
+  <updated>2016-03-24T05:12:19Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -51,7 +51,9 @@
 
 <p>Everything here is rendered in SVG!</p>
 
-<p>Check my blog titled <a href="">“Basemaps with d3.js”</a> for how the US map is generated with TopoJSON and many other ways of representing cartograms.</p>
+<p>This US map is generated from the <a href="../geoSample/us.json">US.json</a></p>
+
+<!-- Check my blog titled ["Basemaps with d3.js"]() for how the US map is generated with TopoJSON and many other ways of representing cartograms.  -->
 
 <div class="divider"></div>
 
@@ -771,6 +773,1543 @@ Streets data by OpenStreetMap contributers.</p>
 <p>This is a Choropleth map of US based on Math.random data(you would notice the data changing for every page refresh) is a thematic map in which areas are shaded or patterned in proportion to the measurement of the statistical variable being displayed on the map, such as population density or per-capita income.</p>
 
 <p>It is interactive in nature by showing some simple stats!</p>
+
+<h3 id="data"><a href="">Data:</a></h3>
+<p>The primary data is applied over the area of the mapped regions by means of Color!</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Color interpolated between the variables(low, mid, high).</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">){</span> 
+      <span class="kd">var</span> <span class="nx">low</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()),</span> 
+          <span class="nx">mid</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()),</span> 
+          <span class="nx">high</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">());</span>
+          <span class="nx">sampleData</span><span class="p">[</span><span class="nx">d</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="na">low</span><span class="p">:</span><span class="nx">d3</span><span class="p">.</span><span class="nx">min</span><span class="p">([</span><span class="nx">low</span><span class="p">,</span><span class="nx">mid</span><span class="p">,</span><span class="nx">high</span><span class="p">]),</span> <span class="na">high</span><span class="p">:</span><span class="nx">d3</span><span class="p">.</span><span class="nx">max</span><span class="p">([</span><span class="nx">low</span><span class="p">,</span><span class="nx">mid</span><span class="p">,</span><span class="nx">high</span><span class="p">]),</span> 
+          <span class="na">avg</span><span class="p">:</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">low</span><span class="o">+</span><span class="nx">mid</span><span class="o">+</span><span class="nx">high</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="na">color</span><span class="p">:</span><span class="nx">d3</span><span class="p">.</span><span class="nx">interpolate</span><span class="p">(</span><span class="s2">"#e9ff6f"</span><span class="p">,</span> <span class="s2">"#037b7f"</span><span class="p">)(</span><span class="nx">low</span><span class="o">/</span><span class="mi">100</span><span class="p">)};</span> 
+    <span class="p">}</span></code></pre></figure>
+
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">A simple Interactive Streamgraph</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//stream.html" />
+  <id>http://santhosh114.github.io//stream</id>
+  <published>2015-07-13T00:00:00Z</published>
+  <updated>2015-07-13T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <style>
+ button {
+  position: relative;
+  left: 610px;
+  top: 10px;
+}
+
+</style>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+<div id="Stream">
+  <button onclick="transition()">Update Stream Graph</button>
+</div>
+<script>
+
+var n = 20, // number of layers
+    m = 200, // number of samples per layer
+    stack = d3.layout.stack().offset("wiggle"),
+    layers0 = stack(d3.range(n).map(function() { return bumpLayer(m); })),
+    layers1 = stack(d3.range(n).map(function() { return bumpLayer(m); }));
+
+var width = 800,
+    height = 450;
+
+var x = d3.scale.linear()
+    .domain([0, m - 1])
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .domain([0, d3.max(layers0.concat(layers1), function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); })])
+    .range([height, 0]);
+
+var color = d3.scale.linear()
+    .range(["Green", "White"]);
+
+  // var  color = d3.scale.category20();
+
+var area = d3.svg.area()
+    .x(function(d) { return x(d.x); })
+    .y0(function(d) { return y(d.y0); })
+    .y1(function(d) { return y(d.y0 + d.y); });
+
+var svg = d3.select("#Stream").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.selectAll("path")
+    .data(layers0)
+  .enter().append("path")
+    .attr("d", area)
+    .style("fill", function() { return color(Math.random()); });
+
+function transition() {
+  d3.selectAll("path")
+      .data(function() {
+        var d = layers1;
+        layers1 = layers0;
+        return layers0 = d;
+      })
+    .transition()
+      .duration(2500)
+      .attr("d", area);
+}
+
+// Inspired by Lee Byron's test data generator.
+function bumpLayer(n) {
+
+  function bump(a) {
+    var x = 1 / (.1 + Math.random()),
+        y = 2 * Math.random() - .5,
+        z = 10 / (.1 + Math.random());
+    for (var i = 0; i < n; i++) {
+      var w = (i / n - y) * z;
+      a[i] += x * Math.exp(-w * w);
+    }
+  }
+
+  var a = [], i;
+  for (i = 0; i < n; ++i) a[i] = 0;
+  for (i = 0; i < 5; ++i) bump(a);
+  return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
+}
+
+</script>
+
+<div class="divider"> 
+
+<!-- https://bl.ocks.org/mbostock/4060954 -->
+</div>
+
+<h3 id="data"><a href="">Data:</a></h3>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Inspired by Lee Byron's test data generator.</span>
+<span class="kd">function</span> <span class="nx">bumpLayer</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="kd">function</span> <span class="nx">bump</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(.</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()),</span>
+        <span class="nx">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">-</span> <span class="p">.</span><span class="mi">5</span><span class="p">,</span>
+        <span class="nx">z</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="p">(.</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="p">(</span><span class="nx">i</span> <span class="o">/</span> <span class="nx">n</span> <span class="o">-</span> <span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">z</span><span class="p">;</span>
+      <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">x</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="o">-</span><span class="nx">w</span> <span class="o">*</span> <span class="nx">w</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="nx">i</span><span class="p">)</span> <span class="nx">bump</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span> <span class="nx">i</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">d</span><span class="p">)};</span> <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+ ]]></content>
+</entry>
+
+
+  <entry>
+  <title type="text">Simple Force Layout</title>
+  <link rel="alternate" type="text/html" href="http://santhosh114.github.io//cluster.html" />
+  <id>http://santhosh114.github.io//cluster</id>
+  <published>2015-05-13T00:00:00Z</published>
+  <updated>2015-05-13T00:00:00Z</updated>
+  <content type="html"><![CDATA[ <style>
+.link {
+  stroke: #ccc;
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+</style>
+
+<div id="forceLay"></div>
+
+<blockquote>
+  <p>Thanks to <a href="http://www.coppelia.io/2014/07/an-a-to-z-of-extra-features-for-the-d3-force-layout/">SIMON RAPER</a>, for providing data and a niche tutorial to make such a force layout.</p>
+</blockquote>
+
+<h3 id="overview"><a href="">Overview:</a></h3>
+
+<p>This is a simple force layout designed on a custom made graph data set. It can be used with various features like Search, Pinning down nodes etc.</p>
+
+<h3 id="data"><a href="">Data:</a></h3>
+<p>This is a connected data with a cluster formation among node based on the Group attribute in the data.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// sample of data used for the nodes in the form of a json type variable. </span>
+<span class="s2">"nodes"</span><span class="err">:</span> <span class="p">[{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Myriel"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Napoleon"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Mlle.Baptistine"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Isabeau"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Gervais"</span><span class="p">,</span>
+                <span class="s2">"group"</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}]</span></code></pre></figure>
+
+<script type="application/json" id="mis">
+    {
+        "nodes": [{
+            "name": "Myriel",
+                "group": 1
+        }, {
+            "name": "Napoleon",
+                "group": 1
+        }, {
+            "name": "Mlle.Baptistine",
+                "group": 1
+        }, {
+            "name": "Mme.Magloire",
+                "group": 1
+        }, {
+            "name": "CountessdeLo",
+                "group": 1
+        }, {
+            "name": "Geborand",
+                "group": 1
+        }, {
+            "name": "Champtercier",
+                "group": 1
+        }, {
+            "name": "Cravatte",
+                "group": 1
+        }, {
+            "name": "Count",
+                "group": 1
+        }, {
+            "name": "OldMan",
+                "group": 1
+        }, {
+            "name": "Labarre",
+                "group": 2
+        }, {
+            "name": "Valjean",
+                "group": 2
+        }, {
+            "name": "Marguerite",
+                "group": 3
+        }, {
+            "name": "Mme.deR",
+                "group": 2
+        }, {
+            "name": "Isabeau",
+                "group": 2
+        }, {
+            "name": "Gervais",
+                "group": 2
+        }, {
+            "name": "Tholomyes",
+                "group": 3
+        }, {
+            "name": "Listolier",
+                "group": 3
+        }, {
+            "name": "Fameuil",
+                "group": 3
+        }, {
+            "name": "Blacheville",
+                "group": 3
+        }, {
+            "name": "Favourite",
+                "group": 3
+        }, {
+            "name": "Dahlia",
+                "group": 3
+        }, {
+            "name": "Zephine",
+                "group": 3
+        }, {
+            "name": "Fantine",
+                "group": 3
+        }, {
+            "name": "Mme.Thenardier",
+                "group": 4
+        }, {
+            "name": "Thenardier",
+                "group": 4
+        }, {
+            "name": "Cosette",
+                "group": 5
+        }, {
+            "name": "Javert",
+                "group": 4
+        }, {
+            "name": "Fauchelevent",
+                "group": 0
+        }, {
+            "name": "Bamatabois",
+                "group": 2
+        }, {
+            "name": "Perpetue",
+                "group": 3
+        }, {
+            "name": "Simplice",
+                "group": 2
+        }, {
+            "name": "Scaufflaire",
+                "group": 2
+        }, {
+            "name": "Woman1",
+                "group": 2
+        }, {
+            "name": "Judge",
+                "group": 2
+        }, {
+            "name": "Champmathieu",
+                "group": 2
+        }, {
+            "name": "Brevet",
+                "group": 2
+        }, {
+            "name": "Chenildieu",
+                "group": 2
+        }, {
+            "name": "Cochepaille",
+                "group": 2
+        }, {
+            "name": "Pontmercy",
+                "group": 4
+        }, {
+            "name": "Boulatruelle",
+                "group": 6
+        }, {
+            "name": "Eponine",
+                "group": 4
+        }, {
+            "name": "Anzelma",
+                "group": 4
+        }, {
+            "name": "Woman2",
+                "group": 5
+        }, {
+            "name": "MotherInnocent",
+                "group": 0
+        }, {
+            "name": "Gribier",
+                "group": 0
+        }, {
+            "name": "Jondrette",
+                "group": 7
+        }, {
+            "name": "Mme.Burgon",
+                "group": 7
+        }, {
+            "name": "Gavroche",
+                "group": 8
+        }, {
+            "name": "Gillenormand",
+                "group": 5
+        }, {
+            "name": "Magnon",
+                "group": 5
+        }, {
+            "name": "Mlle.Gillenormand",
+                "group": 5
+        }, {
+            "name": "Mme.Pontmercy",
+                "group": 5
+        }, {
+            "name": "Mlle.Vaubois",
+                "group": 5
+        }, {
+            "name": "Lt.Gillenormand",
+                "group": 5
+        }, {
+            "name": "Marius",
+                "group": 8
+        }, {
+            "name": "BaronessT",
+                "group": 5
+        }, {
+            "name": "Mabeuf",
+                "group": 8
+        }, {
+            "name": "Enjolras",
+                "group": 8
+        }, {
+            "name": "Combeferre",
+                "group": 8
+        }, {
+            "name": "Prouvaire",
+                "group": 8
+        }, {
+            "name": "Feuilly",
+                "group": 8
+        }, {
+            "name": "Courfeyrac",
+                "group": 8
+        }, {
+            "name": "Bahorel",
+                "group": 8
+        }, {
+            "name": "Bossuet",
+                "group": 8
+        }, {
+            "name": "Joly",
+                "group": 8
+        }, {
+            "name": "Grantaire",
+                "group": 8
+        }, {
+            "name": "MotherPlutarch",
+                "group": 9
+        }, {
+            "name": "Gueulemer",
+                "group": 4
+        }, {
+            "name": "Babet",
+                "group": 4
+        }, {
+            "name": "Claquesous",
+                "group": 4
+        }, {
+            "name": "Montparnasse",
+                "group": 4
+        }, {
+            "name": "Toussaint",
+                "group": 5
+        }, {
+            "name": "Child1",
+                "group": 10
+        }, {
+            "name": "Child2",
+                "group": 10
+        }, {
+            "name": "Brujon",
+                "group": 4
+        }, {
+            "name": "Mme.Hucheloup",
+                "group": 8
+        }],
+            "links": [{
+            "source": 1,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 2,
+                "target": 0,
+                "value": 8
+        }, {
+            "source": 3,
+                "target": 0,
+                "value": 10
+        }, {
+            "source": 3,
+                "target": 2,
+                "value": 6
+        }, {
+            "source": 4,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 5,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 6,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 7,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 8,
+                "target": 0,
+                "value": 2
+        }, {
+            "source": 9,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 11,
+                "target": 10,
+                "value": 1
+        }, {
+            "source": 11,
+                "target": 3,
+                "value": 3
+        }, {
+            "source": 11,
+                "target": 2,
+                "value": 3
+        }, {
+            "source": 11,
+                "target": 0,
+                "value": 5
+        }, {
+            "source": 12,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 13,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 14,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 15,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 17,
+                "target": 16,
+                "value": 4
+        }, {
+            "source": 18,
+                "target": 16,
+                "value": 4
+        }, {
+            "source": 18,
+                "target": 17,
+                "value": 4
+        }, {
+            "source": 19,
+                "target": 16,
+                "value": 4
+        }, {
+            "source": 19,
+                "target": 17,
+                "value": 4
+        }, {
+            "source": 19,
+                "target": 18,
+                "value": 4
+        }, {
+            "source": 20,
+                "target": 16,
+                "value": 3
+        }, {
+            "source": 20,
+                "target": 17,
+                "value": 3
+        }, {
+            "source": 20,
+                "target": 18,
+                "value": 3
+        }, {
+            "source": 20,
+                "target": 19,
+                "value": 4
+        }, {
+            "source": 21,
+                "target": 16,
+                "value": 3
+        }, {
+            "source": 21,
+                "target": 17,
+                "value": 3
+        }, {
+            "source": 21,
+                "target": 18,
+                "value": 3
+        }, {
+            "source": 21,
+                "target": 19,
+                "value": 3
+        }, {
+            "source": 21,
+                "target": 20,
+                "value": 5
+        }, {
+            "source": 22,
+                "target": 16,
+                "value": 3
+        }, {
+            "source": 22,
+                "target": 17,
+                "value": 3
+        }, {
+            "source": 22,
+                "target": 18,
+                "value": 3
+        }, {
+            "source": 22,
+                "target": 19,
+                "value": 3
+        }, {
+            "source": 22,
+                "target": 20,
+                "value": 4
+        }, {
+            "source": 22,
+                "target": 21,
+                "value": 4
+        }, {
+            "source": 23,
+                "target": 16,
+                "value": 3
+        }, {
+            "source": 23,
+                "target": 17,
+                "value": 3
+        }, {
+            "source": 23,
+                "target": 18,
+                "value": 3
+        }, {
+            "source": 23,
+                "target": 19,
+                "value": 3
+        }, {
+            "source": 23,
+                "target": 20,
+                "value": 4
+        }, {
+            "source": 23,
+                "target": 21,
+                "value": 4
+        }, {
+            "source": 23,
+                "target": 22,
+                "value": 4
+        }, {
+            "source": 23,
+                "target": 12,
+                "value": 2
+        }, {
+            "source": 23,
+                "target": 11,
+                "value": 9
+        }, {
+            "source": 24,
+                "target": 23,
+                "value": 2
+        }, {
+            "source": 24,
+                "target": 11,
+                "value": 7
+        }, {
+            "source": 25,
+                "target": 24,
+                "value": 13
+        }, {
+            "source": 25,
+                "target": 23,
+                "value": 1
+        }, {
+            "source": 25,
+                "target": 11,
+                "value": 12
+        }, {
+            "source": 26,
+                "target": 24,
+                "value": 4
+        }, {
+            "source": 26,
+                "target": 11,
+                "value": 31
+        }, {
+            "source": 26,
+                "target": 16,
+                "value": 1
+        }, {
+            "source": 26,
+                "target": 25,
+                "value": 1
+        }, {
+            "source": 27,
+                "target": 11,
+                "value": 17
+        }, {
+            "source": 27,
+                "target": 23,
+                "value": 5
+        }, {
+            "source": 27,
+                "target": 25,
+                "value": 5
+        }, {
+            "source": 27,
+                "target": 24,
+                "value": 1
+        }, {
+            "source": 27,
+                "target": 26,
+                "value": 1
+        }, {
+            "source": 28,
+                "target": 11,
+                "value": 8
+        }, {
+            "source": 28,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 29,
+                "target": 23,
+                "value": 1
+        }, {
+            "source": 29,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 29,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 30,
+                "target": 23,
+                "value": 1
+        }, {
+            "source": 31,
+                "target": 30,
+                "value": 2
+        }, {
+            "source": 31,
+                "target": 11,
+                "value": 3
+        }, {
+            "source": 31,
+                "target": 23,
+                "value": 2
+        }, {
+            "source": 31,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 32,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 33,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 33,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 34,
+                "target": 11,
+                "value": 3
+        }, {
+            "source": 34,
+                "target": 29,
+                "value": 2
+        }, {
+            "source": 35,
+                "target": 11,
+                "value": 3
+        }, {
+            "source": 35,
+                "target": 34,
+                "value": 3
+        }, {
+            "source": 35,
+                "target": 29,
+                "value": 2
+        }, {
+            "source": 36,
+                "target": 34,
+                "value": 2
+        }, {
+            "source": 36,
+                "target": 35,
+                "value": 2
+        }, {
+            "source": 36,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 36,
+                "target": 29,
+                "value": 1
+        }, {
+            "source": 37,
+                "target": 34,
+                "value": 2
+        }, {
+            "source": 37,
+                "target": 35,
+                "value": 2
+        }, {
+            "source": 37,
+                "target": 36,
+                "value": 2
+        }, {
+            "source": 37,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 37,
+                "target": 29,
+                "value": 1
+        }, {
+            "source": 38,
+                "target": 34,
+                "value": 2
+        }, {
+            "source": 38,
+                "target": 35,
+                "value": 2
+        }, {
+            "source": 38,
+                "target": 36,
+                "value": 2
+        }, {
+            "source": 38,
+                "target": 37,
+                "value": 2
+        }, {
+            "source": 38,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 38,
+                "target": 29,
+                "value": 1
+        }, {
+            "source": 39,
+                "target": 25,
+                "value": 1
+        }, {
+            "source": 40,
+                "target": 25,
+                "value": 1
+        }, {
+            "source": 41,
+                "target": 24,
+                "value": 2
+        }, {
+            "source": 41,
+                "target": 25,
+                "value": 3
+        }, {
+            "source": 42,
+                "target": 41,
+                "value": 2
+        }, {
+            "source": 42,
+                "target": 25,
+                "value": 2
+        }, {
+            "source": 42,
+                "target": 24,
+                "value": 1
+        }, {
+            "source": 43,
+                "target": 11,
+                "value": 3
+        }, {
+            "source": 43,
+                "target": 26,
+                "value": 1
+        }, {
+            "source": 43,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 44,
+                "target": 28,
+                "value": 3
+        }, {
+            "source": 44,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 45,
+                "target": 28,
+                "value": 2
+        }, {
+            "source": 47,
+                "target": 46,
+                "value": 1
+        }, {
+            "source": 48,
+                "target": 47,
+                "value": 2
+        }, {
+            "source": 48,
+                "target": 25,
+                "value": 1
+        }, {
+            "source": 48,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 48,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 49,
+                "target": 26,
+                "value": 3
+        }, {
+            "source": 49,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 50,
+                "target": 49,
+                "value": 1
+        }, {
+            "source": 50,
+                "target": 24,
+                "value": 1
+        }, {
+            "source": 51,
+                "target": 49,
+                "value": 9
+        }, {
+            "source": 51,
+                "target": 26,
+                "value": 2
+        }, {
+            "source": 51,
+                "target": 11,
+                "value": 2
+        }, {
+            "source": 52,
+                "target": 51,
+                "value": 1
+        }, {
+            "source": 52,
+                "target": 39,
+                "value": 1
+        }, {
+            "source": 53,
+                "target": 51,
+                "value": 1
+        }, {
+            "source": 54,
+                "target": 51,
+                "value": 2
+        }, {
+            "source": 54,
+                "target": 49,
+                "value": 1
+        }, {
+            "source": 54,
+                "target": 26,
+                "value": 1
+        }, {
+            "source": 55,
+                "target": 51,
+                "value": 6
+        }, {
+            "source": 55,
+                "target": 49,
+                "value": 12
+        }, {
+            "source": 55,
+                "target": 39,
+                "value": 1
+        }, {
+            "source": 55,
+                "target": 54,
+                "value": 1
+        }, {
+            "source": 55,
+                "target": 26,
+                "value": 21
+        }, {
+            "source": 55,
+                "target": 11,
+                "value": 19
+        }, {
+            "source": 55,
+                "target": 16,
+                "value": 1
+        }, {
+            "source": 55,
+                "target": 25,
+                "value": 2
+        }, {
+            "source": 55,
+                "target": 41,
+                "value": 5
+        }, {
+            "source": 55,
+                "target": 48,
+                "value": 4
+        }, {
+            "source": 56,
+                "target": 49,
+                "value": 1
+        }, {
+            "source": 56,
+                "target": 55,
+                "value": 1
+        }, {
+            "source": 57,
+                "target": 55,
+                "value": 1
+        }, {
+            "source": 57,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 57,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 58,
+                "target": 55,
+                "value": 7
+        }, {
+            "source": 58,
+                "target": 48,
+                "value": 7
+        }, {
+            "source": 58,
+                "target": 27,
+                "value": 6
+        }, {
+            "source": 58,
+                "target": 57,
+                "value": 1
+        }, {
+            "source": 58,
+                "target": 11,
+                "value": 4
+        }, {
+            "source": 59,
+                "target": 58,
+                "value": 15
+        }, {
+            "source": 59,
+                "target": 55,
+                "value": 5
+        }, {
+            "source": 59,
+                "target": 48,
+                "value": 6
+        }, {
+            "source": 59,
+                "target": 57,
+                "value": 2
+        }, {
+            "source": 60,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 60,
+                "target": 58,
+                "value": 4
+        }, {
+            "source": 60,
+                "target": 59,
+                "value": 2
+        }, {
+            "source": 61,
+                "target": 48,
+                "value": 2
+        }, {
+            "source": 61,
+                "target": 58,
+                "value": 6
+        }, {
+            "source": 61,
+                "target": 60,
+                "value": 2
+        }, {
+            "source": 61,
+                "target": 59,
+                "value": 5
+        }, {
+            "source": 61,
+                "target": 57,
+                "value": 1
+        }, {
+            "source": 61,
+                "target": 55,
+                "value": 1
+        }, {
+            "source": 62,
+                "target": 55,
+                "value": 9
+        }, {
+            "source": 62,
+                "target": 58,
+                "value": 17
+        }, {
+            "source": 62,
+                "target": 59,
+                "value": 13
+        }, {
+            "source": 62,
+                "target": 48,
+                "value": 7
+        }, {
+            "source": 62,
+                "target": 57,
+                "value": 2
+        }, {
+            "source": 62,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 62,
+                "target": 61,
+                "value": 6
+        }, {
+            "source": 62,
+                "target": 60,
+                "value": 3
+        }, {
+            "source": 63,
+                "target": 59,
+                "value": 5
+        }, {
+            "source": 63,
+                "target": 48,
+                "value": 5
+        }, {
+            "source": 63,
+                "target": 62,
+                "value": 6
+        }, {
+            "source": 63,
+                "target": 57,
+                "value": 2
+        }, {
+            "source": 63,
+                "target": 58,
+                "value": 4
+        }, {
+            "source": 63,
+                "target": 61,
+                "value": 3
+        }, {
+            "source": 63,
+                "target": 60,
+                "value": 2
+        }, {
+            "source": 63,
+                "target": 55,
+                "value": 1
+        }, {
+            "source": 64,
+                "target": 55,
+                "value": 5
+        }, {
+            "source": 64,
+                "target": 62,
+                "value": 12
+        }, {
+            "source": 64,
+                "target": 48,
+                "value": 5
+        }, {
+            "source": 64,
+                "target": 63,
+                "value": 4
+        }, {
+            "source": 64,
+                "target": 58,
+                "value": 10
+        }, {
+            "source": 64,
+                "target": 61,
+                "value": 6
+        }, {
+            "source": 64,
+                "target": 60,
+                "value": 2
+        }, {
+            "source": 64,
+                "target": 59,
+                "value": 9
+        }, {
+            "source": 64,
+                "target": 57,
+                "value": 1
+        }, {
+            "source": 64,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 65,
+                "target": 63,
+                "value": 5
+        }, {
+            "source": 65,
+                "target": 64,
+                "value": 7
+        }, {
+            "source": 65,
+                "target": 48,
+                "value": 3
+        }, {
+            "source": 65,
+                "target": 62,
+                "value": 5
+        }, {
+            "source": 65,
+                "target": 58,
+                "value": 5
+        }, {
+            "source": 65,
+                "target": 61,
+                "value": 5
+        }, {
+            "source": 65,
+                "target": 60,
+                "value": 2
+        }, {
+            "source": 65,
+                "target": 59,
+                "value": 5
+        }, {
+            "source": 65,
+                "target": 57,
+                "value": 1
+        }, {
+            "source": 65,
+                "target": 55,
+                "value": 2
+        }, {
+            "source": 66,
+                "target": 64,
+                "value": 3
+        }, {
+            "source": 66,
+                "target": 58,
+                "value": 3
+        }, {
+            "source": 66,
+                "target": 59,
+                "value": 1
+        }, {
+            "source": 66,
+                "target": 62,
+                "value": 2
+        }, {
+            "source": 66,
+                "target": 65,
+                "value": 2
+        }, {
+            "source": 66,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 66,
+                "target": 63,
+                "value": 1
+        }, {
+            "source": 66,
+                "target": 61,
+                "value": 1
+        }, {
+            "source": 66,
+                "target": 60,
+                "value": 1
+        }, {
+            "source": 67,
+                "target": 57,
+                "value": 3
+        }, {
+            "source": 68,
+                "target": 25,
+                "value": 5
+        }, {
+            "source": 68,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 68,
+                "target": 24,
+                "value": 1
+        }, {
+            "source": 68,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 68,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 68,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 69,
+                "target": 25,
+                "value": 6
+        }, {
+            "source": 69,
+                "target": 68,
+                "value": 6
+        }, {
+            "source": 69,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 69,
+                "target": 24,
+                "value": 1
+        }, {
+            "source": 69,
+                "target": 27,
+                "value": 2
+        }, {
+            "source": 69,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 69,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 70,
+                "target": 25,
+                "value": 4
+        }, {
+            "source": 70,
+                "target": 69,
+                "value": 4
+        }, {
+            "source": 70,
+                "target": 68,
+                "value": 4
+        }, {
+            "source": 70,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 70,
+                "target": 24,
+                "value": 1
+        }, {
+            "source": 70,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 70,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 70,
+                "target": 58,
+                "value": 1
+        }, {
+            "source": 71,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 71,
+                "target": 69,
+                "value": 2
+        }, {
+            "source": 71,
+                "target": 68,
+                "value": 2
+        }, {
+            "source": 71,
+                "target": 70,
+                "value": 2
+        }, {
+            "source": 71,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 71,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 71,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 71,
+                "target": 25,
+                "value": 1
+        }, {
+            "source": 72,
+                "target": 26,
+                "value": 2
+        }, {
+            "source": 72,
+                "target": 27,
+                "value": 1
+        }, {
+            "source": 72,
+                "target": 11,
+                "value": 1
+        }, {
+            "source": 73,
+                "target": 48,
+                "value": 2
+        }, {
+            "source": 74,
+                "target": 48,
+                "value": 2
+        }, {
+            "source": 74,
+                "target": 73,
+                "value": 3
+        }, {
+            "source": 75,
+                "target": 69,
+                "value": 3
+        }, {
+            "source": 75,
+                "target": 68,
+                "value": 3
+        }, {
+            "source": 75,
+                "target": 25,
+                "value": 3
+        }, {
+            "source": 75,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 75,
+                "target": 41,
+                "value": 1
+        }, {
+            "source": 75,
+                "target": 70,
+                "value": 1
+        }, {
+            "source": 75,
+                "target": 71,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 64,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 65,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 66,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 63,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 62,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 48,
+                "value": 1
+        }, {
+            "source": 76,
+                "target": 58,
+                "value": 1
+        }]
+    }
+</script>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+<script>
+//Constants for the SVG
+var width = 800,
+    height = 500;
+
+//Set up the colour scale
+var color = d3.scale.category10();
+
+//Set up the force layout
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(100)
+    .size([width, height]);
+
+//Append a SVG to the body of the html page. Assign this SVG as an object to svg
+var svg = d3.select("#forceLay").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+//Read the data from the mis element 
+var mis = document.getElementById('mis').innerHTML;
+graph = JSON.parse(mis);
+
+//Creates the graph data structure out of the json data
+force.nodes(graph.nodes)
+    .links(graph.links)
+    .start();
+
+//Create all the line svgs but without locations yet
+var link = svg.selectAll(".link")
+    .data(graph.links)
+    .enter().append("line")
+    .attr("class", "link")
+    .style("stroke-width", function (d) {
+    return Math.sqrt(d.value);
+});
+
+//Do the same with the circles for the nodes - no 
+//Changed
+var node = svg.selectAll(".node")
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("class", "node")
+    .call(force.drag);
+
+node.append("circle")
+    .attr("r", 10)
+    .style("fill", function (d) {
+    return color(d.group);
+})
+
+node.append("text")
+      .attr("dx", 10)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.name });
+//End changed
+
+
+//Now we are giving the SVGs co-ordinates - the force layout is generating the co-ordinates which this code is using to update the attributes of the SVG elements
+force.on("tick", function () {
+    link.attr("x1", function (d) {
+        return d.source.x;
+    })
+        .attr("y1", function (d) {
+        return d.source.y;
+    })
+        .attr("x2", function (d) {
+        return d.target.x;
+    })
+        .attr("y2", function (d) {
+        return d.target.y;
+    });
+
+    //Changed
+    
+    d3.selectAll("circle").attr("cx", function (d) {
+        return d.x;
+    })
+        .attr("cy", function (d) {
+        return d.y;
+    });
+
+    d3.selectAll("text").attr("x", function (d) {
+        return d.x;
+    })
+        .attr("y", function (d) {
+        return d.y;
+    });
+    
+    //End Changed
+
+});
+</script>
+
  ]]></content>
 </entry>
 
@@ -1059,7 +2598,28 @@ bars.append("text")
 
 <p>This is a walkthrough of my project on creating interactive transitions using tween functions on objects tied to a map/geo-location in D3.js.</p>
 
-<p>Everything here is rendered in SVG!</p>
+<p>This US map is generated from the <a href="../geoSample/us.json">US.json</a></p>
+
+<h3 id="data"><a href="">Data:</a></h3>
+<p>Sample of data used for this infograph with variable derived from Python data manupulation on <a href="http://stat-computing.org/dataexpo/2009/the-data.html">AirportStats flights delay dataset</a>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">sampleData</span> <span class="o">=</span> <span class="p">[{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"San Francisco"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">122.417</span><span class="p">,</span><span class="mf">37.783</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"San Francisco International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"SFO"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Los Angeles"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.682</span><span class="p">,</span><span class="mf">33.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Los Angeles International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"LAX"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Denver"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">104.8778</span><span class="p">,</span><span class="mf">39.673</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Denver International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"DEN"</span><span class="p">},</span>    
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"St. Louis"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">90.505</span><span class="p">,</span><span class="mf">38.788</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Lambert-St. Louis International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"STL"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Atlanta"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">84.682</span><span class="p">,</span><span class="mf">33.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Atlanta International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"ATL"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Arizona"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">112.682</span><span class="p">,</span><span class="mf">33.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Phoenix Sky Harbor International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"PHX"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Minnesota"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">93.682</span><span class="p">,</span><span class="mf">44.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"St. Paul International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"MSP"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Chicago"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">87.9067</span><span class="p">,</span><span class="mf">41.988</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Chicago O'hare International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"ORD"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Detroit"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">83.417</span><span class="p">,</span><span class="mf">42.783</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Detroit Metro Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"DTW"</span><span class="p">},</span>
+     <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Pittsburg"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">80.682</span><span class="p">,</span><span class="mf">40.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Pittsburgh International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"PIT"</span><span class="p">},</span>
+      <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Charlotte"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">80.682</span><span class="p">,</span><span class="mf">35.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Douglas International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"CLT"</span><span class="p">},</span>
+       <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"New Jersey"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">74.1682</span><span class="p">,</span><span class="mf">41.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Newark Liberty International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"EWR"</span><span class="p">},</span>
+     <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"New York"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">73.682</span><span class="p">,</span><span class="mf">40.0952</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"John F. Kennedy International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"JFK"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Boston"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">71.505</span><span class="p">,</span><span class="mf">42.488</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Boston Logan International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"BOS"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Texas"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">100.682</span><span class="p">,</span><span class="mf">31.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="na">airportName</span><span class="p">:</span><span class="s2">"Bush Intercontinental Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"IAH"</span><span class="p">},</span>
+    <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s2">"Florida"</span><span class="p">,</span> <span class="na">coordinates</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">81.682</span><span class="p">,</span><span class="mf">28.52</span><span class="p">],</span> <span class="na">barheight</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span><span class="na">airportName</span><span class="p">:</span><span class="s2">"Orlando International Airport"</span><span class="p">,</span> <span class="na">airportCode</span><span class="p">:</span><span class="s2">"MCO"</span><span class="p">}</span>            
+    <span class="p">];</span></code></pre></figure>
 
  ]]></content>
 </entry>

@@ -290,5 +290,29 @@ bars.append("text")
 
 This is a walkthrough of my project on creating interactive transitions using tween functions on objects tied to a map/geo-location in D3.js.
 
-Everything here is rendered in SVG! 
+This US map is generated from the [US.json](../geoSample/us.json)
+
+### [Data:]()
+Sample of data used for this infograph with variable derived from Python data manupulation on [AirportStats flights delay dataset](http://stat-computing.org/dataexpo/2009/the-data.html). 
+{% highlight javascript %}
+
+var  sampleData = [{name: "San Francisco", coordinates: [-122.417,37.783], barheight: 50,airportName:"San Francisco International Airport", airportCode:"SFO"},
+    {name: "Los Angeles", coordinates: [-118.682,33.52], barheight: 40,airportName:"Los Angeles International Airport", airportCode:"LAX"},
+    {name: "Denver", coordinates: [-104.8778,39.673], barheight: 37,airportName:"Denver International Airport", airportCode:"DEN"},    
+    {name: "St. Louis", coordinates: [-90.505,38.788], barheight: 33,airportName:"Lambert-St. Louis International Airport", airportCode:"STL"},
+    {name: "Atlanta", coordinates: [-84.682,33.52], barheight: 45,airportName:"Atlanta International Airport", airportCode:"ATL"},
+    {name: "Arizona", coordinates: [-112.682,33.52], barheight: 27,airportName:"Phoenix Sky Harbor International Airport", airportCode:"PHX"},
+    {name: "Minnesota", coordinates: [-93.682,44.52], barheight: 22,airportName:"St. Paul International Airport", airportCode:"MSP"},
+    {name: "Chicago", coordinates: [-87.9067,41.988], barheight: 47,airportName:"Chicago O'hare International Airport", airportCode:"ORD"},
+    {name: "Detroit", coordinates: [-83.417,42.783], barheight: 27,airportName:"Detroit Metro Airport", airportCode:"DTW"},
+     {name: "Pittsburg", coordinates: [-80.682,40.52], barheight: 25,airportName:"Pittsburgh International Airport", airportCode:"PIT"},
+      {name: "Charlotte", coordinates: [-80.682,35.52], barheight: 24,airportName:"Douglas International Airport", airportCode:"CLT"},
+       {name: "New Jersey", coordinates: [-74.1682,41.52], barheight: 30,airportName:"Newark Liberty International Airport", airportCode:"EWR"},
+     {name: "New York", coordinates: [-73.682,40.0952], barheight: 42,airportName:"John F. Kennedy International Airport", airportCode:"JFK"},
+    {name: "Boston", coordinates: [-71.505,42.488], barheight: 20,airportName:"Boston Logan International Airport", airportCode:"BOS"},
+    {name: "Texas", coordinates: [-100.682,31.52], barheight: 20, airportName:"Bush Intercontinental Airport", airportCode:"IAH"},
+    {name: "Florida", coordinates: [-81.682,28.52], barheight: 17,airportName:"Orlando International Airport", airportCode:"MCO"}            
+    ];
+
+{% endhighlight %}
 

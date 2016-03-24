@@ -231,6 +231,19 @@
 
 <p>It is interactive in nature by showing some simple stats!</p>
 
+<h3 id="data"><a href="">Data:</a></h3>
+<p>The primary data is applied over the area of the mapped regions by means of Color!</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Color interpolated between the variables(low, mid, high).</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">){</span> 
+      <span class="kd">var</span> <span class="nx">low</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()),</span> 
+          <span class="nx">mid</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()),</span> 
+          <span class="nx">high</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">());</span>
+          <span class="nx">sampleData</span><span class="p">[</span><span class="nx">d</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="na">low</span><span class="p">:</span><span class="nx">d3</span><span class="p">.</span><span class="nx">min</span><span class="p">([</span><span class="nx">low</span><span class="p">,</span><span class="nx">mid</span><span class="p">,</span><span class="nx">high</span><span class="p">]),</span> <span class="na">high</span><span class="p">:</span><span class="nx">d3</span><span class="p">.</span><span class="nx">max</span><span class="p">([</span><span class="nx">low</span><span class="p">,</span><span class="nx">mid</span><span class="p">,</span><span class="nx">high</span><span class="p">]),</span> 
+          <span class="na">avg</span><span class="p">:</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">low</span><span class="o">+</span><span class="nx">mid</span><span class="o">+</span><span class="nx">high</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="na">color</span><span class="p">:</span><span class="nx">d3</span><span class="p">.</span><span class="nx">interpolate</span><span class="p">(</span><span class="s2">"#e9ff6f"</span><span class="p">,</span> <span class="s2">"#037b7f"</span><span class="p">)(</span><span class="nx">low</span><span class="o">/</span><span class="mi">100</span><span class="p">)};</span> 
+    <span class="p">}</span></code></pre></figure>
+
+
 			   
 			  
 			</div>
