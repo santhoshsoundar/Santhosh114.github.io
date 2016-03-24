@@ -185,7 +185,7 @@ var svg = d3.select("#states").append("svg")
     .attr("width", 750)
     .attr("height", 500);
 
-d3.json("../geoSample/us.json", function(error, us) {
+d3.json("airport/us.json", function(error, us) {
   if (error) return console.error(error);
   console.log(us);
 
