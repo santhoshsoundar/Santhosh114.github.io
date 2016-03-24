@@ -6,7 +6,7 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2016-03-24T05:46:10Z</updated>
+  <updated>2016-03-24T06:20:29Z</updated>
   <author>
     <name>Santhosh</name>
     <email>soundars@umail.iu.edu</email>
@@ -44,6 +44,7 @@
 <div class="myNote"></div>
 
 <div class="divider"></div>
+<p><a href="../research/Airport-evolution-Project.pdf">View this project research report presentation. </a></p>
 
 <h3 id="overview"><a href="">Overview:</a></h3>
 
@@ -396,6 +397,8 @@ var borderPath = svg.append("rect")
 
 <p>This is an exploratory analysis of salary outcomes across various majors in the US.
 Also it would attempt to give the viewer a quick view of how various college majors are placed in the job market relatively. This features mean salaries and respective 25th and 75th percentile salary plotted to give a comprehensive outlook towards the salary distributiion itself in the following posts.</p>
+
+<p><a href="../research/project_college_majors.html">View this project research report. </a></p>
 
 <h3 id="dataset"><a href="">Dataset:</a></h3>
 <p>Although this data is smaller in size, it is a high dimentional sample with 17 features that makes it interesting for us to work with.
