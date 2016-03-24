@@ -14,18 +14,18 @@ tags:
 <iframe width="804" height="470" frameborder="0" scrolling="no" src="https://plot.ly/~sandyorbit/2.embed"></iframe>
 
 
-###[Overview:]()
+### [Overview:]()
 
 This is an exploratory analysis of salary outcomes across various majors in the US.
 Also it would attempt to give the viewer a quick view of how various college majors are placed in the job market relatively. This features mean salaries and respective 25th and 75th percentile salary plotted to give a comprehensive outlook towards the salary distributiion itself in the following posts.
 
  <a href="../research/project_college_majors.html">View this project research report. </a>
 
-###[Dataset:]()
+### [Dataset:]()
 Although this data is smaller in size, it is a high dimentional sample with 17 features that makes it interesting for us to work with.
 Our dataset is sourced from census.org of college majors 2012-13 from [fivethirtyeight](https://github.com/fivethirtyeight/data/tree/master/college-majors)
 
-###[Visualization Technique:]()
+### [Visualization Technique:]()
 
 We have used the Bubble plot to visualize the magnitude of the student sample in terms of area of the bubble, the y-axis is the median salary of college majors, the x-axis is the total number of employed students in the respective majors. Bubbles are color coded besed on the type of major.
 

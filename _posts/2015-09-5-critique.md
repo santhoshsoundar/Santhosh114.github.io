@@ -34,14 +34,14 @@ So this demonstrates the sheer efficacy of the precinct-level data and how effec
 
 <div class="divider"></div>
 
-###[Visualization Technique:]()
+### [Visualization Technique:]()
 
 This is a geo-location based map visualization technique called choropleth map and it uses a coloring scheme inside defined areas on a map in order to show value levels and indicate the average values of some property or quantity in those areas.
 
  
 <div class="divider"></div>
 
-###[How it works:]()
+### [How it works:]()
 
 The basic design is to represent Democratic in blue and Republican in red with various hue levels based on the population density within the precincts. Much needed zoom functionality is provided with dynamic county-level labeling in the first layer and precinct-level labeling in the further zoom levels.
 
@@ -55,7 +55,7 @@ The basic design is to represent Democratic in blue and Republican in red with v
 
 <div class="divider"></div>
 
-###[Design Mileage:]()
+### [Design Mileage:]()
 
 The precinct-level data clearly adds a lot of detail and outlines distinct clusters.
 Helpful for finding intriguing relationships between two or more geographic location based on the nature of the population.
@@ -63,7 +63,7 @@ Give an idea of how each area compares with other in terms of number and spread 
  
 <div class="divider"></div>
 
-###[Data Sources:]()
+### [Data Sources:]()
 
 State wise polling data is sourced from the corresponding state’s Board of Elections, therefore the probe for data integrity will be simply out of question, at least from where I stand. 
 Streets data by OpenStreetMap contributers.
