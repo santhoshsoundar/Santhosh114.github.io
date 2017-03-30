@@ -14,7 +14,7 @@ safe: true
 # edit here to achieve your personal greatness
 url: http://santhosh114.github.io/
 baseurl:
-title: DataScience Blog
+title: DataViz Blog
 author: Santhosh
 description: my personal blog and resume
 email: santhosh.fiddle@gmail.com
