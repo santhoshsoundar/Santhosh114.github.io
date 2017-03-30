@@ -194,10 +194,9 @@ body {
 }
 .text-muted {
 	color: #6b6b6b;
+  font-size: 11px;
 }
-div.footer{
-  
-}
+
 /* Set the fixed height of the footer here */
 /*.footer {
   height: 50px;
