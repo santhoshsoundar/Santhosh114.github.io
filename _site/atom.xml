@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   
-    <title type="text" xml:lang="en">DataScience Blog</title>
+    <title type="text" xml:lang="en">DataViz Blog</title>
     <link type="application/atom+xml" rel="self" href="http://santhosh114.github.io//atom.xml"/>
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2017-03-30T12:42:01Z</updated>
+  <updated>2017-03-30T17:21:46Z</updated>
   <author>
     <name>Santhosh</name>
     <email>santhosh.fiddle@gmail.com</email>
