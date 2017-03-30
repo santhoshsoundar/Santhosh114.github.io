@@ -28,7 +28,7 @@ var palette = {
   }
 
 var nodes = [
-      { name: "me",target: [0], img: "bubble/bbl/sandy_bubble.png",click:"Resume",link: "https://github.com/Santhosh114"},
+      { name: "me",target: [0], img: "bubble/bbl/sandy_bubble.png",click:"Resume",link: "https://www.linkedin.com/in/santhoshsoundararajan"},
       { name: "Data Analysis",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "blog.html"},
       { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog",link: "blog.html"},
       { name: "NoSQL", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog",link: "blog.html"},
