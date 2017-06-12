@@ -1,4 +1,3 @@
-
 var   w = 800,
       h = 500;
 
@@ -11,10 +10,8 @@ var palette = {
       "darkgray": "#475B62",
       "black": "#394035",
       "greensustain": "#27A822",
-
       "darkblue": "#0A2933",
       "darkerblue": "#042029",
-
       "paleryellow": "#FCF4DC",
       "paleyellow": "#EAE3CB",
       "yellow": "#A57706",
@@ -24,17 +21,15 @@ var palette = {
       "purple": "#595AB7",
       "blue": "#2176C7",
       "green": "#259286",
-      "yellowgreen": "#738A05"
-  }
+      "yellowgreen": "#738A05"}
 
 var nodes = [
-      { name: "me",target: [0], img: "bubble/bbl/sandy_bubble.png",click:"Resume",link: "https://www.linkedin.com/in/santhoshsoundararajan"},
-      { name: "Data Analysis",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "blog.html"},
+      { name: "me",target: [0], img: "bubble/bbl/santhosh_bubble.png",click:"Resume",link: "https://www.linkedin.com/in/santhoshsoundararajan"},
+      { name: "Data Analytics",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "blog.html"},
       { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog",link: "blog.html"},
-      { name: "NoSQL", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog",link: "blog.html"},
+      { name: "Big Data", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog",link: "blog.html"},
       { name: "Git Projects", target: [1],target: [0], img: "bubble/bbl/pjt_bbl.png",click:"View Projects",link: "https://github.com/Santhosh114"},
-      { name: "Visualizations-D3.js", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"Read Blog",link: "blog.html"}
-];
+      { name: "Data Visualizations", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"Read Blog",link: "blog.html"}];
 
 var links = [];
 
@@ -49,7 +44,7 @@ for (var i = 0; i< nodes.length; i++) {
       }
 }
 if (screen.width >= 600) {
-	wdf = 800;
+	wdf = 900;
 var myChart = d3.select('div#chart')
 		.append('svg')
 		.attr("viewBox", "10 0 " + w + " " + h )
@@ -57,25 +52,6 @@ var myChart = d3.select('div#chart')
 
         .attr("width", wdf)
         .attr("height", wdf * h / w)
-       
-        // myChart.append("title")
-        //  .text("hi da palette");
-
-//         seemycode= myChart.append("text")
-//         .attr("id","description")
-//         .attr("xlink:href","https://github.com/Santhosh114/bubble-force-layout-d3")
-//         .text("click me to view the code")
-//         .attr("x", 650)
-//         .attr("y", 400)
-//         .attr("opacity", 0)
-
-//         myChart.on("mouseover", function() {
-// seemycode.style('opacity', 0.9)
-// })
-//         myChart.on("mouseout", function() {
-//         seemycode.style('opacity', 0)
-// })
-        
 }else{
 	wdf = window.innerWidth;
 var myChart = d3.select('div#chart')
@@ -95,13 +71,13 @@ var force = d3.layout.force()
 	.charge(-2000)
 	.size([w, h])
 	.linkDistance(100)
-    .friction(0.95)
+    .friction(0.925)
     .linkStrength(function(l, i) {return 8; })
     
 
 var link = myChart.selectAll('line')
 	.data(links).enter().append('line')
-	.attr('stroke', palette.gray)
+	.attr('stroke', palette.gray);
 
 var node = myChart.selectAll('circle')
 	.data(nodes).enter()
@@ -109,12 +85,8 @@ var node = myChart.selectAll('circle')
 	.call(force.drag);
 
  node.append("svg:a")
-   .attr("xlink:href", function(d){return d.link
-// if (d.name=='GeoFeedia') { return "/geoSample/index.html"  } 
-//   else{
-//     return d.img;}
-//   }
-}).append('circle')
+    .attr("xlink:href", function(d){return d.link})
+	.append('circle')
 	.attr('cx', function(d) { return d.x; })
 	.attr('cy', function(d) { return d.y; })
 	.attr('r',function(d, i) {
@@ -168,11 +140,10 @@ var node = myChart.selectAll('circle')
 // make the image grow a little on mouse over
   var setEvents = images.on( 'mouseenter', function() {
             // select element in current context
-            d3.select( this )
+            d3.select(this)
               .transition()
               .duration(600) 
               .style('opacity', 0);
-             
           })
           // set back
           .on( 'mouseleave', function() {
@@ -180,8 +151,7 @@ var node = myChart.selectAll('circle')
               .transition()
               .duration(500)
                .delay(500)
-                 .style('opacity', 1);
-                 
+                 .style('opacity', 1);  
           });
           
 
@@ -194,10 +164,10 @@ node.append('text')
 	})
 	.attr('x', function(d, i) {
 		if (i>0) { return circleWidth - 120 }
-		else { return circleWidth +70 }
+		else { return circleWidth +50 }
 	})
 	.attr('y', function(d, i) {
-		if (i>0) { return circleWidth + 20 }
+		if (i>0) { return circleWidth + 15 }
 		else { return 10 }
 	})
 	.attr('text-anchor', function(d, i) {
