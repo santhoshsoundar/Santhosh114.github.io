@@ -24,7 +24,7 @@ var palette = {
       "yellowgreen": "#738A05"}
 
 var nodes = [
-      { name: "me",target: [0], img: "bubble/bbl/sandyorbit_bubble.jpg",click:"Resume",link: "https://www.linkedin.com/in/santhoshsoundararajan"},
+      { name: "me",target: [0], img: "bubble/bbl/santhosh_bubble.png",click:"Resume",link: "https://www.linkedin.com/in/santhoshsoundararajan"},
       { name: "Data Analytics",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "blog.html"},
       { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog",link: "blog.html"},
       { name: "Big Data", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog",link: "blog.html"},
