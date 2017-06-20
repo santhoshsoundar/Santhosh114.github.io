@@ -63,33 +63,13 @@ yMax = yMax + (yMax/10)
 
 // ---------------- end of chart bounds  -----------  
 
-
-
-if(document.body.clientWidth < 1280){
-    var wrapWidth = 1280,
-    leftWidth = (wrapWidth*(0.65)),
-    rightWidth = (wrapWidth*(0.26)),
-    regionalWdt = (wrapWidth*(0.8)),
-    halfWidth = (wrapWidth*(0.485)),
-    rowCht = (wrapWidth*(0.25));
-}
-else if(document.body.clientWidth > 1280 && document.body.clientWidth < 1800){
-    var wrapWidth = (document.body.clientWidth - 250),
+var wrapWidth = (document.body.clientWidth - 270),
     leftWidth = (wrapWidth*(0.65)),
     rightWidth = (wrapWidth*(0.26)),
     regionalWdt = (wrapWidth*(0.8)),
     halfWidth = (wrapWidth*(0.5)),
     rowCht = (wrapWidth*(0.25));
-}
-else if(document.body.clientWidth > 1800){
-    var wrapWidth = (1800 - 250),
-    leftWidth = (wrapWidth*(0.65)),
-    rightWidth = (wrapWidth*(0.26)),
-    regionalWdt = (wrapWidth*(0.8)),
-    halfWidth = (wrapWidth*(0.5)),
-    rowCht = (wrapWidth*(0.25));
-}
-
+    
 // begin charting for capacity
 var capacity = dc.lineChart(ahCapacityLineChart).group(y3Group, "Total Funds")
 .dotRadius(7).interpolate('step-after').renderArea(false).colors("#525252"),
