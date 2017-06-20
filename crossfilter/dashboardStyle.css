@@ -1,0 +1,193 @@
+
+/*@media (min-width: 1200px){
+.container {
+    width: 100% !important;
+    min-width: 1024px !important;
+    max-width: 100% !important;
+    position: relative !important;
+}
+}
+@media (min-width: 900px){
+.container {
+    width: 100% !important;
+    min-width: 1024px !important;
+    max-width: 100% !important;
+    position: relative !important;
+}
+}
+@media (min-width: 700px){
+.container {
+    width: 100% !important;
+    min-width: 1024px !important;
+    max-width: 100% !important;
+    position: relative !important;
+}
+}*/
+
+#ww-container{
+margin-left: 50px;
+}
+
+.rset{
+margin-left: 450px;
+color: #3399cc !important;
+}
+
+
+.container {
+    position: relative !important;
+}
+.dc-chart .axis text {
+    font: 11px sans-serif;
+}
+
+
+.resetBlock{
+    position: relative !important;
+    margin: 12px 0 -25px 30px;
+}
+.resetBlock2{
+    position: relative !important;
+    margin: 12px 0 -25px 30px;
+}
+
+.resetInfo{
+    margin: 0 0 0px !important;
+}
+.resetButton{
+    float:right; 
+    text-decoration: none !important;
+}
+#ww-volume-chart{
+    padding: 5px 10px 0px 20px;
+}
+
+#ww-fscount-line, #ww-capacity-pie, #ww-capacity-line, #ww-volume-chart, #regional-row, #regional-line, #regional-bar, #regional-absolute-bar,
+#ah-fscount-line, #ah-capacity-pie, #ah-capacity-line, #ah-volume-chart,
+#ls-fscount-line, #ls-capacity-pie, #ls-capacity-line, #ls-volume-chart, 
+#bgl-fscount-line, #bgl-capacity-pie, #bgl-capacity-line, #bgl-volume-chart, 
+#uk-fscount-line, #uk-capacity-pie, #uk-capacity-line, #uk-volume-chart, 
+#fr-fscount-line, #fr-capacity-pie, #fr-capacity-line, #fr-volume-chart, 
+#gla-fscount-line, #gla-capacity-pie, #gla-capacity-line, #gla-volume-chart, 
+#gnb-fscount-line, #gnb-capacity-pie, #gnb-capacity-line, #gnb-volume-chart, 
+#se-fscount-line, #se-capacity-pie, #se-capacity-line, #se-volume-chart, 
+#mi-fscount-line, #mi-capacity-pie, #mi-capacity-line, #mi-volume-chart, 
+#muc-fscount-line, #muc-capacity-pie, #muc-capacity-line, #muc-volume-chart, 
+#pad-fscount-line, #pad-capacity-pie, #pad-capacity-line, #pad-volume-chart, 
+#tyo-fscount-line, #tyo-capacity-pie, #tyo-capacity-line, #tyo-volume-chart, 
+#kr-fscount-line, #kr-capacity-pie, #kr-capacity-line, #kr-volume-chart
+{
+  margin: 5px;
+  background-color: #fbfbfb;
+  -moz-box-shadow:    -1px 1px 4px rgba(0,0,0,.1);
+  -webkit-box-shadow: -1px 1px 2px rgba(0,0,0,.1);
+  box-shadow:         -1px 1px 2px rgba(0,0,0,.1);
+  box-sizing: border-box;
+}
+#ww-capacity-line, #ah-capacity-line, #ls-capacity-line, #bgl-capacity-line, 
+#uk-capacity-line, #fr-capacity-line, #gla-capacity-line, #gnb-capacity-line,
+#se-capacity-line, #mi-capacity-line, #muc-capacity-line, #pad-capacity-line, 
+ #tyo-capacity-line, #kr-capacity-line {
+    padding: 15px 10px 10px 20px;
+}
+#ww-fscount-line, #ah-fscount-line, #ls-fscount-line, #bgl-fscount-line, #uk-fscount-line, 
+#fr-fscount-line, #gla-fscount-line, #gnb-fscount-line, #se-fscount-line, #mi-fscount-line, 
+#muc-fscount-line, #pad-fscount-line, #tyo-fscount-line, #kr-fscount-line{
+    padding: 20px 0px 0px 15px;
+}
+#ww-capacity-pie, #ah-capacity-pie, #ls-capacity-pie, #bgl-capacity-pie, #uk-capacity-pie, 
+#fr-capacity-pie, #gla-capacity-pie, #gnb-capacity-pie, #se-capacity-pie, #mi-capacity-pie, 
+#muc-capacity-pie, #pad-capacity-pie, #tyo-capacity-pie, #kr-capacity-pie{
+    padding: 15px 0px 0px 0px;
+}
+
+#regional-row{
+     padding: 15px 0 10px 20px;
+} 
+#regional-line, #regional-bar, #regional-absolute-bar{
+    padding: 15px 0 10px 20px;
+}
+
+.chart-heading{
+  margin: 0px 20px 10px 20px;
+  border-bottom: 2px #e5e5e5 solid;
+}
+
+.panel-default h5 {
+    text-align: left !important;
+     line-height: 20px !important; 
+    font-size: 16px !important;
+}
+
+.dcValues{
+  color: #1F78B4; 
+}
+
+.dc-data-table{
+    padding: 15px !important;
+    background-color: #fff;
+    -moz-box-shadow:    -1px 1px 2px rgba(0,0,0,.1);
+    -webkit-box-shadow: -1px 1px 2px rgba(0,0,0,.1);
+    box-shadow:         -1px 1px 2px rgba(0,0,0,.1);
+    box-sizing: border-box;
+}
+
+.table{
+    width: 70%;
+    max-width: 1440px;
+}
+
+.dc-table-head{
+        font-weight: bold !important;
+}
+
+th{
+    padding: 10px 0 10px 20px !important;
+}
+.table>tbody>tr.info>td, .table>tbody>tr.info>th, .table>tbody>tr>td.info, .table>tbody>tr>th.info, .table>tfoot>tr.info>td, .table>tfoot>tr.info>th, .table>tfoot>tr>td.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>thead>tr.info>th, .table>thead>tr>td.info, .table>thead>tr>th.info {
+    background-color: #CFE4F1 !important;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 10px 0 10px 20px !important;
+}
+
+
+
+#ww-volume-chart   
+    svg g g.axis.y { display: none; }
+#ww-volume-chart   
+    svg g g.axis.x { display: block !important; }
+
+#regional-bar 
+    svg g g.axis.x path{ stroke: none; }
+
+
+
+#regional-bar 
+    svg g g.axis.x line{ stroke: none; }
+
+
+#regional-line
+    svg g g.axis.y path{ stroke: none !important; }
+
+#regional-bar 
+    svg g g.axis.y path{ stroke: #000 !important; }
+
+
+#ww-capacity-line   
+    svg g g.axis.y { display: block !important; }
+
+#ww-capacity-line   
+    svg g g.axis.y path{ stroke: #292b29 !important; }
+
+#ww-capacity-line   
+    svg g g.axis.x { display: block !important; }
+
+#ww-fscount-line   
+    svg g g.axis.y { display: block !important; }
+
+#ww-fscount-line   
+    svg g g.axis.x { display: block !important; }
+
+#ww-volume-chart   
+    svg g g.axis.x { display: block !important; }

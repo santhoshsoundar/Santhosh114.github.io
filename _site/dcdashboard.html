@@ -31,7 +31,7 @@
 </script>
 
     
-      <title>Stacked Crossfilter on TimeSeries</title>
+      <title>Crossfilter Dashboard</title>
     
 	
     <!-- Bootstrap -->
@@ -89,12 +89,12 @@
     <div class="container">
 	<div class="blog-post">
 		<div class="col-sm-12"><h2>
-		 <a href="/stackedFilter.html">Stacked Crossfilter on TimeSeries</a>
+		 <a href="/dcdashboard.html">Crossfilter Dashboard</a>
 		</h2></div>
 	</div>
 	<div class="blog-title" style="margin-bottom:25px; float:left; width:100%;">
 		<h5><div class="col-sm-3" style="text-align:left;">
-		July 25, 2016
+		September  5, 2016
 			
 			</div>
 			<div class="col-sm-9 tagsin">
@@ -105,6 +105,10 @@
 			
 			 
 				#crossfilter  &nbsp;
+			
+			
+			 
+				#dashboard  &nbsp;
 			
 			
 		    </div>
@@ -119,13 +123,52 @@
   width: auto;
   max-width: 960px;
   text-align: center;
-
 }
 </style>
 
-<div id="compositeTimeSeries1"> </div>
-<div id="compositeTimeSeries2"> </div>
-<div id="compositeSelection"> </div>
+<style>@import url(../crossfilter/dashboardStyle.css);</style>
+
+<style>@import url(../crossfilter/dc.min.css);</style>
+
+<div class="container" id="ww-container">
+  <div class="row">
+
+  <div id="ww-capacity-line">
+    <div class="chart-heading">
+    <h5>Daily production and advertising expenditures</h5>
+    </div>
+  </div>
+
+  <div id="ww-capacity-pie">
+    <div class="chart-heading">
+    <h5>Avg Proportion - Ads Vs Prod.</h5>
+    </div>
+  </div>
+
+  <div id="ww-fscount-line">
+    <div class="chart-heading">
+    <h5>Ad Outlets Timeline </h5>
+    </div>
+  </div>
+
+  <div id="ww-volume-chart">
+    <div class="chart-heading">
+    <h5>Filter TimeSeries
+    <a href="javascript:dc.filterAll('wwChartGrp'); dc.renderAll('wwChartGrp');" class="rset"> Reset Selection</a>
+    </h5>
+    </div>
+  </div>
+
+
+  </div>
+</div>
+
+<h3 id="crossfilter--d3js"><a href="">Crossfilter &amp; D3.js:</a></h3>
+
+<p>This is a minimal dashboard built with <a href="https://dc-js.github.io/dc.js/">DC.js</a>, a charting library with advanced filtering operations.</p>
+
+<p>It is an amalgamation of D3.js and Crossfilter, by <a href="http://square.github.io/crossfilter/">square</a>.</p>
+
 <script src="//code.jquery.com/jquery-2.0.0.js"></script>
 
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -134,7 +177,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/dc/2.1.6/dc.min.js"></script>
 
-<script src="crossfilter/stackedFilter.js"></script>
+<script src="crossfilter/dcdash.js"></script>
 
 
 			   <hr>
@@ -144,12 +187,12 @@
 						<div class="row">
 							 <div class="col-sm-4 col-md-4 col-lg-4">
 								 <h6 style="text-align: right">
-								 	September  5, 2016
+								 	August 10, 2016
 								 </h6>
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/dcdash.html">Crossfilter Dashboard</a></strong>
+								 	<strong><a href="/chernoff.html">Chernoff Faces - D3.js</a></strong>
 								 </h6>
 							 </div>
 						</div>
@@ -157,12 +200,12 @@
 						<div class="row">
 							 <div class="col-sm-4 col-md-4 col-lg-4">
 								 <h6 style="text-align: right">
-								 	August 10, 2016
+								 	July 18, 2016
 								 </h6>
 							 </div>
 							 <div class="col-sm-8 col-md-8 col-lg-8">
 								 <h6 style="text-align: left">
-								 	<strong><a href="/couchdb.html">CouchDB</a></strong>
+								 	<strong><a href="/parallel.html">Parallel Coordinates - The Rockstar InfoViz</a></strong>
 								 </h6>
 							 </div>
 						</div>
@@ -190,8 +233,8 @@
 <script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 		var disqus_shortname = 'username'; // required: replace example with your forum shortname
-		var disqus_identifier = '/stackedFilter.html';
-		var disqus_url = 'http://santhosh114.github.io//stackedFilter.html';
+		var disqus_identifier = '/dcdashboard.html';
+		var disqus_url = 'http://santhosh114.github.io//dcdashboard.html';
  
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bubble plots for Salary outcomes of US College Majors
+title: US College Majors Analysis & their Salary Outcomes  
 mytags: "#python #plot.ly #matplotlib #Steven's Power Law"
 img: <img class="post-cover" src="../static/img/blog/college/icon.png" border="5" alt="Responsive image">
 tags:

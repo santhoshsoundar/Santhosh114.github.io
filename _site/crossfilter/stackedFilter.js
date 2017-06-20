@@ -67,6 +67,28 @@ function composePlots(dimention, lineGrp, barGrp, sessLineGrp, compositeChart, r
 return compositeChart;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var volumeChart = dc.barChart('#volume-chart', "testNodeGrp");
 
 var lynCompositeChartS = dc.compositeChart("#lynCompositeChartS", "testNodeGrp");
@@ -237,3 +259,8 @@ t.addEventListener("click", function(){
   d.classList.toggle("toggler--is-active") && newScale(1); 
   e.classList.toggle("toggler--is-active") && newScale(0.4);
 })
+
+
+
+
+

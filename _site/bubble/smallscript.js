@@ -25,11 +25,11 @@ var palette = {
 
 var nodes = [
       { name: "me",target: [0], img: "bubble/bbl/santhosh_bubble.png",click:"Resume",link: "https://www.linkedin.com/in/santhoshsoundararajan"},
-      { name: "Data Analytics",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"Read Blog",link: "blog.html"},
-      { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"Read Blog",link: "blog.html"},
-      { name: "Big Data", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"Read Blog",link: "blog.html"},
+      { name: "Data Analytics",target: [0], img: "bubble/bbl/pyd_bbl.png",click:"View Posts",link: "blog.html"},
+      { name: "Statistics ", target: [0], img: "bubble/bbl/r_bbl.png",click:"View Posts",link: "blog.html"},
+      { name: "Big Data", target: [0], img: "bubble/bbl/dbd_bbl.png",click:"View Posts",link: "blog.html"},
       { name: "Git Projects", target: [1],target: [0], img: "bubble/bbl/pjt_bbl.png",click:"View Projects",link: "https://github.com/Santhosh114"},
-      { name: "Data Visualizations", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"Read Blog",link: "blog.html"}];
+      { name: "Data Visualizations", target: [0, 1, 2, 3], img: "bubble/bbl/viz_bbl.png",click:"View Posts",link: "blog.html"}];
 
 var links = [];
 
@@ -103,8 +103,8 @@ var node = myChart.selectAll('circle')
 	.attr('font-family', 'Play')
 	.attr('x', function(d, i) {
 		if (d.name=="me") { return -30 }
-		if (d.name=="Git Projects") { return -30 }
-		else { return -35 }
+		if (d.name=="Git Projects") { return -32 }
+		else { return -30 }
 	})
 	.attr('y', function(d, i) {
 		if (d.name=="me") { return 5  }
@@ -113,7 +113,7 @@ var node = myChart.selectAll('circle')
 	.attr('font-size',function(d, i) {
 		if (d.name=="Git Projects") { return 10 }
 			if (d.name=="me") { return 16 }
-		else { return 15 }
+		else { return 12 }
 })
 	.attr('fill',
 	  function(d, i) {
