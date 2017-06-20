@@ -11,7 +11,7 @@ tags:
 
 <style>.container {
   width: auto;
-  max-width: 960px;
+  max-width: 1096px;
   text-align: center;
 }
 </style>
