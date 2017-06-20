@@ -159,7 +159,7 @@ ahCapacityPie
 // begin charting for count
 ahCountLineChart
     .renderArea(true)
-    .width(pieWidth*1.56-15)
+    .width(pieWidth*1.56-25)
     .height(0.6*rightWidth)
     .transitionDuration(600)
     .margins({top: 25,right: 30,bottom: 50,left: 30})
