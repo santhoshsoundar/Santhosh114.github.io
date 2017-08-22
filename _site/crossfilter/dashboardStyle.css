@@ -1,32 +1,6 @@
-
-/*@media (min-width: 1200px){
-.container {
-    width: 100% !important;
-    min-width: 1024px !important;
-    max-width: 100% !important;
-    position: relative !important;
+#ww-container{
+margin-left: 10px;
 }
-}
-@media (min-width: 900px){
-.container {
-    width: 100% !important;
-    min-width: 1024px !important;
-    max-width: 100% !important;
-    position: relative !important;
-}
-}
-@media (min-width: 700px){
-.container {
-    width: 100% !important;
-    min-width: 1024px !important;
-    max-width: 100% !important;
-    position: relative !important;
-}
-}*/
-
-/*#ww-container{
-margin-left: 30px;
-}*/
 
 .rset{
 margin-left: 500px;
@@ -36,6 +10,8 @@ color: #3399cc !important;
 
 .container {
     position: relative !important;
+    min-width: 960px !important;
+    max-width: 960px !important;
 }
 .dc-chart .axis text {
     font: 11px sans-serif;
@@ -59,7 +35,7 @@ color: #3399cc !important;
     text-decoration: none !important;
 }
 #ww-volume-chart{
-    padding: 5px 10px 0px 20px;
+    padding: 0px 10px 0px 10px;
 }
 
 #ww-fscount-line, #ww-capacity-pie, #ww-capacity-line, #ww-volume-chart, #regional-row, #regional-line, #regional-bar, #regional-absolute-bar,
@@ -84,21 +60,14 @@ color: #3399cc !important;
   box-shadow:         -1px 1px 2px rgba(0,0,0,.1);
   box-sizing: border-box;
 }
-#ww-capacity-line, #ah-capacity-line, #ls-capacity-line, #bgl-capacity-line, 
-#uk-capacity-line, #fr-capacity-line, #gla-capacity-line, #gnb-capacity-line,
-#se-capacity-line, #mi-capacity-line, #muc-capacity-line, #pad-capacity-line, 
- #tyo-capacity-line, #kr-capacity-line {
-    padding: 15px 10px 10px 20px;
+#ww-capacity-line {
+    padding: 15px 0px 10px 20px;
 }
-#ww-fscount-line, #ah-fscount-line, #ls-fscount-line, #bgl-fscount-line, #uk-fscount-line, 
-#fr-fscount-line, #gla-fscount-line, #gnb-fscount-line, #se-fscount-line, #mi-fscount-line, 
-#muc-fscount-line, #pad-fscount-line, #tyo-fscount-line, #kr-fscount-line{
+#ww-fscount-line{
     padding: 20px 0px 0px 15px;
 }
-#ww-capacity-pie, #ah-capacity-pie, #ls-capacity-pie, #bgl-capacity-pie, #uk-capacity-pie, 
-#fr-capacity-pie, #gla-capacity-pie, #gnb-capacity-pie, #se-capacity-pie, #mi-capacity-pie, 
-#muc-capacity-pie, #pad-capacity-pie, #tyo-capacity-pie, #kr-capacity-pie{
-    padding: 15px 0px 0px 0px;
+#ww-capacity-pie{
+    padding: 15px 0px 5px 0px;
 }
 
 #regional-row{

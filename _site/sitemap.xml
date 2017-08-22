@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://santhosh114.github.io//</loc>
-    <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+    <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   
     <url>
-      <loc>http://santhosh114.github.io//dcdashboard.html</loc>
+      <loc>http://santhosh114.github.io//expdashboard.html</loc>
       
-        <lastmod>2016-09-05T00:00:00-04:00</lastmod>
+        <lastmod>2017-08-22T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -23,7 +23,7 @@
     <url>
       <loc>http://santhosh114.github.io//chernoff.html</loc>
       
-        <lastmod>2016-08-10T00:00:00-04:00</lastmod>
+        <lastmod>2016-08-10T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -36,7 +36,7 @@
     <url>
       <loc>http://santhosh114.github.io//parallel.html</loc>
       
-        <lastmod>2016-07-18T00:00:00-04:00</lastmod>
+        <lastmod>2016-07-18T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -49,7 +49,7 @@
     <url>
       <loc>http://santhosh114.github.io//airport.html</loc>
       
-        <lastmod>2015-11-10T00:00:00-05:00</lastmod>
+        <lastmod>2015-11-10T00:00:00-08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -62,7 +62,7 @@
     <url>
       <loc>http://santhosh114.github.io//collegemajors.html</loc>
       
-        <lastmod>2015-10-25T00:00:00-04:00</lastmod>
+        <lastmod>2015-10-25T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -75,7 +75,7 @@
     <url>
       <loc>http://santhosh114.github.io//steve.html</loc>
       
-        <lastmod>2015-10-08T00:00:00-04:00</lastmod>
+        <lastmod>2015-10-08T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -88,7 +88,7 @@
     <url>
       <loc>http://santhosh114.github.io//critique.html</loc>
       
-        <lastmod>2015-09-05T00:00:00-04:00</lastmod>
+        <lastmod>2015-09-05T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -101,7 +101,7 @@
     <url>
       <loc>http://santhosh114.github.io//chloro.html</loc>
       
-        <lastmod>2015-08-11T00:00:00-04:00</lastmod>
+        <lastmod>2015-08-11T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -114,7 +114,7 @@
     <url>
       <loc>http://santhosh114.github.io//stream.html</loc>
       
-        <lastmod>2015-07-13T00:00:00-04:00</lastmod>
+        <lastmod>2015-07-13T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -127,7 +127,7 @@
     <url>
       <loc>http://santhosh114.github.io//cluster.html</loc>
       
-        <lastmod>2015-05-13T00:00:00-04:00</lastmod>
+        <lastmod>2015-05-13T00:00:00-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -140,7 +140,7 @@
     <url>
       <loc>http://santhosh114.github.io//bubbleMap.html</loc>
       
-        <lastmod>2015-02-13T00:00:00-05:00</lastmod>
+        <lastmod>2015-02-13T00:00:00-08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -153,7 +153,7 @@
     <url>
       <loc>http://santhosh114.github.io//neo4j.html</loc>
       
-        <lastmod>2015-01-19T00:00:00-05:00</lastmod>
+        <lastmod>2015-01-19T00:00:00-08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -167,7 +167,7 @@
   <url>
     <loc>http://santhosh114.github.io//404</loc>
     
-      <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+      <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -180,7 +180,7 @@
   <url>
     <loc>http://santhosh114.github.io//atom.xml</loc>
     
-      <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+      <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -193,7 +193,7 @@
   <url>
     <loc>http://santhosh114.github.io//blog</loc>
     
-      <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+      <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -206,7 +206,7 @@
   <url>
     <loc>http://santhosh114.github.io//</loc>
     
-      <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+      <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -219,7 +219,7 @@
   <url>
     <loc>http://santhosh114.github.io//projectss</loc>
     
-      <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+      <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -232,7 +232,7 @@
   <url>
     <loc>http://santhosh114.github.io//sitemap.xml</loc>
     
-      <lastmod>2017-06-20T14:56:48-04:00</lastmod>
+      <lastmod>2017-08-22T05:07:36-07:00</lastmod>
     
     
       <changefreq>monthly</changefreq>
