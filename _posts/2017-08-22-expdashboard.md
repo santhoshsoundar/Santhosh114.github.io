@@ -57,7 +57,8 @@ tags:
 
 > Post updated with my critique on the dashboard for an interview process with [Acumen LLC](http://www.acumenllc.com/).
 
-###Overview:
+Overview:
+------
 
 This data visualization dashboard depicts the expenditures accounted for retail client for the production and advertising respectively. This data is sourced from UIC time series data repository for academic purposes, ranging over 12 months on a data point per day basis with random missing values.  
 
@@ -65,7 +66,8 @@ One can just glance over the visualization to see the trend in the dashboard or 
 
 ______
 
-####Trifecta Checkup:
+Trifecta Checkup:
+------
 
 One of the first visualization review framework I would like to apply is the [Trifecta Checkup](http://junkcharts.typepad.com/junk_charts/junk-charts-trifecta-checkup-the-definitive-guide.html), it is widely used in the industry to interpret visualizations correctly, distinguish the good from the bad. The trifecta checkup involves answering these three basic questions. 
 
@@ -85,8 +87,8 @@ ______
 
 
 
-####Visualization Specific heuristics:
-
+Visualization Specific heuristics:
+------
 
 ##### **Information Coding**
 Perception of information is directly dependent on the mapping of data elements to visual objects. 
@@ -110,15 +112,16 @@ Concerns whether any extra information can be a distraction so the dashboard is 
 ____________
 
 
-####Technologies Used:
-
+Technologies Used:
+------
 This is a minimal dashboard built with [D3.js](https://d3js.org/) in conjuncture with [Crossfilter](http://square.github.io/crossfilter/) a charting library with advanced filtering capabilities powered by "Square" giving rise to [DC.js](https://dc-js.github.io/dc.js/).
 Hence the dashboard itself is an amalgamation of D3.js, Crossfilter and DC.js and out of the box customization of the library itself to achieve desired styles. The layouts are designed with vanila CSS. 
 
 ____________
 
 
-####Room For Improvemen:
+Room For Improvemen:
+------
 
 ##### **More Action components**
 Given a business requirement, I would add more action components to this dashboard, for example, we can aggregate the proportions pie chart every time a user select instead of the most recent data point. 
