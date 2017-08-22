@@ -58,13 +58,15 @@ tags:
 > Post updated with my critique on the dashboard for an interview process with [Acumen LLC](http://www.acumenllc.com/).
 
 ####Overview:
+
 This data visualization dashboard depicts the expenditures accounted for retail client for the production and advertising respectively. This data is sourced from UIC time series data repository for academic purposes, ranging over 12 months on a data point per day basis with random missing values.  
 
 One can just glance over the visualization to see the trend in the dashboard or zoom in to specific timelines for a more intimate look. Hovering one’s cursor over the lines reveals the value of each variable with its associated date. Total expenditure, production costs advertising costs, proportions *(reflecting the most recent datapoint)* and the number of Ad outlets represented in their own independent scope help the viewer understand the visualization in context. It’s a simple construction, approachable to the general public and scientifically accurate.
 
 ______
 
-####Trifecta Checkup
+####Trifecta Checkup:
+
 One of the first visualization review framework I would like to apply is the [Trifecta Checkup](http://junkcharts.typepad.com/junk_charts/junk-charts-trifecta-checkup-the-definitive-guide.html), it is widely used in the industry to interpret visualizations correctly, distinguish the good from the bad. The trifecta checkup involves answering these three basic questions. 
 
 * What is the QUESTION? (Q)
@@ -83,7 +85,8 @@ ______
 
 
 
-####Visualization Specific Heuristics:
+####Visualization Specific heuristics:
+
 
 ##### **Information Coding**
 Perception of information is directly dependent on the mapping of data elements to visual objects. 
@@ -115,7 +118,7 @@ Hence the dashboard itself is an amalgamation of D3.js, Crossfilter and DC.js an
 ____________
 
 
-####Room For Improvement:
+####Room For Improvemen:
 
 ##### **More Action components**
 Given a business requirement, I would add more action components to this dashboard, for example, we can aggregate the proportions pie chart every time a user select instead of the most recent data point. 
