@@ -120,7 +120,7 @@ Hence the dashboard itself is an amalgamation of D3.js, Crossfilter and DC.js an
 ____________
 
 
-Room For Improvemen:
+Room For Improvement:
 ------
 
 ##### **More Action components**
