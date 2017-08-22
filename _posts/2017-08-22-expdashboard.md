@@ -57,7 +57,7 @@ tags:
 
 > Post updated with my critique on the dashboard for an interview process with [Acumen LLC](http://www.acumenllc.com/).
 
-####Overview:
+###Overview:
 
 This data visualization dashboard depicts the expenditures accounted for retail client for the production and advertising respectively. This data is sourced from UIC time series data repository for academic purposes, ranging over 12 months on a data point per day basis with random missing values.  
 
