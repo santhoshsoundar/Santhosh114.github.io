@@ -16,7 +16,7 @@ tags:
 }
 </style>
 <style>@import url(../crossfilter/dashboardStyle.css);</style>
-<style>@import url(../crossfilter/dc.min.css);</style>
+<style>@import url(../static/CSS/dc.min.css);</style>
 
 
 
