@@ -27,7 +27,6 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
             var g;
 
             var ndx = crossfilter(data);
-            var ndxLine = crossfilter(data);
             var all = ndx.groupAll();
             var parseDate = d3.time.format("%Y-%m-%d").parse;
 
@@ -35,16 +34,9 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
                     .domain(["Network", "Cloud & IT Services", "Content & Digital Media", "Financial Services", "Enterprises"])
                     .range(['#3182bd', '#9ecae1', '#e6550d', '#fd8d3c', '#31a354']);
 
-            var plallar = d3.scale.category10();
-
+            var colorPallet = d3.scale.category10();
 
             var dateDim = ndx.dimension( function(d) { 
-                d.Date = parseDate(d['dt']);
-                return d.Date;}),
-                minDate = dateDim.bottom(1)[0].Date,
-                maxDate = dateDim.top(1)[0].Date;
-
-            var dateDimLine = ndxLine.dimension( function(d) { 
                 d.Date = parseDate(d['dt']);
                 return d.Date;}),
                 minDate = dateDim.bottom(1)[0].Date,
@@ -60,49 +52,6 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
                 grpSegment = segmentDim.group(),
                 grpYear = yearDim.group(),
                 grpMarket = marketDim.group();
-                // grpCustFreq = customerDim.group(); 
-
-            var scoresGroup = dateDimLine.group().reduce(
-
-                    function (p, v) {
-                            ++p.count;
-                            p.ms += v.ms;
-                            p.averageMs = p.ms / p.count
-                            p.ic += v.ic;
-                            p.averageIc = p.ic / p.count
-                            p.gd += v.gd
-                            p.averageGd = p.gd / p.count
-                            return p;
-                        },
-
-                        function (p, v) {
-                            --p.count;
-                            p.ms -= v.ms;
-                            p.averageMs = p.ms / p.count
-                            p.ic -= v.ic;
-                            p.averageIc = p.ic / p.count
-                            p.gd -= v.gd
-                            p.averageGd = p.gd / p.count
-                            return p;
-                        },
-
-                        function () {
-                            return {
-                                count: 0,
-                                ms: 0,
-                                ic: 0,
-                                gd: 0, 
-                                averageMs: 0,
-                                averageIc: 0,
-                                averageGd: 0
-                                
-                            };
-                        }
-                    );
-
-            function orderValueMS(p) {
-                return p.ms;
-                }
 
             var customerGroup = customerDim.group().reduce(
 
@@ -175,7 +124,7 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
                 .margins({top: 10, right: 50, bottom: 30, left: 40})
                 .dimension(customerDim)
                 .group(customerGroup)
-                .colors(plallar)
+                .colors(colorPallet)
                 .colorAccessor(function (d) {
                     return d.value.sg;
                 })
@@ -224,7 +173,7 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
                 .dimension(segmentDim)
                 .group(grpSegment)
                 .elasticX(true)
-                .colors(plallar);
+                .colors(colorPallet);
 
             functionYearChart
                 .width(350)
@@ -244,6 +193,59 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
                 .group(grpMarket)
                 .legend(dc.legend().x(215));
 
+            dc.dataCount(".dc-data-count", "magScoresGrp")
+                .dimension(ndx)
+                .group(all);
+
+
+            var ndxLine = crossfilter(data);
+            var dateDimLine = ndxLine.dimension( function(d) { 
+                d.Date = parseDate(d['dt']);
+                return d.Date;}),
+                minDate = dateDim.bottom(1)[0].Date,
+                maxDate = dateDim.top(1)[0].Date;
+
+
+            var scoresGroup = dateDimLine.group().reduce(
+                function (p, v) {
+                            ++p.count;
+                            p.ms += v.ms;
+                            p.averageMs = p.ms / p.count
+                            p.ic += v.ic;
+                            p.averageIc = p.ic / p.count
+                            p.gd += v.gd
+                            p.averageGd = p.gd / p.count
+                            return p;
+                        },
+
+                        function (p, v) {
+                            --p.count;
+                            p.ms -= v.ms;
+                            p.averageMs = p.ms / p.count
+                            p.ic -= v.ic;
+                            p.averageIc = p.ic / p.count
+                            p.gd -= v.gd
+                            p.averageGd = p.gd / p.count
+                            return p;
+                        },
+
+                        function () {
+                            return {
+                                count: 0,
+                                ms: 0,
+                                ic: 0,
+                                gd: 0, 
+                                averageMs: 0,
+                                averageIc: 0,
+                                averageGd: 0
+                                
+                            };
+                        }
+                    );
+
+                function orderValueMS(p) {
+                        return p.ms;
+                        }
 
             avgLineChart
                 .width(950)
@@ -292,10 +294,6 @@ d3.csv("../equinix/package/customer-min-data.csv", function (err, data) {
                 .x(d3.time.scale().domain([minDate,maxDate]));
 
             avgVolChart.xUnits(function(){return 10;});
-
-            dc.dataCount(".dc-data-count", "magScoresGrp")
-                    .dimension(ndx)
-                    .group(all);
 
             dc.renderAll('magScoresGrp');
 

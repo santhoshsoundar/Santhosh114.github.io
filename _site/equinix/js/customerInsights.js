@@ -38,7 +38,6 @@ $.getJSON('http://whateverorigin.org/get?url=' +
                 metroVal = custDateDim.group().reduceSum(dc.pluck('net_metro_presence')),
                 custMScoreVal = custDateDim.group().reduceSum(dc.pluck('comp_mscore'));
 
-                // begin charting for capacity
                 var ibxLine = dc.lineChart(functionCompositeChart).group(ibxVal, "Net IBX Presence")
                 .useRightYAxis(true)
                 .dotRadius(7).interpolate('step-after').renderArea(false).colors("#007022"),
@@ -163,7 +162,6 @@ var searchCustomer = function newSearch(searchKey) {
                 metroVal = custDateDim.group().reduceSum(dc.pluck('net_metro_presence')),
                 custMScoreVal = custDateDim.group().reduceSum(dc.pluck('comp_mscore'));
 
-                // begin charting for capacity
                 var ibxLine = dc.lineChart(functionCompositeChart).group(ibxVal, "Net IBX Presence")
                 .useRightYAxis(true)
                 .dotRadius(7).interpolate('step-after').renderArea(false).colors("#007022"),
@@ -175,11 +173,9 @@ var searchCustomer = function newSearch(searchKey) {
                 customerMScoreLine = dc.lineChart(functionCompositeChart).group(custMScoreVal, "comp_mScore")
                             .colors("#2f7ea0")
                             .dimension(custDateDim)
-                            // .valueAccessor(function (d) {return d.value;})
                             .renderTitle(true)
                             .renderArea(true)
                             .brushOn(false)
-                            // avgVolChart.xUnits(function(){return 10;});
                             .x(d3.time.scale().domain([minDate, maxDate]))
                             .render();
 

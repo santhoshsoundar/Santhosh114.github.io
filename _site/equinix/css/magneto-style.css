@@ -20,6 +20,9 @@
 /*All Charts*/
 .chart-title { font-weight: 600; margin: 0px 0px 25px 0px;}
 
+.subText { font-style: italic; font-size:11px }
+.highlightText { font-weight: bold; font-style: italic; font-size:14px }
+.workflowPara { text-align:left;}
 
 /* Composite Chart  */
 #expenditures-container { text-align:left; }
@@ -40,6 +43,8 @@
 #rev-source-pie-chart { width: 600px; float: left;}
 #rev-by-campus-chart { width: 200px; float: left; }
 #rev-trend-bar-chart { width: 200px; float: left;}
+
+#customerCount { margin : 0px 0px 0px 40px;}
 
 
 

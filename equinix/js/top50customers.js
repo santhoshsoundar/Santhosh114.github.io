@@ -6,8 +6,7 @@ function print_filter(filter){
 	console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
-var top50BubbleChart = dc.bubbleChart('#top-bubble-chart')
-// , "top50ChGrp");
+var top50BubbleChart = dc.bubbleChart('#top-bubble-chart', 'top50ChGrp')
 
 d3.csv("../equinix/package/top50.csv", function (err, data) {
 
@@ -29,7 +28,7 @@ d3.csv("../equinix/package/top50.csv", function (err, data) {
                     .domain(["Network", "Cloud & IT Services", "Content & Digital Media", "Financial Services", "Enterprises"])
                     .range(['#3182bd', '#9ecae1', '#e6550d', '#fd8d3c', '#31a354']);
 
-            var plallar = d3.scale.category10();
+            var colorPallet = d3.scale.category10();
 
             var customerIDDim = ndx50.dimension( function(d) { return d['cust_id']; });
 
@@ -65,57 +64,78 @@ d3.csv("../equinix/package/top50.csv", function (err, data) {
                                 sg: ''
                             };
                         });
-    
-            document.getElementById("errerPriny").innerHTML = print_filter(custDataGrp);
+
             top50BubbleChart 
                 .width(950)
                 .height(400)
                 .margins({top: 10, right: 50, bottom: 30, left: 40})
                 .dimension(customerIDDim)
                 .group(custDataGrp)
-                .colors(colorScale)
+                .colors(colorPallet)
                 .colorAccessor(function (d) {
                     return d.value.sg;
                 })
                 .keyAccessor(function (p) {
-                    return p.value.aggIC ;
+                    return p.value.avgIC;
                 })
                 .valueAccessor(function (p) {
-                    return p.value.aggGD ;
+                    return p.value.avgGD;
                 })
                 .radiusValueAccessor(function (p) {
-                    return p.value.aggMS ;
+                    return p.value.avgMS;
                 })
-                // .maxBubbleRelativeSize(0.5)
-                .x(d3.scale.linear().domain([0, 110]))
-                .y(d3.scale.linear().domain([0, 110]))
+                .maxBubbleRelativeSize(0.5)
+                .x(d3.scale.pow().exponent(0.75).domain([0, 120]))
+                .y(d3.scale.pow().exponent(0.75).domain([22, 135]))
                 .yAxisLabel("Avg  ic_Scores")
                 .xAxisLabel("Avg  gd_Scores")
-                .r(d3.scale.linear().domain([0, 500]))
+                .r(d3.scale.linear().domain([0, 1200]))
                 .renderHorizontalGridLines(true)
                 .renderVerticalGridLines(true)
                 .renderLabel(true)
                 .label(function (p) {
-                    return p.key;
-                }).render();
-                // "top50ChGrp");
-                // .legend(dc.legend().x(100).y(15).itemHeight(15).gap(15)
-                //     .autoItemWidth(true)
-                //     .horizontal(true))
-                // .renderTitle(true)
-                // .title(function (p) {
-                //     return [
-                //         'Customer ID: '+ p.key,
-                //         'Sector: ' + p.sg,
-                //         'mScore: ' + p.ms,
-                //         'Avg mScore: ' + p.aggMS,
-                //         'icScore: ' + p.ic,
-                //         'Avg icScore: ' + p.aggIC,
-                //         'gdScore: ' + p.gd,
-                //         'Avg gdScore: ' + p.aggGD
-                //     ].join('\n');
-                // })
-                // .render("top50ChGrp");
+                    return p.value.cust_id;
+                })
+                .renderTitle(true)
+                .title(function (p) {
+                    return [
+                        'Customer ID: '+ p.key,
+                        'Sector: ' + p.value.sg,
+                        'Avg mScore: ' + p.value.avgMS,
+                        'Avg icScore: ' + p.value.avgIC,
+                        'Avg gdScore: ' + p.value.avgGD
+                    ].join('\n');
+                });
+
+                dc.dataTable("#top-cust-table", "top50ChGrp")
+                    .dimension(customerIDDim)
+                    .group(function (d) {
+                        return d.sg;
+                    })
+                    .size(60)
+                    .columns([
+                            function (d) {
+                            return d.cust_id;
+                            ;
+                        },
+                        function (d) {
+                            return d.avgMS;
+                        },
+                        function (d) {
+                            return d.avgIC;
+                        },
+                        function (d) {
+                            return d.avgGD;
+                        },
+                        function (d) {
+                            return d.sg;
+                        }
+                    ])
+                    .renderlet(function (table) {
+                        table.selectAll(".dc-table-group").classed("info", true);
+                    });
+
+                dc.renderAll('top50ChGrp');
 
 
 

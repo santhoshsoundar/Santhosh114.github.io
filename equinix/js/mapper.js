@@ -62,6 +62,12 @@ d3.select("#edaLink")
           d3.select("#sector-container").style("display", "none");
           d3.select("#eda-container").style("display", "block");
           
+          if ((top50BubbleChart.filters().length) > 0) {
+            dc.redrawAll("top50ChGrp");
+          }
+          else {
+            dc.renderAll("top50ChGrp");
+          }
         });
 
         
