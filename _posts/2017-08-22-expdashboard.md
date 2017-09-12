@@ -16,7 +16,7 @@ tags:
 }
 </style>
 <style>@import url(../crossfilter/dashboardStyle.css);</style>
-<style>@import url(../static/CSS/dc.min.css);</style>
+<style>@import url(../static/css/dc.min.css);</style>
 
 
 
@@ -138,10 +138,10 @@ The *Ad* attribute could have a common color in both plots *i.e. orange on both 
 
 
 
+<script src="../equinix/package/jquery.min.js"></script>
+<script src="../equinix/package/d3.v3.min.js"></script> 
+<script src="../equinix/package/crossfilter.min.js"></script>
+<script src="../equinix/package/dc.min.js"></script>
 
-<script src="//code.jquery.com/jquery-2.0.0.js"></script>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/dc/2.1.6/dc.min.js"></script>
 
 <script src="crossfilter/dcdash.js"></script>
