@@ -34,7 +34,7 @@
 
 #segment-row-chart { margin : 0px 0px 0px 30px;}
 
-#avg-volume-chart  
+#avg-volume-chart
     svg g g.axis.y { display: none; }
 
 /* Customer Specific  */
