@@ -11,10 +11,10 @@ var functionCustYear = dc.barChart("#cust-year-bar", "customerChartGrp");
 var functionCustMarket = dc.pieChart("#cust-market-pie", "customerChartGrp");
 
 
-$.getJSON('http://whateverorigin.org/get?url=' + 
+$.getJSON('http://whateverorigin.org/get?url=' +
     encodeURIComponent('https://stark-headland-64641.herokuapp.com/getCust/1') + '&callback=?',
     function (data) {
-            
+
             var custData = JSON.parse(data.contents);
 
             var ndxCust = crossfilter(custData);
@@ -22,16 +22,16 @@ $.getJSON('http://whateverorigin.org/get?url=' +
             var parseDate = d3.time.format("%Y-%m-%d").parse;
 
 
-            var custDateDim = ndxCust.dimension( function(d) { 
+            var custDateDim = ndxCust.dimension( function(d) {
                 d.Date = parseDate(d['date']);
                 return d.Date;}),
                 minDate = custDateDim.bottom(1)[0].Date,
                 maxDate = custDateDim.top(1)[0].Date;
 
             var custYearDim = ndxCust.dimension( function(d) { return d['year']; });
-            var custMarketDim = ndxCust.dimension( function(d) { return d['market']; }),        
+            var custMarketDim = ndxCust.dimension( function(d) { return d['market']; }),
                 custGrpYear = custYearDim.group(),
-                custGrpMarket = custMarketDim.group(); 
+                custGrpMarket = custMarketDim.group();
 
 
             var ibxVal = custDateDim.group().reduceSum( dc.pluck('net_ibx_presence')),
@@ -41,11 +41,11 @@ $.getJSON('http://whateverorigin.org/get?url=' +
                 var ibxLine = dc.lineChart(functionCompositeChart).group(ibxVal, "Net IBX Presence")
                 .useRightYAxis(true)
                 .dotRadius(7).interpolate('step-after').renderArea(false).colors("#007022"),
-                
+
                 metroLine = dc.lineChart(functionCompositeChart).group(metroVal, "Net Metro Presence")
                 .useRightYAxis(true)
                 .interpolate('step-after').dotRadius(7).renderArea(false).colors("#FF5D5D"),
-                
+
                 customerMScoreLine = dc.lineChart(functionCompositeChart).group(custMScoreVal, "comp_mScore")
                             .colors("#2f7ea0")
                             .dimension(custDateDim)
@@ -98,33 +98,6 @@ $.getJSON('http://whateverorigin.org/get?url=' +
                     .dimension(ndxCust)
                     .group(allCust);
 
-                // dc.dataTable("#cust-table", "customerChartGrp")
-                //     .dimension(ndxCust)
-                //     .group(function (d) {
-                //         return d.year;
-                //     })
-                //     .columns([
-                //             function (d) {
-                //             return d.date;
-                //             ;
-                //         },
-                //         function (d) {
-                //             return d.market;
-                //         },
-                //         function (d) {
-                //             return d.comp_mscore;
-                //         },
-                //         function (d) {
-                //             return d.net_ibx_presence;
-                //         },
-                //         function (d) {
-                //             return d.net_metro_presence;
-                //         }
-                //     ])
-                //     .renderlet(function (table) {
-                //         table.selectAll(".dc-table-group").classed("info", true);
-                //     });
-
                     dc.renderAll('customerChartGrp');
 
 
@@ -133,7 +106,7 @@ $.getJSON('http://whateverorigin.org/get?url=' +
 
 var searchCustomer = function newSearch(searchKey) {
 
-        $.getJSON('http://whateverorigin.org/get?url=' + 
+        $.getJSON('http://whateverorigin.org/get?url=' +
             encodeURIComponent(`https://stark-headland-64641.herokuapp.com/getCust/${searchKey}`) + '&callback=?',
             function (data) {
 
@@ -146,16 +119,16 @@ var searchCustomer = function newSearch(searchKey) {
             var parseDate = d3.time.format("%Y-%m-%d").parse;
 
 
-            var custDateDim = ndxCust.dimension( function(d) { 
+            var custDateDim = ndxCust.dimension( function(d) {
                 d.Date = parseDate(d['date']);
                 return d.Date;}),
                 minDate = custDateDim.bottom(1)[0].Date,
                 maxDate = custDateDim.top(1)[0].Date;
 
             var custYearDim = ndxCust.dimension( function(d) { return d['year']; });
-            var custMarketDim = ndxCust.dimension( function(d) { return d['market']; }),        
+            var custMarketDim = ndxCust.dimension( function(d) { return d['market']; }),
                 custGrpYear = custYearDim.group(),
-                custGrpMarket = custMarketDim.group(); 
+                custGrpMarket = custMarketDim.group();
 
 
             var ibxVal = custDateDim.group().reduceSum( dc.pluck('net_ibx_presence')),
@@ -165,11 +138,11 @@ var searchCustomer = function newSearch(searchKey) {
                 var ibxLine = dc.lineChart(functionCompositeChart).group(ibxVal, "Net IBX Presence")
                 .useRightYAxis(true)
                 .dotRadius(7).interpolate('step-after').renderArea(false).colors("#007022"),
-                
+
                 metroLine = dc.lineChart(functionCompositeChart).group(metroVal, "Net Metro Presence")
                 .useRightYAxis(true)
                 .interpolate('step-after').dotRadius(7).renderArea(false).colors("#FF5D5D"),
-                
+
                 customerMScoreLine = dc.lineChart(functionCompositeChart).group(custMScoreVal, "comp_mScore")
                             .colors("#2f7ea0")
                             .dimension(custDateDim)
