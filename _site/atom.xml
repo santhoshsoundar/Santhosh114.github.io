@@ -6,12 +6,12 @@
   
   <link href="http://santhosh114.github.io//"/>
   <id>http://santhosh114.github.io//</id>
-  <updated>2017-09-29T12:32:16Z</updated>
+  <updated>2018-07-28T23:11:45Z</updated>
   <author>
     <name>Santhosh</name>
     <email>santhosh.fiddle@gmail.com</email>
   </author>
-  <rights type="text">Copyright © 2017 Santhosh. All rights reserved.</rights>
+  <rights type="text">Copyright © 2018 Santhosh. All rights reserved.</rights>
   
   <entry>
   <title type="text">Equinix Data Viz Challenge - Magneto</title>
@@ -1881,7 +1881,7 @@ function bumpLayer(n) {
 
 </script>
 
-<div class="divider"> 
+<div class="divider">
 
 <!-- https://bl.ocks.org/mbostock/4060954 -->
 </div>

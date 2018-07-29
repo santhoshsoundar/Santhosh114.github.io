@@ -25,7 +25,7 @@ tags:
                 }
       </style>
 
-      
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 
@@ -89,7 +89,7 @@ tags:
                                                                     .attr("x", 320)
                                                                     .style( {'font-weight':'bold', 'font-family':'sans-serif',
                                                                               'font-size':'10px'})
-                                                                    .style("opacity", "0.9") 
+                                                                    .style("opacity", "0.9")
                                                                     .attr("fill", "#595959")
                                                                     .text("Total Flights:");
 
@@ -102,7 +102,7 @@ tags:
                                                                     .attr("x", 380)
                                                                     .style( {'font-weight':'bold', 'font-family':'sans-serif',
                                                                               'font-size':'20px'})
-                                                                    .style("opacity", "0.9") 
+                                                                    .style("opacity", "0.9")
                                                                     .attr("fill", "steelblue");
 
                                                               total_flights.selectAll(".txt")
@@ -130,7 +130,7 @@ tags:
                                                                     .attr("x", 520)
                                                                     .style( {'font-weight':'bold', 'font-family':'sans-serif',
                                                                               'font-size':'10px'})
-                                                                    .style("opacity", "0.9") 
+                                                                    .style("opacity", "0.9")
                                                                     .attr("fill", "#595959")
                                                                     .text("Incount:");
 
@@ -142,7 +142,7 @@ tags:
                                                                     .attr("x", 560)
                                                                     .style( {'font-weight':'bold', 'font-family':'sans-serif',
                                                                               'font-size':'20px'})
-                                                                    .style("opacity", "0.9") 
+                                                                    .style("opacity", "0.9")
                                                                     .attr("fill", "steelblue");
 
                                                               total_flights.selectAll(".txt")
@@ -170,7 +170,7 @@ tags:
                                                                     .attr("x", 680)
                                                                     .style( {'font-weight':'bold', 'font-family':'sans-serif',
                                                                               'font-size':'10px'})
-                                                                    .style("opacity", "0.9") 
+                                                                    .style("opacity", "0.9")
                                                                     .attr("fill", "#595959")
                                                                     .text("Outcount:");
 
@@ -181,7 +181,7 @@ tags:
                                                                     .attr("x", 730)
                                                                     .style( {'font-weight':'bold', 'font-family':'sans-serif',
                                                                               'font-size':'20px'})
-                                                                    .style("opacity", "0.9") 
+                                                                    .style("opacity", "0.9")
                                                                     .attr("fill", "steelblue");
 
                                                               total_flights.selectAll(".txt")
@@ -205,9 +205,8 @@ tags:
                                                                   });
    d3.json("../geoSample/us.json", function(error, us) {
     if (error) return console.error(error);
-    console.log(us);
 
-    svg.selectAll("path")
+    svg.selectAll("path").attr('id', 'myInsert')
         .data(topojson.feature(us, us.objects.states).features)
         .enter()
         .append("path")
@@ -241,7 +240,7 @@ tags:
     .append("g")
     .attr("class", "bars")
     .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
-    
+
     bars.append("circle")
     .attr("cx", function (d) { return d.x_axis; })
     .attr("cy", function (d) { return d.y_axis; })
@@ -255,8 +254,8 @@ tags:
     .delay(function(d, i) {
           return i * 20;
       })
-      .duration(15000) 
-      
+      .duration(15000)
+
     .attr("r", function (d) { return d.barheight; });
 
 bars.append("text")
@@ -266,7 +265,7 @@ bars.append("text")
         'font-size':'7px'
       })  
              .attr("dy", ".80em")
-    .attr("text-anchor", "start") 
+    .attr("text-anchor", "start")
     .text(function(d) {return d.name});
   });
 
@@ -284,7 +283,7 @@ bars.append("text")
 
   })();
 </script>
- 
+
 
 ### [Overview:]()
 
@@ -293,7 +292,7 @@ This is a walkthrough of my project on creating interactive transitions using tw
 This US map is generated from the [US.json](../geoSample/us.json)
 
 ### [Data:]()
-Sample of data used for this infograph with variable derived from Python data manupulation on [AirportStats flights delay dataset](http://stat-computing.org/dataexpo/2009/the-data.html). 
+Sample of data used for this infograph with variable derived from Python data manupulation on [AirportStats flights delay dataset](http://stat-computing.org/dataexpo/2009/the-data.html).
 {% highlight javascript %}
 
 var  sampleData = [{name: "San Francisco", coordinates: [-122.417,37.783], barheight: 50,airportName:"San Francisco International Airport", airportCode:"SFO"},
@@ -315,4 +314,3 @@ var  sampleData = [{name: "San Francisco", coordinates: [-122.417,37.783], barhe
     ];
 
 {% endhighlight %}
-
