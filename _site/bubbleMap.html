@@ -71,7 +71,29 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
     <!-- Navbar header -->
-    <nav class="navbar-default">
+    <style>
+.announce {
+  padding: 15px 0;
+  display: block;
+  color: rgba(0, 0, 0, 0.8) !important;
+  line-height: inherit;
+  background: linear-gradient(to bottom, #ffc, #ffa);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.column {
+  max-width: 960px;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+</style>
+
+<a class='announce' href="https://santhoshsoundar.blog" target="blank">
+  <div class='column'>This is an older version my blog, now a react based gatsby blog - <b>santhoshsoundar.blog</b></div>
+</a>
+<nav class="navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="index.html"><h1><i class="fa fa-home"></i>santhosh<span>fiddle</span></h1></a>
