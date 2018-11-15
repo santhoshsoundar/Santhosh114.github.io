@@ -71,7 +71,29 @@
   <!-- Wrap all page content here -->
   <div id="wrap">
     <!-- Navbar header -->
-    <nav class="navbar-default">
+    <style>
+.announce {
+  padding: 15px 0;
+  display: block;
+  color: rgba(0, 0, 0, 0.8) !important;
+  line-height: inherit;
+  background: linear-gradient(to bottom, #ffc, #ffa);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.column {
+  max-width: 960px;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+</style>
+
+<a class='announce' href="https://santhoshsoundar.blog" target="blank">
+  <div class='column'>This is an older version my blog, now a react based gatsby blog - <b>santhoshsoundar.blog</b></div>
+</a>
+<nav class="navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="index.html"><h1><i class="fa fa-home"></i>santhosh<span>fiddle</span></h1></a>
@@ -120,10 +142,18 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="blogpost">
-			  <style>.container {
+			  <style>
+.container {
   width: auto;
   max-width: 800px;
   text-align: center;
+}
+.domain {
+        fill: none;
+        stroke: #777;
+      }
+.tick line{
+    stroke: #777;
 }
 </style>
 
@@ -133,7 +163,7 @@
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 
-<h3 id="pure-d3js-implementation"><a href="">Pure D3.js Implementation:</a></h3>
+<h3 id="implementation"><a href="">Implementation:</a></h3>
 
 <p>“Chernoff faces, invented by Herman Chernoff in 1973, display multivariate data in the shape of a human face.” ~Wiki</p>
 
@@ -267,7 +297,6 @@ function findDeptMean(data){
     return meansByDept
 }
 meansByDept=findDeptMean(salaryData)
-console.log(meansByDept)
 
 
 /// helper function to calculate over under
@@ -321,7 +350,7 @@ var subChartWidth=svgWidth/salaryData.length
 var xStartLoc=35 //the left offset from canvas to the first bar 
 var spaceBetweenBar=5
 var yStartLoc=120 // the top offset from canvas to the bottom of the bar. 
-var width=10 //width of bar 
+var width=15 //width of bar 
 var xLoc=width+spaceBetweenBar
 var salaryCompHeightRange={min:0, max:100 }
 
@@ -332,6 +361,7 @@ var salaryCompHeightScale=d3.scale.linear()
 
 var salaryCompDIV = d3.select('#bars')
                         .attr("class","barCharts")
+                        .attr("font-family","Arial")
 
                       
 var salaryCompSVG=salaryCompDIV.append('svg')        // create an <svg> element
@@ -361,11 +391,11 @@ function plotEachBar(colorOfBar,xStart,fieldName){
                         .style('fill',colorOfBar)
     
     var labelForSinglePorject=salaryCompG.append('text')
-                                         .text("P"+fieldName.slice(-1))
+                                         .text(fieldName.slice(-1))
                                          .attr('x',function(d,i){
-                                            return xStartLoc+xStart+i*subChartWidth
+                                            return xStartLoc+xStart+i*subChartWidth+5
                                         })
-                                        .attr('y',yStartLoc+10)
+                                        .attr('y',yStartLoc+15)
                                         .attr("font-family","Arial")
                                         .attr("font-size","8pt");
      return (barForSingleProject,labelForSinglePorject)
@@ -378,13 +408,14 @@ for(i in listOfProjects){
 }
 var salaryCompTitles=salaryCompG.append('text')
                                 .text(function(d){
-                                return "salaryComp of "+d.name})
+                                    return "Company "+d.name+" Salary" })
                                 .attr('x',function(d,i){
-                                       return xStartLoc/2+i*subChartWidth
+                                    return xStartLoc/2+i*subChartWidth
                                 })
-                                .attr('y',yStartLoc+20)
-                                .attr("font-family","Arial")
-                                .attr("font-size","8pt");                   
+                                .attr('y',yStartLoc+30)
+                                .attr("font-size","8pt")
+                                .attr("font-weight","Bold")
+                                .style('fill', '#999');                   
 ///////////////////plot chernoff faces////////////
 //set up svg
 var chernoffFaceRadiusRange={min:0, max:60 }
@@ -395,6 +426,7 @@ var chernoffFaceRadiusScale=d3.scale.linear()
                             
 var chernoffFaceDIV = d3.select('#faces')
                         .attr("class","chernoffFaces")
+                        .attr("font-family","Arial")
   
 var chernoffFaceSVG=chernoffFaceDIV.append('svg')        // create an <svg> element
     .attr('width', svgWidth) // set its dimentions
@@ -463,14 +495,15 @@ var mouths=chernoffFaceHolder
 //step 1.3, add titles for each subchart. 
 var chernoffTitle=chernoffFaceHolder.append('text')
                                 .text(function(d){
-                                    return "salaryComp of "+d.name;
+                                    return "Company "+d.name+" Salary";
                                 })
                                 .attr('x',function(d,i){
-                                       return (i+1/4)*subChartWidth;
+                                       return (i+1/4)*subChartWidth-10;
                                 })
                                 .attr('y',(svgHeight/1.15))//your work here 
-                                .attr("font-family","Arial")
-                                .attr("font-size","8pt");
+                                .attr("font-size","8pt")
+                                .attr("font-weight","Bold")
+                                .style('fill', '#999');
 
 
 // ////////////////Part2 add data and update chart ///////////////////////
@@ -595,7 +628,6 @@ function addNoses(){
         noses.transition()
              .duration(duration)
              .attr('rx',function(d){
-                 console.log("nose : "+d['salaryD'])
                            return chernoffFaceRadiusScale(d['salaryD']) 
                         })
              .attr('ry',function(d){
@@ -626,7 +658,7 @@ function update(){
                 
 chernoffButton=chernoffFaceDIV
                 .append("button")
-                .text("Update Data")
+                .text("Add new feature to data!")
                 .attr("type","button")
                 .attr("value","Update Data")
                 .attr("onclick","update()")
@@ -668,7 +700,6 @@ chernoffFaceDIV.selectAll("path")
  // Hint if you use the helper function plotEachBar(), this can be done with one line of code 
  //Call this function in update()
 function addSalaryDbars(){
-    //your work here 
     plotEachBar(colorList[3], 3 * (width + spaceBetweenBar), listOfProjects[3])
 }
 //step 4.2 adding axis  
@@ -677,13 +708,13 @@ var yAxisScale=d3.scale.linear()
                             .range([ salaryCompHeightRange.max,salaryCompHeightRange.min])
 
 var yAxis = d3.svg.axis()
-                  .scale(yAxisScale)//your work here
+                  .scale(yAxisScale)
                   .orient("left")
                   
 salaryCompG.append('g')
             .call(yAxis)
             .attr('transform',function(d,i){
-                return 'translate(' + (30 + i * subChartWidth) + ',' + 20 + ')'//your work here
+                return 'translate(' + (30 + i * subChartWidth) + ',' + 20 + ')'
             });
 //step 4.3 adding tooltips for bar charts 
 var barToolTip = salaryCompDIV.append("div")
